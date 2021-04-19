@@ -9,6 +9,7 @@ IS			(u|U|l|L)*
 #include <stdio.h>
 #include "y.tab.h"
 
+extern FILE * output;
 void count();
 %}
 
@@ -31,7 +32,7 @@ void count();
 "for"			{ count(); return(FOR); }
 "goto"			{ count(); return(GOTO); }
 "if"			{ count(); return(IF); }
-"int"			{ count(); return(INT); }
+"int"			{ fprintf(output," INT "); count(); return(INT); }
 "long"			{ count(); return(LONG); }
 "register"		{ count(); return(REGISTER); }
 "return"		{ count(); return(RETURN); }
