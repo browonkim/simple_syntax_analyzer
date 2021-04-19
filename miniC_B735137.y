@@ -5,6 +5,8 @@ extern int yylval;
 extern char yytext[];
 extern FILE * yyin;
 FILE * output;
+char mystr[200];
+char totalstr[200];
 %}
 %token IDENTIFIER CONSTANT STRING_LITERAL SIZEOF
 %token PTR_OP INC_OP DEC_OP LEFT_OP RIGHT_OP LE_OP GE_OP EQ_OP NE_OP
@@ -22,7 +24,7 @@ FILE * output;
 %%
 
 primary_expression
-	: IDENTIFIER {fprintf(output, "\t reduce IDENTFIER -> %s \n", yytext);}
+	: IDENTIFIER {fprintf(output, "\t reduce IDENTFIER -> %s \n", mystr);}
 	| CONSTANT {fprintf(output, " CONSTANT \n");}
 	| STRING_LITERAL {fprintf(output, " STRING_LITERAL \n");}
 	| '(' expression ')' {fprintf(output, " () \n");}

@@ -8,8 +8,11 @@ IS			(u|U|l|L)*
 %{
 #include <stdio.h>
 #include "y.tab.h"
+#include <string.h>
 
 extern FILE * output;
+extern char mystr[];
+extern char totalstr[];
 void count();
 %}
 
@@ -49,7 +52,7 @@ void count();
 "volatile"		{ count(); return(VOLATILE); }
 "while"			{ count(); return(WHILE); }
 
-{L}({L}|{D})*		{ count(); return(IDENTIFIER); }
+{L}({L}|{D})*		{strcpy(mystr, yytext); count(); return(IDENTIFIER); }
 
 0[xX]{H}+{IS}?		{ count(); return(CONSTANT); }
 0{D}+{IS}?		{ count(); return(CONSTANT); }
