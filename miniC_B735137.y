@@ -4,6 +4,7 @@ void yyerror(char * s);
 extern int yylval;
 extern char yytext[];
 extern FILE * yyin;
+FILE * output;
 %}
 %token IDENTIFIER CONSTANT STRING_LITERAL SIZEOF
 %token PTR_OP INC_OP DEC_OP LEFT_OP RIGHT_OP LE_OP GE_OP EQ_OP NE_OP
@@ -429,7 +430,7 @@ function_definition
 void yyerror(char * s)
 {
 	fflush(stdout);
-	printf("\n%*s\n%*s\n", column, "^", column, s);
+	fprintf(stderr,"%s\n",s);
 }
 
 int main(int argc, char** argv){
