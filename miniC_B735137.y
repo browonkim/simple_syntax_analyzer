@@ -22,10 +22,10 @@ FILE * output;
 %%
 
 primary_expression
-	: IDENTIFIER {fprintf(output, "IDENTFIER");}
-	| CONSTANT {fprintf(output, "CONSTANT");}
-	| STRING_LITERAL {fprintf(output, "STRING_LITERAL");}
-	| '(' expression ')' {fprintf(output, "()");}
+	: IDENTIFIER {fprintf(output, " IDENTFIER \n");}
+	| CONSTANT {fprintf(output, " CONSTANT \n");}
+	| STRING_LITERAL {fprintf(output, " STRING_LITERAL \n");}
+	| '(' expression ')' {fprintf(output, " () \n");}
 	;
 
 postfix_expression
