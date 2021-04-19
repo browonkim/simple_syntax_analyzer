@@ -19,23 +19,23 @@ void count();
 %%
 "/*"			{ comment(); }
 
-"auto"			{ fprintf(output," auto ");  count(); return(AUTO); }
-"break"			{ fprintf(output," break ");  count(); return(BREAK); }
-"case"			{ fprintf(output," case ");  count(); return(CASE); }
-"char"			{ fprintf(output," char ");  count(); return(CHAR); }
-"const"			{ fprintf(output," const ");  count(); return(CONST); }
-"continue"		{ fprintf(output," continue ");  count(); return(CONTINUE); }
-"default"		{ fprintf(output," default");  count(); return(DEFAULT); }
-"do"			{ fprintf(output," do ");  count(); return(DO); }
-"double"		{ fprintf(output," double ");  count(); return(DOUBLE); }
-"else"			{ fprintf(output," else ");  count(); return(ELSE); }
-"enum"			{ fprintf(output," enum ");  count(); return(ENUM); }
-"extern"		{ fprintf(output," extern ");  count(); return(EXTERN); }
-"float"			{ fprintf(output," float ");  count(); return(FLOAT); }
-"for"			{ fprintf(output," for ");  count(); return(FOR); }
-"goto"			{ fprintf(output," goto ");  count(); return(GOTO); }
-"if"			{ fprintf(output," if "); count(); return(IF); }
-"int"			{ fprintf(output," int "); count(); return(INT); }
+"auto"			{ fprintf(output," shift auto \n");  count(); return(AUTO); }
+"break"			{ fprintf(output," shift break \n");  count(); return(BREAK); }
+"case"			{ fprintf(output," shift case \n");  count(); return(CASE); }
+"char"			{ fprintf(output," shift char \n");  count(); return(CHAR); }
+"const"			{ fprintf(output," shift const \n");  count(); return(CONST); }
+"continue"		{ fprintf(output," shift continue \n");  count(); return(CONTINUE); }
+"default"		{ fprintf(output," shift default \n");  count(); return(DEFAULT); }
+"do"			{ fprintf(output," shift do \n");  count(); return(DO); }
+"double"		{ fprintf(output," shift double \n");  count(); return(DOUBLE); }
+"else"			{ fprintf(output," shift else \n");  count(); return(ELSE); }
+"enum"			{ fprintf(output," shift enum \n");  count(); return(ENUM); }
+"extern"		{ fprintf(output," shift extern \n");  count(); return(EXTERN); }
+"float"			{ fprintf(output," shift float \n");  count(); return(FLOAT); }
+"for"			{ fprintf(output," shift for \n");  count(); return(FOR); }
+"goto"			{ fprintf(output," shift goto \n");  count(); return(GOTO); }
+"if"			{ fprintf(output," shift if \n"); count(); return(IF); }
+"int"			{ fprintf(output," shift int \n"); count(); return(INT); }
 "long"			{ count(); return(LONG); }
 "register"		{ count(); return(REGISTER); }
 "return"		{ count(); return(RETURN); }
