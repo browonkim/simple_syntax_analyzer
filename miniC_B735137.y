@@ -22,21 +22,21 @@ FILE * output;
 %%
 
 primary_expression
-	: IDENTIFIER
-	| CONSTANT
-	| STRING_LITERAL
-	| '(' expression ')'
+	: IDENTIFIER {printf(output, "IDENTFIER");}
+	| CONSTANT {printf(output, "CONSTANT");}
+	| STRING_LITERAL {printf(output, "STRING_LITERAL");}
+	| '(' expression ')' {printf(output, "()");}
 	;
 
 postfix_expression
-	: primary_expression
-	| postfix_expression '[' expression ']'
-	| postfix_expression '(' ')'
-	| postfix_expression '(' argument_expression_list ')'
-	| postfix_expression '.' IDENTIFIER
-	| postfix_expression PTR_OP IDENTIFIER
-	| postfix_expression INC_OP
-	| postfix_expression DEC_OP
+	: primary_expression 
+	| postfix_expression '[' expression ']' 
+	| postfix_expression '(' ')' {printf()}
+	| postfix_expression '(' argument_expression_list ')' 
+	| postfix_expression '.' IDENTIFIER 
+	| postfix_expression PTR_OP IDENTIFIER 
+	| postfix_expression INC_OP 
+	| postfix_expression DEC_OP 
 	;
 
 argument_expression_list
