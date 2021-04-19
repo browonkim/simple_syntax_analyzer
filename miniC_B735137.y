@@ -22,7 +22,7 @@ FILE * output;
 %%
 
 primary_expression
-	: IDENTIFIER {fprintf(output, " IDENTFIER \n");}
+	: IDENTIFIER {fprintf(output, "\t reduce IDENTFIER -> %s \n", $1);}
 	| CONSTANT {fprintf(output, " CONSTANT \n");}
 	| STRING_LITERAL {fprintf(output, " STRING_LITERAL \n");}
 	| '(' expression ')' {fprintf(output, " () \n");}
@@ -309,7 +309,7 @@ parameter_declaration
 	;
 
 identifier_list
-	: IDENTIFIER
+	: IDENTIFIER 
 	| identifier_list ',' IDENTIFIER
 	;
 

@@ -16,23 +16,23 @@ void count();
 %%
 "/*"			{ comment(); }
 
-"auto"			{ count(); return(AUTO); }
-"break"			{ count(); return(BREAK); }
-"case"			{ count(); return(CASE); }
-"char"			{ count(); return(CHAR); }
-"const"			{ count(); return(CONST); }
-"continue"		{ count(); return(CONTINUE); }
-"default"		{ count(); return(DEFAULT); }
-"do"			{ count(); return(DO); }
-"double"		{ count(); return(DOUBLE); }
-"else"			{ count(); return(ELSE); }
-"enum"			{ count(); return(ENUM); }
-"extern"		{ count(); return(EXTERN); }
-"float"			{ count(); return(FLOAT); }
-"for"			{ count(); return(FOR); }
-"goto"			{ count(); return(GOTO); }
-"if"			{ count(); return(IF); }
-"int"			{ fprintf(output," INT "); count(); return(INT); }
+"auto"			{ fprintf(output," auto ");  count(); return(AUTO); }
+"break"			{ fprintf(output," break ");  count(); return(BREAK); }
+"case"			{ fprintf(output," case ");  count(); return(CASE); }
+"char"			{ fprintf(output," char ");  count(); return(CHAR); }
+"const"			{ fprintf(output," const ");  count(); return(CONST); }
+"continue"		{ fprintf(output," continue ");  count(); return(CONTINUE); }
+"default"		{ fprintf(output," default");  count(); return(DEFAULT); }
+"do"			{ fprintf(output," do ");  count(); return(DO); }
+"double"		{ fprintf(output," double ");  count(); return(DOUBLE); }
+"else"			{ fprintf(output," else ");  count(); return(ELSE); }
+"enum"			{ fprintf(output," enum ");  count(); return(ENUM); }
+"extern"		{ fprintf(output," extern ");  count(); return(EXTERN); }
+"float"			{ fprintf(output," float ");  count(); return(FLOAT); }
+"for"			{ fprintf(output," for ");  count(); return(FOR); }
+"goto"			{ fprintf(output," goto ");  count(); return(GOTO); }
+"if"			{ fprintf(output," if "); count(); return(IF); }
+"int"			{ fprintf(output," int "); count(); return(INT); }
 "long"			{ count(); return(LONG); }
 "register"		{ count(); return(REGISTER); }
 "return"		{ count(); return(RETURN); }
