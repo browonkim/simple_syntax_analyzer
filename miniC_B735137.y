@@ -31,7 +31,7 @@ primary_expression
 postfix_expression
 	: primary_expression 
 	| postfix_expression '[' expression ']' 
-	| postfix_expression '(' ')' {printf()}
+	| postfix_expression '(' ')' 
 	| postfix_expression '(' argument_expression_list ')' 
 	| postfix_expression '.' IDENTIFIER 
 	| postfix_expression PTR_OP IDENTIFIER 
