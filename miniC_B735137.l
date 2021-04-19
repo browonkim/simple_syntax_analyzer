@@ -52,7 +52,7 @@ void count();
 "volatile"		{ count(); return(VOLATILE); }
 "while"			{ count(); return(WHILE); }
 
-{L}({L}|{D})*		{strcpy(mystr, yytext); count(); return(IDENTIFIER); }
+{L}({L}|{D})*		{strcpy(mystr, yytext); fprintf(output," shift %s \n", mystr); count(); return(IDENTIFIER); }
 
 0[xX]{H}+{IS}?		{ count(); return(CONSTANT); }
 0{D}+{IS}?		{ count(); return(CONSTANT); }
