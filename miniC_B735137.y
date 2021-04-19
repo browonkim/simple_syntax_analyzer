@@ -22,7 +22,7 @@ FILE * output;
 %%
 
 primary_expression
-	: IDENTIFIER {fprintf(output, "\t reduce IDENTFIER -> %s \n", $1);}
+	: IDENTIFIER {fprintf(output, "\t reduce IDENTFIER -> %s \n", yytext);}
 	| CONSTANT {fprintf(output, " CONSTANT \n");}
 	| STRING_LITERAL {fprintf(output, " STRING_LITERAL \n");}
 	| '(' expression ')' {fprintf(output, " () \n");}
