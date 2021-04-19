@@ -49,7 +49,7 @@ void count();
 "volatile"		{ count(); return(VOLATILE); }
 "while"			{ count(); return(WHILE); }
 
-{L}({L}|{D})*		{ count(); return(check_type()); }
+{L}({L}|{D})*		{ count(); return(*yytext); }
 
 0[xX]{H}+{IS}?		{ count(); return(CONSTANT); }
 0{D}+{IS}?		{ count(); return(CONSTANT); }
@@ -156,21 +156,3 @@ void count()
 	ECHO;
 }
 
-
-int check_type()
-{
-/*
-* pseudo code --- this is what it should check
-*
-*	if (yytext == type_name)
-*		return(TYPE_NAME);
-*
-*	return(IDENTIFIER);
-*/
-
-/*
-*	it actually will only return IDENTIFIER
-*/
-
-	return(IDENTIFIER);
-}
