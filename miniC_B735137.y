@@ -24,14 +24,14 @@ char totalstr[200];
 %%
 
 primary_expression
-	: IDENTIFIER {fprintf(output, "\t reduce IDENTFIER -> %s \n", mystr);}
-	| CONSTANT {fprintf(output, " CONSTANT \n");}
-	| STRING_LITERAL {fprintf(output, " STRING_LITERAL \n");}
-	| '(' expression ')' {fprintf(output, " () \n");}
+	: IDENTIFIER {fprintf(output, "\t reduce primary_expression -> IDENTIFIER \n");}
+	| CONSTANT {fprintf(output, "\t reduce primary_expression -> CONSTANT \n");}
+	| STRING_LITERAL {fprintf(output, "\t reduce primary_expression -> STRING_LITERAL \n");}
+	| '(' expression ')' {fprintf(output, "\t reduce primary_expression -> ( expression ) -> \n");}
 	;
 
 postfix_expression
-	: primary_expression 
+	: primary_expression {fprintf(output, " CONSTANT \n");}
 	| postfix_expression '[' expression ']' 
 	| postfix_expression '(' ')' 
 	| postfix_expression '(' argument_expression_list ')' 

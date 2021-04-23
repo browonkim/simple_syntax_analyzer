@@ -36,57 +36,57 @@ void count();
 "goto"			{ fprintf(output," shift goto \n");  count(); return(GOTO); }
 "if"			{ fprintf(output," shift if \n"); count(); return(IF); }
 "int"			{ fprintf(output," shift int \n"); count(); return(INT); }
-"long"			{ count(); return(LONG); }
-"register"		{ count(); return(REGISTER); }
-"return"		{ count(); return(RETURN); }
-"short"			{ count(); return(SHORT); }
-"signed"		{ count(); return(SIGNED); }
-"sizeof"		{ count(); return(SIZEOF); }
-"static"		{ count(); return(STATIC); }
-"struct"		{ count(); return(STRUCT); }
-"switch"		{ count(); return(SWITCH); }
-"typedef"		{ count(); return(TYPEDEF); }
-"union"			{ count(); return(UNION); }
-"unsigned"		{ count(); return(UNSIGNED); }
-"void"			{ count(); return(VOID); }
-"volatile"		{ count(); return(VOLATILE); }
-"while"			{ count(); return(WHILE); }
+"long"			{ fprintf(output," shift long \n"); count(); return(LONG); }
+"register"		{ fprintf(output," shift register \n");count(); return(REGISTER); }
+"return"		{ fprintf(output," shift return \n"); count(); return(RETURN); }
+"short"			{ fprintf(output," shift short \n"); count(); return(SHORT); }
+"signed"		{ fprintf(output," shift signed \n"); count(); return(SIGNED); }
+"sizeof"		{ fprintf(output," shift sizeof \n"); count(); return(SIZEOF); }
+"static"		{ fprintf(output," shift static \n"); count(); return(STATIC); }
+"struct"		{ fprintf(output," shift struct \n"); count(); return(STRUCT); }
+"switch"		{ fprintf(output," shift switch \n"); count(); return(SWITCH); }
+"typedef"		{ fprintf(output," shift typedef \n"); count(); return(TYPEDEF); }
+"union"			{ fprintf(output," shift union \n"); count(); return(UNION); }
+"unsigned"		{ fprintf(output," shift unsigned \n"); count(); return(UNSIGNED); }
+"void"			{ fprintf(output," shift void \n"); count(); return(VOID); }
+"volatile"		{ fprintf(output," shift volatile \n"); count(); return(VOLATILE); }
+"while"			{ fprintf(output," shift while \n"); count(); return(WHILE); }
 
-{L}({L}|{D})*		{strcpy(mystr, yytext); fprintf(output," shift %s \n", mystr); count(); return(IDENTIFIER); }
+{L}({L}|{D})*		{strcpy(mystr, yytext); fprintf(output," shift %s // %s is IDENTIFIER \n", mystr, mystr); count(); return(IDENTIFIER); }
 
-0[xX]{H}+{IS}?		{ count(); return(CONSTANT); }
-0{D}+{IS}?		{ count(); return(CONSTANT); }
-{D}+{IS}?		{ count(); return(CONSTANT); }
-L?'(\\.|[^\\'])+'	{ count(); return(CONSTANT); }
+0[xX]{H}+{IS}?		{strcpy(mystr, yytext); fprintf(output," shift %s // %s is CONSTANT \n", mystr, mystr); count(); return(CONSTANT); }
+0{D}+{IS}?		{strcpy(mystr, yytext); fprintf(output," shift %s // %s is CONSTANT \n", mystr, mystr); count(); return(CONSTANT); }
+{D}+{IS}?		{strcpy(mystr, yytext); fprintf(output," shift %s // %s is CONSTANT \n", mystr, mystr); count();  return(CONSTANT); }
+L?'(\\.|[^\\'])+'	{strcpy(mystr, yytext); fprintf(output," shift %s // %s is CONSTANT \n", mystr, mystr); count(); return(CONSTANT); }
 
-{D}+{E}{FS}?		{ count(); return(CONSTANT); }
-{D}*"."{D}+({E})?{FS}?	{ count(); return(CONSTANT); }
-{D}+"."{D}*({E})?{FS}?	{ count(); return(CONSTANT); }
+{D}+{E}{FS}?		{strcpy(mystr, yytext); fprintf(output," shift %s // %s is CONSTANT \n", mystr, mystr); count(); return(CONSTANT); }
+{D}*"."{D}+({E})?{FS}?	{strcpy(mystr, yytext); fprintf(output," shift %s // %s is CONSTANT \n", mystr, mystr); count(); return(CONSTANT); }
+{D}+"."{D}*({E})?{FS}?	{strcpy(mystr, yytext); fprintf(output," shift %s // %s is CONSTANT \n", mystr, mystr); count(); return(CONSTANT); }
 
-L?\"(\\.|[^\\"])*\"	{ count(); return(STRING_LITERAL); }
+L?\"(\\.|[^\\"])*\"	{ strcpy(mystr, yytext); fprintf(output," shift %s // %s is STRING_LITERAL \n", mystr, mystr); count(); return(STRING_LITERAL); }
 
-"..."			{ count(); return(ELLIPSIS); }
-">>="			{ count(); return(RIGHT_ASSIGN); }
-"<<="			{ count(); return(LEFT_ASSIGN); }
-"+="			{ count(); return(ADD_ASSIGN); }
-"-="			{ count(); return(SUB_ASSIGN); }
-"*="			{ count(); return(MUL_ASSIGN); }
-"/="			{ count(); return(DIV_ASSIGN); }
-"%="			{ count(); return(MOD_ASSIGN); }
-"&="			{ count(); return(AND_ASSIGN); }
-"^="			{ count(); return(XOR_ASSIGN); }
-"|="			{ count(); return(OR_ASSIGN); }
-">>"			{ count(); return(RIGHT_OP); }
-"<<"			{ count(); return(LEFT_OP); }
-"++"			{ count(); return(INC_OP); }
-"--"			{ count(); return(DEC_OP); }
-"->"			{ count(); return(PTR_OP); }
-"&&"			{ count(); return(AND_OP); }
-"||"			{ count(); return(OR_OP); }
-"<="			{ count(); return(LE_OP); }
-">="			{ count(); return(GE_OP); }
-"=="			{ count(); return(EQ_OP); }
-"!="			{ count(); return(NE_OP); }
+"..."			{fprintf(output," shift ... \n"); count(); return(ELLIPSIS); }
+">>="			{fprintf(output," shift >>= \n"); count(); return(RIGHT_ASSIGN); }
+"<<="			{fprintf(output," shift <<= \n"); count(); return(LEFT_ASSIGN); }
+"+="			{fprintf(output," shift += \n"); count(); return(ADD_ASSIGN); }
+"-="			{fprintf(output," shift -= \n"); count(); return(SUB_ASSIGN); }
+"*="			{fprintf(output," shift *= \n"); count(); return(MUL_ASSIGN); }
+"/="			{fprintf(output," shift /= \n"); count(); return(DIV_ASSIGN); }
+"%="			{fprintf(output," shift %= \n"); count(); return(MOD_ASSIGN); }
+"&="			{fprintf(output," shift &= \n"); count(); return(AND_ASSIGN); }
+"^="			{fprintf(output," shift ^= \n"); count(); return(XOR_ASSIGN); }
+"|="			{fprintf(output," shift |= \n"); count(); return(OR_ASSIGN); }
+">>"			{fprintf(output," shift >> \n"); count(); return(RIGHT_OP); }
+"<<"			{fprintf(output," shift << \n"); count(); return(LEFT_OP); }
+"++"			{fprintf(output," shift ++ \n"); count(); return(INC_OP); }
+"--"			{fprintf(output," shift -- \n"); count(); return(DEC_OP); }
+"->"			{fprintf(output," shift -> \n"); count(); return(PTR_OP); }
+"&&"			{fprintf(output," shift && \n"); count(); return(AND_OP); }
+"||"			{fprintf(output," shift || \n"); count(); return(OR_OP); }
+"<="			{fprintf(output," shift <= \n"); count(); return(LE_OP); }
+">="			{fprintf(output," shift >= \n"); count(); return(GE_OP); }
+"=="			{fprintf(output," shift == \n"); count(); return(EQ_OP); }
+"!="			{fprintf(output," shift != \n"); count(); return(NE_OP); }
 ";"			{ count(); return(';'); }
 ("{"|"<%")		{ count(); return('{'); }
 ("}"|"%>")		{ count(); return('}'); }
