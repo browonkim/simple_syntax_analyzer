@@ -33,164 +33,164 @@ primary_expression
 
 postfix_expression
 	: primary_expression {fprintf(output, "reduce postfix_expression -> primary_expression \n");}
-	| postfix_expression '[' expression ']' {fprintf(output, "\n")}
-	| postfix_expression '(' ')' {fprintf(output, "\n")}
-	| postfix_expression '(' argument_expression_list ')' {fprintf(output, "\n")}
-	| postfix_expression '.' IDENTIFIER {fprintf(output, "\n")}
-	| postfix_expression PTR_OP IDENTIFIER {fprintf(output, "\n")}
-	| postfix_expression INC_OP {fprintf(output, "\n")}
-	| postfix_expression DEC_OP {fprintf(output, "\n")}
+	| postfix_expression '[' expression ']' {fprintf(output, "\n");}
+	| postfix_expression '(' ')' {fprintf(output, "\n");}
+	| postfix_expression '(' argument_expression_list ')' {fprintf(output, "\n");}
+	| postfix_expression '.' IDENTIFIER {fprintf(output, "\n");}
+	| postfix_expression PTR_OP IDENTIFIER {fprintf(output, "\n");}
+	| postfix_expression INC_OP {fprintf(output, "\n");}
+	| postfix_expression DEC_OP {fprintf(output, "\n");}
 	;
 
 argument_expression_list
-	: assignment_expression {fprintf(output, "\n")}
-	| argument_expression_list ',' assignment_expression {fprintf(output, "\n")}
+	: assignment_expression {fprintf(output, "\n");}
+	| argument_expression_list ',' assignment_expression {fprintf(output, "\n");}
 	;
 
 unary_expression
-	: postfix_expression {fprintf(output, "\n")}
-	| INC_OP unary_expression {fprintf(output, "\n")}
-	| DEC_OP unary_expression {fprintf(output, "\n")}
-	| unary_operator cast_expression {fprintf(output, "\n")}
-	| SIZEOF unary_expression {fprintf(output, "\n")}
-	| SIZEOF '(' type_name ')' {fprintf(output, "\n")}
+	: postfix_expression {fprintf(output, "\n");}
+	| INC_OP unary_expression {fprintf(output, "\n");}
+	| DEC_OP unary_expression {fprintf(output, "\n");}
+	| unary_operator cast_expression {fprintf(output, "\n");}
+	| SIZEOF unary_expression {fprintf(output, "\n");}
+	| SIZEOF '(' type_name ')' {fprintf(output, "\n");}
 	;
 
 unary_operator
-	: '&' {fprintf(output, "\n")}
-	| '*' {fprintf(output, "\n")}
-	| '+' {fprintf(output, "\n")}
-	| '-' {fprintf(output, "\n")}
-	| '~' {fprintf(output, "\n")}
-	| '!' {fprintf(output, "\n")}
+	: '&' {fprintf(output, "\n");}
+	| '*' {fprintf(output, "\n");}
+	| '+' {fprintf(output, "\n");}
+	| '-' {fprintf(output, "\n");}
+	| '~' {fprintf(output, "\n");}
+	| '!' {fprintf(output, "\n");}
 	;
 
 cast_expression
-	: unary_expression {fprintf(output, "\n")}
-	| '(' type_name ')' cast_expression {fprintf(output, "\n")}
+	: unary_expression {fprintf(output, "\n");}
+	| '(' type_name ')' cast_expression {fprintf(output, "\n");}
 	;
 
 multiplicative_expression
-	: cast_expression {fprintf(output, "\n")}
-	| multiplicative_expression '*' cast_expression {fprintf(output, "\n")}
-	| multiplicative_expression '/' cast_expression {fprintf(output, "\n")}
-	| multiplicative_expression '%' cast_expression {fprintf(output, "\n")}
+	: cast_expression {fprintf(output, "\n");}
+	| multiplicative_expression '*' cast_expression {fprintf(output, "\n");}
+	| multiplicative_expression '/' cast_expression {fprintf(output, "\n");}
+	| multiplicative_expression '%' cast_expression {fprintf(output, "\n");}
 	;
 
 additive_expression
-	: multiplicative_expression {fprintf(output, "\n")}
-	| additive_expression '+' multiplicative_expression {fprintf(output, "\n")}
-	| additive_expression '-' multiplicative_expression {fprintf(output, "\n")}
+	: multiplicative_expression {fprintf(output, "\n");}
+	| additive_expression '+' multiplicative_expression {fprintf(output, "\n");}
+	| additive_expression '-' multiplicative_expression {fprintf(output, "\n");}
 	;
 
 shift_expression
-	: additive_expression {fprintf(output, "\n")}
-	| shift_expression LEFT_OP additive_expression {fprintf(output, "\n")}
-	| shift_expression RIGHT_OP additive_expression {fprintf(output, "\n")}
+	: additive_expression {fprintf(output, "\n");}
+	| shift_expression LEFT_OP additive_expression {fprintf(output, "\n");}
+	| shift_expression RIGHT_OP additive_expression {fprintf(output, "\n");}
 	;
 
 relational_expression
-	: shift_expression {fprintf(output, "\n")}
-	| relational_expression '<' shift_expression {fprintf(output, "\n")}
-	| relational_expression '>' shift_expression {fprintf(output, "\n")}
-	| relational_expression LE_OP shift_expression {fprintf(output, "\n")}
-	| relational_expression GE_OP shift_expression {fprintf(output, "\n")}
+	: shift_expression {fprintf(output, "\n");}
+	| relational_expression '<' shift_expression {fprintf(output, "\n");}
+	| relational_expression '>' shift_expression {fprintf(output, "\n");}
+	| relational_expression LE_OP shift_expression {fprintf(output, "\n");}
+	| relational_expression GE_OP shift_expression {fprintf(output, "\n");}
 	;
 
 equality_expression
-	: relational_expression {fprintf(output, "\n")}
-	| equality_expression EQ_OP relational_expression {fprintf(output, "\n")}
-	| equality_expression NE_OP relational_expression {fprintf(output, "\n")}
+	: relational_expression {fprintf(output, "\n");}
+	| equality_expression EQ_OP relational_expression {fprintf(output, "\n");}
+	| equality_expression NE_OP relational_expression {fprintf(output, "\n");}
 	;
 
 and_expression
-	: equality_expression {fprintf(output, "\n")}
-	| and_expression '&' equality_expression {fprintf(output, "\n")}
+	: equality_expression {fprintf(output, "\n");}
+	| and_expression '&' equality_expression {fprintf(output, "\n");}
 	;
 
 exclusive_or_expression
-	: and_expression {fprintf(output, "\n")}
-	| exclusive_or_expression '^' and_expression {fprintf(output, "\n")}
+	: and_expression {fprintf(output, "\n");}
+	| exclusive_or_expression '^' and_expression {fprintf(output, "\n");}
 	;
 
 inclusive_or_expression
-	: exclusive_or_expression {fprintf(output, "\n")}
-	| inclusive_or_expression '|' exclusive_or_expression {fprintf(output, "\n")}
+	: exclusive_or_expression {fprintf(output, "\n");}
+	| inclusive_or_expression '|' exclusive_or_expression {fprintf(output, "\n");}
 	;
 
 logical_and_expression
-	: inclusive_or_expression {fprintf(output, "\n")}
-	| logical_and_expression AND_OP inclusive_or_expression {fprintf(output, "\n")}
+	: inclusive_or_expression {fprintf(output, "\n");}
+	| logical_and_expression AND_OP inclusive_or_expression {fprintf(output, "\n");}
 	;
 
 logical_or_expression
-	: logical_and_expression {fprintf(output, "\n")}
-	| logical_or_expression OR_OP logical_and_expression {fprintf(output, "\n")}
+	: logical_and_expression {fprintf(output, "\n");}
+	| logical_or_expression OR_OP logical_and_expression {fprintf(output, "\n");}
 	;
 
 conditional_expression
-	: logical_or_expression {fprintf(output, "\n")}
-	| logical_or_expression '?' expression ':' conditional_expression {fprintf(output, "\n")}
+	: logical_or_expression {fprintf(output, "\n");}
+	| logical_or_expression '?' expression ':' conditional_expression {fprintf(output, "\n");}
 	;
 
 assignment_expression
-	: conditional_expression {fprintf(output, "\n")}
-	| unary_expression assignment_operator assignment_expression {fprintf(output, "\n")}
+	: conditional_expression {fprintf(output, "\n");}
+	| unary_expression assignment_operator assignment_expression {fprintf(output, "\n");}
 	;
 
 assignment_operator
-	: '=' {fprintf(output, "\n")}
-	| MUL_ASSIGN {fprintf(output, "\n")}
-	| DIV_ASSIGN {fprintf(output, "\n")}
-	| MOD_ASSIGN {fprintf(output, "\n")}
-	| ADD_ASSIGN {fprintf(output, "\n")}
-	| SUB_ASSIGN {fprintf(output, "\n")}
-	| LEFT_ASSIGN {fprintf(output, "\n")}
-	| RIGHT_ASSIGN {fprintf(output, "\n")}
-	| AND_ASSIGN {fprintf(output, "\n")}
-	| XOR_ASSIGN {fprintf(output, "\n")}
-	| OR_ASSIGN {fprintf(output, "\n")}
+	: '=' {fprintf(output, "\n");}
+	| MUL_ASSIGN {fprintf(output, "\n");}
+	| DIV_ASSIGN {fprintf(output, "\n");}
+	| MOD_ASSIGN {fprintf(output, "\n");}
+	| ADD_ASSIGN {fprintf(output, "\n");}
+	| SUB_ASSIGN {fprintf(output, "\n");}
+	| LEFT_ASSIGN {fprintf(output, "\n");}
+	| RIGHT_ASSIGN {fprintf(output, "\n");}
+	| AND_ASSIGN {fprintf(output, "\n");}
+	| XOR_ASSIGN {fprintf(output, "\n");}
+	| OR_ASSIGN {fprintf(output, "\n");}
 	;
 
 expression
-	: assignment_expression {fprintf(output, "\n")}
-	| expression ',' assignment_expression {fprintf(output, "\n")}
+	: assignment_expression {fprintf(output, "\n");}
+	| expression ',' assignment_expression {fprintf(output, "\n");}
 	;
 
 constant_expression
-	: conditional_expression {fprintf(output, "\n")}
+	: conditional_expression {fprintf(output, "\n");}
 	;
 
 declaration
-	: declaration_specifiers ';' {fprintf(output, "\n")}
-	| declaration_specifiers init_declarator_list ';' {fprintf(output, "\n")}
+	: declaration_specifiers ';' {fprintf(output, "\n");}
+	| declaration_specifiers init_declarator_list ';' {fprintf(output, "\n");}
 	;
 
 declaration_specifiers
-	: storage_class_specifier {fprintf(output, "\n")}
-	| storage_class_specifier declaration_specifiers {fprintf(output, "\n")}
-	| type_specifier {fprintf(output, "\n")}
-	| type_specifier declaration_specifiers {fprintf(output, "\n")}
-	| type_qualifier {fprintf(output, "\n")}
-	| type_qualifier declaration_specifiers {fprintf(output, "\n")}
+	: storage_class_specifier {fprintf(output, "\n");}
+	| storage_class_specifier declaration_specifiers {fprintf(output, "\n");}
+	| type_specifier {fprintf(output, "\n");}
+	| type_specifier declaration_specifiers {fprintf(output, "\n");}
+	| type_qualifier {fprintf(output, "\n");}
+	| type_qualifier declaration_specifiers {fprintf(output, "\n");}
 	;
 
 init_declarator_list
-	: init_declarator {fprintf(output, "\n")}
-	| init_declarator_list ',' init_declarator {fprintf(output, "\n")}
+	: init_declarator {fprintf(output, "\n");}
+	| init_declarator_list ',' init_declarator {fprintf(output, "\n");}
 	;
 
 init_declarator
-	: declarator {fprintf(output, "\n")}
-	| declarator '=' initializer {fprintf(output, "\n")}
+	: declarator {fprintf(output, "\n");}
+	| declarator '=' initializer {fprintf(output, "\n");}
 	;
 
 storage_class_specifier
-	: TYPEDEF {fprintf(output, "\n")}
-	| EXTERN {fprintf(output, "\n")}
-	| STATIC {fprintf(output, "\n")}
-	| AUTO {fprintf(output, "\n")}
-	| REGISTER {fprintf(output, "\n")}
+	: TYPEDEF {fprintf(output, "\n");}
+	| EXTERN {fprintf(output, "\n");}
+	| STATIC {fprintf(output, "\n");}
+	| AUTO {fprintf(output, "\n");}
+	| REGISTER {fprintf(output, "\n");}
 	;
 
 type_specifier
