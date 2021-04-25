@@ -507,4 +507,8 @@
  return 0 ;		reduce 
 		reduce statement -> jump_statement 
 		reduce 
- int		shift int
+ }		shift } <line terminate> 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
