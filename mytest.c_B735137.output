@@ -1,35 +1,41 @@
  int		shift int
-
+ int		reduce 
  int a		shift a <identifier> 
-
-
+ int a		reduce 
+ int a		reduce 
  int a ;		shift ; <line terminate> 
-
-
-
+		reduce 
+		reduce 
+		reduce 
 
  char		shift char
-
+ char		reduce 
  char *		shift * 
-
+ char *		reduce 
  char * str		shift str <identifier> 
-
-
+ char * str		reduce 
+ char * str		reduce 
  char * str ;		shift ; <line terminate> 
-
-
-
+		reduce 
+		reduce 
+		reduce 
 
  float		shift float
-
+ float		reduce 
  float f		shift f <identifier> 
-
-
+ float f		reduce 
+ float f		reduce 
  float f [		shift [ 
  float f [ 10		shift 10 <constant> 
-reduce primary_expression -> CONSTANT 
-reduce postfix_expression -> primary_expression 
+ float f [ 10		reduce primary_expression -> constant 
+ float f [ 10		reduce postfix_expression -> primary_expression 
  float f [ 10 ]		shift ] 
+ float f [ 10 ]		reduce 
+ float f [ 10 ]		reduce 
+ float f [ 10 ]		reduce 
+ float f [ 10 ]		reduce 
+ float f [ 10 ]		reduce 
+ float f [ 10 ]		reduce 
 
 
 
@@ -38,79 +44,79 @@ reduce postfix_expression -> primary_expression
 
 
 
-
-
-
-
-
-
-
+ float f [ 10 ]		reduce 
  float f [ 10 ] ;		shift ; <line terminate> 
-
-
-
+		reduce 
+		reduce 
+		reduce 
 
  void		shift void
-
+ void		reduce 
  void main		shift main <identifier> 
-
-
+ void main		reduce 
+ void main		reduce 
  void main (		shift ( 
  void main ( int		shift int
-
+ void main ( int		reduce 
  void main ( int argc		shift argc <identifier> 
-
-
+ void main ( int argc		reduce 
+ void main ( int argc		reduce 
  void main ( int argc ,		shift , 
-
-
-
+ void main ( int argc ,		reduce 
+ void main ( int argc ,		reduce 
+ void main ( int argc ,		reduce 
  void main ( int argc , char		shift char
-
+ void main ( int argc , char		reduce 
  void main ( int argc , char *		shift * 
-
+ void main ( int argc , char *		reduce 
  void main ( int argc , char * argv		shift argv <identifier> 
-
-
+ void main ( int argc , char * argv		reduce 
+ void main ( int argc , char * argv		reduce 
  void main ( int argc , char * argv )		shift ) 
-
-
-
-
-
+ void main ( int argc , char * argv )		reduce 
+ void main ( int argc , char * argv )		reduce 
+ void main ( int argc , char * argv )		reduce 
+ void main ( int argc , char * argv )		reduce 
+ void main ( int argc , char * argv )		reduce 
  void main ( int argc , char * argv ) {		shift { <line terminate> 
-
+		reduce 
  char		shift char
-
+ char		reduce 
  char c		shift c <identifier> 
-
-
+ char c		reduce 
+ char c		reduce 
  char c ;		shift ; <line terminate> 
-
-
-
+		reduce 
+		reduce 
+		reduce 
 
  int		shift int
-
+ int		reduce 
  int d		shift d <identifier> 
-
-
+ int d		reduce 
+ int d		reduce 
  int d ;		shift ; <line terminate> 
-
-
-
+		reduce 
+		reduce 
+		reduce 
 
  int		shift int
-
+ int		reduce 
  int i		shift i <identifier> 
-
-
+ int i		reduce 
+ int i		reduce 
  int i =		shift = 
-
+ int i =		reduce 
  int i = 0		shift 0 <constant> 
-reduce primary_expression -> CONSTANT 
-reduce postfix_expression -> primary_expression 
+ int i = 0		reduce primary_expression -> constant 
+ int i = 0		reduce postfix_expression -> primary_expression 
  int i = 0 ;		shift ; <line terminate> 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
 
 
 
@@ -119,37 +125,31 @@ reduce postfix_expression -> primary_expression
 
 
 
-
-
-
-
-
-
-
-
+		reduce 
+		reduce 
 
  while		shift while
  while (		shift ( 
  while ( i		shift i <identifier> 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
+ while ( i		reduce primary_expression -> identifier 
+ while ( i		reduce postfix_expression -> primary_expression 
  while ( i <		shift < 
-
-
-
-
-
-
+ while ( i <		reduce 
+ while ( i <		reduce 
+ while ( i <		reduce 
+ while ( i <		reduce 
+ while ( i <		reduce 
+ while ( i <		reduce 
  while ( i < 10		shift 10 <constant> 
-reduce primary_expression -> CONSTANT 
-reduce postfix_expression -> primary_expression 
+ while ( i < 10		reduce primary_expression -> constant 
+ while ( i < 10		reduce postfix_expression -> primary_expression 
  while ( i < 10 )		shift ) 
-
-
-
-
-
-
+ while ( i < 10 )		reduce 
+ while ( i < 10 )		reduce 
+ while ( i < 10 )		reduce 
+ while ( i < 10 )		reduce 
+ while ( i < 10 )		reduce 
+ while ( i < 10 )		reduce 
 
 
 
@@ -162,23 +162,29 @@ reduce postfix_expression -> primary_expression
  while ( i < 10 ) {		shift { <line terminate> 
  a		shift a <identifier> 
  a +=		shift += 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
-
+ a +=		reduce primary_expression -> identifier 
+ a +=		reduce postfix_expression -> primary_expression 
+ a +=		reduce 
 
  a += (		shift ( 
  a += ( d		shift d <identifier> 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
+ a += ( d		reduce primary_expression -> identifier 
+ a += ( d		reduce postfix_expression -> primary_expression 
  a += ( d +		shift + 
-
-
-
-
+ a += ( d +		reduce 
+ a += ( d +		reduce 
+ a += ( d +		reduce 
+ a += ( d +		reduce 
  a += ( d + 1		shift 1 <constant> 
-reduce primary_expression -> CONSTANT 
-reduce postfix_expression -> primary_expression 
+ a += ( d + 1		reduce primary_expression -> constant 
+ a += ( d + 1		reduce postfix_expression -> primary_expression 
  a += ( d + 1 )		shift ) 
+ a += ( d + 1 )		reduce 
+ a += ( d + 1 )		reduce 
+ a += ( d + 1 )		reduce 
+ a += ( d + 1 )		reduce 
+ a += ( d + 1 )		reduce 
+ a += ( d + 1 )		reduce 
 
 
 
@@ -188,21 +194,15 @@ reduce postfix_expression -> primary_expression
 
 
 
-
-
-
-
-
-
-reduce primary_expression -> ( expression ) -> 
-reduce postfix_expression -> primary_expression 
+ a += ( d + 1 )		reduce primary_expression -> (expression) 
+ a += ( d + 1 )		reduce postfix_expression -> primary_expression 
  a += ( d + 1 ) ;		shift ; <line terminate> 
-
-
-
-
-
-
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
 
 
 
@@ -215,14 +215,20 @@ reduce postfix_expression -> primary_expression
 
  f		shift f <identifier> 
  f [		shift [ 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
+ f [		reduce primary_expression -> identifier 
+ f [		reduce postfix_expression -> primary_expression 
  f [ i		shift i <identifier> 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
+ f [ i		reduce primary_expression -> identifier 
+ f [ i		reduce postfix_expression -> primary_expression 
  f [ i ++		shift ++ 
-
+ f [ i ++		reduce postfix_expression -> postfix_expression++
  f [ i ++ ]		shift ] 
+ f [ i ++ ]		reduce 
+ f [ i ++ ]		reduce 
+ f [ i ++ ]		reduce 
+ f [ i ++ ]		reduce 
+ f [ i ++ ]		reduce 
+ f [ i ++ ]		reduce 
 
 
 
@@ -232,26 +238,20 @@ reduce postfix_expression -> primary_expression
 
 
 
-
-
-
-
-
-
-
+ f [ i ++ ]		reduce postfix_expression -> postfix_expreesion [expression] 
  f [ i ++ ] =		shift = 
-
+ f [ i ++ ] =		reduce 
 
  f [ i ++ ] = 0		shift 0 <constant> 
-reduce primary_expression -> CONSTANT 
-reduce postfix_expression -> primary_expression 
+ f [ i ++ ] = 0		reduce primary_expression -> constant 
+ f [ i ++ ] = 0		reduce postfix_expression -> primary_expression 
  f [ i ++ ] = 0 ;		shift ; <line terminate> 
-
-
-
-
-
-
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
 
 
 
@@ -267,59 +267,59 @@ reduce postfix_expression -> primary_expression
  return ;		shift ; <line terminate> 
  }		shift } <line terminate> 
  int		shift int
-
+ int		reduce 
  int myFunction		shift myFunction <identifier> 
-
-
+ int myFunction		reduce 
+ int myFunction		reduce 
  int myFunction (		shift ( 
  int myFunction ( char		shift char
-
+ int myFunction ( char		reduce 
  int myFunction ( char *		shift * 
-
+ int myFunction ( char *		reduce 
  int myFunction ( char * str		shift str <identifier> 
-
-
+ int myFunction ( char * str		reduce 
+ int myFunction ( char * str		reduce 
  int myFunction ( char * str )		shift ) 
-
-
-
-
-
+ int myFunction ( char * str )		reduce 
+ int myFunction ( char * str )		reduce 
+ int myFunction ( char * str )		reduce 
+ int myFunction ( char * str )		reduce 
+ int myFunction ( char * str )		reduce 
  int myFunction ( char * str ) {		shift { <line terminate> 
-
+		reduce 
  char		shift char
-
+ char		reduce 
  char c		shift c <identifier> 
-
-
+ char c		reduce 
+ char c		reduce 
  char c ;		shift ; <line terminate> 
-
-
-
+		reduce 
+		reduce 
+		reduce 
 
  if		shift if
  if (		shift ( 
  if ( c		shift c <identifier> 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
+ if ( c		reduce primary_expression -> identifier 
+ if ( c		reduce postfix_expression -> primary_expression 
  if ( c !=		shift != 
-
-
-
-
-
-
+ if ( c !=		reduce 
+ if ( c !=		reduce 
+ if ( c !=		reduce 
+ if ( c !=		reduce 
+ if ( c !=		reduce 
+ if ( c !=		reduce 
 
  if ( c != 'c'		shift 'c' <constant> 
-reduce primary_expression -> CONSTANT 
-reduce postfix_expression -> primary_expression 
+ if ( c != 'c'		reduce primary_expression -> constant 
+ if ( c != 'c'		reduce postfix_expression -> primary_expression 
  if ( c != 'c' )		shift ) 
-
-
-
-
-
-
+ if ( c != 'c' )		reduce 
+ if ( c != 'c' )		reduce 
+ if ( c != 'c' )		reduce 
+ if ( c != 'c' )		reduce 
+ if ( c != 'c' )		reduce 
+ if ( c != 'c' )		reduce 
 
 
 
@@ -332,18 +332,24 @@ reduce postfix_expression -> primary_expression
  if ( c != 'c' ) {		shift { <line terminate> 
  str		shift str <identifier> 
  str =		shift = 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
-
+ str =		reduce primary_expression -> identifier 
+ str =		reduce postfix_expression -> primary_expression 
+ str =		reduce 
 
  str = strdup		shift strdup <identifier> 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
+ str = strdup		reduce primary_expression -> identifier 
+ str = strdup		reduce postfix_expression -> primary_expression 
  str = strdup (		shift ( 
  str = strdup ( "test"		shift "test" <string_literal> 
-reduce primary_expression -> STRING_LITERAL 
-reduce postfix_expression -> primary_expression 
+ str = strdup ( "test"		reduce primary_expression -> string literal 
+ str = strdup ( "test"		reduce postfix_expression -> primary_expression 
  str = strdup ( "test" )		shift ) 
+ str = strdup ( "test" )		reduce 
+ str = strdup ( "test" )		reduce 
+ str = strdup ( "test" )		reduce 
+ str = strdup ( "test" )		reduce 
+ str = strdup ( "test" )		reduce 
+ str = strdup ( "test" )		reduce 
 
 
 
@@ -352,21 +358,15 @@ reduce postfix_expression -> primary_expression
 
 
 
-
-
-
-
-
-
-
-
+ str = strdup ( "test" )		reduce argument_expression_list -> assignment_expression
+ str = strdup ( "test" )		reduce postfix_expression -> postfix_expression(argument_expression_list)
  str = strdup ( "test" ) ;		shift ; <line terminate> 
-
-
-
-
-
-
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
 
 
 
@@ -379,12 +379,18 @@ reduce postfix_expression -> primary_expression
 
  printf		shift printf <identifier> 
  printf (		shift ( 
-reduce primary_expression -> IDENTIFIER 
-reduce postfix_expression -> primary_expression 
+ printf (		reduce primary_expression -> identifier 
+ printf (		reduce postfix_expression -> primary_expression 
  printf ( "test"		shift "test" <string_literal> 
-reduce primary_expression -> STRING_LITERAL 
-reduce postfix_expression -> primary_expression 
+ printf ( "test"		reduce primary_expression -> string literal 
+ printf ( "test"		reduce postfix_expression -> primary_expression 
  printf ( "test" )		shift ) 
+ printf ( "test" )		reduce 
+ printf ( "test" )		reduce 
+ printf ( "test" )		reduce 
+ printf ( "test" )		reduce 
+ printf ( "test" )		reduce 
+ printf ( "test" )		reduce 
 
 
 
@@ -393,21 +399,15 @@ reduce postfix_expression -> primary_expression
 
 
 
-
-
-
-
-
-
-
-
+ printf ( "test" )		reduce argument_expression_list -> assignment_expression
+ printf ( "test" )		reduce postfix_expression -> postfix_expression(argument_expression_list)
  printf ( "test" ) ;		shift ; <line terminate> 
-
-
-
-
-
-
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
 
 
 
@@ -420,15 +420,15 @@ reduce postfix_expression -> primary_expression
  }		shift } <line terminate> 
  return		shift return
  return 0		shift 0 <constant> 
-reduce primary_expression -> CONSTANT 
-reduce postfix_expression -> primary_expression 
+ return 0		reduce primary_expression -> constant 
+ return 0		reduce postfix_expression -> primary_expression 
  return 0 ;		shift ; <line terminate> 
-
-
-
-
-
-
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
+		reduce 
 
 
 
