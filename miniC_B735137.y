@@ -194,149 +194,149 @@ storage_class_specifier
 	;
 
 type_specifier
-	: VOID
-	| CHAR
-	| SHORT
-	| INT
-	| LONG
-	| FLOAT
-	| DOUBLE
-	| SIGNED
-	| UNSIGNED
-	| struct_or_union_specifier
-	| enum_specifier
-	| TYPE_NAME
+	: VOID {fprintf(output, "\n");}
+	| CHAR {fprintf(output, "\n");}
+	| SHORT {fprintf(output, "\n");}
+	| INT {fprintf(output, "\n");}
+	| LONG {fprintf(output, "\n");}
+	| FLOAT {fprintf(output, "\n");}
+	| DOUBLE {fprintf(output, "\n");}
+	| SIGNED {fprintf(output, "\n");}
+	| UNSIGNED {fprintf(output, "\n");}
+	| struct_or_union_specifier {fprintf(output, "\n");}
+	| enum_specifier {fprintf(output, "\n");}
+	| TYPE_NAME {fprintf(output, "\n");}
 	;
 
 struct_or_union_specifier
-	: struct_or_union IDENTIFIER '{' struct_declaration_list '}'
-	| struct_or_union '{' struct_declaration_list '}'
-	| struct_or_union IDENTIFIER
+	: struct_or_union IDENTIFIER '{' struct_declaration_list '}' {fprintf(output, "\n");}
+	| struct_or_union '{' struct_declaration_list '}' {fprintf(output, "\n");}
+	| struct_or_union IDENTIFIER {fprintf(output, "\n");}
 	;
 
 struct_or_union
-	: STRUCT
-	| UNION
+	: STRUCT {fprintf(output, "\n");}
+	| UNION {fprintf(output, "\n");}
 	;
 
 struct_declaration_list
-	: struct_declaration
-	| struct_declaration_list struct_declaration
+	: struct_declaration {fprintf(output, "\n");}
+	| struct_declaration_list struct_declaration {fprintf(output, "\n");}
 	;
 
 struct_declaration
-	: specifier_qualifier_list struct_declarator_list ';'
+	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "\n");}
 	;
 
 specifier_qualifier_list
-	: type_specifier specifier_qualifier_list
-	| type_specifier
-	| type_qualifier specifier_qualifier_list
-	| type_qualifier
+	: type_specifier specifier_qualifier_list {fprintf(output, "\n");}
+	| type_specifier {fprintf(output, "\n");}
+	| type_qualifier specifier_qualifier_list {fprintf(output, "\n");}
+	| type_qualifier {fprintf(output, "\n");}
 	;
 
 struct_declarator_list
-	: struct_declarator
-	| struct_declarator_list ',' struct_declarator
+	: struct_declarator {fprintf(output, "\n");}
+	| struct_declarator_list ',' struct_declarator {fprintf(output, "\n");}
 	;
 
 struct_declarator
-	: declarator
-	| ':' constant_expression
-	| declarator ':' constant_expression
+	: declarator {fprintf(output, "\n");}
+	| ':' constant_expression {fprintf(output, "\n");}
+	| declarator ':' constant_expression {fprintf(output, "\n");}
 	;
 
 enum_specifier
-	: ENUM '{' enumerator_list '}'
-	| ENUM IDENTIFIER '{' enumerator_list '}'
-	| ENUM IDENTIFIER
+	: ENUM '{' enumerator_list '}' {fprintf(output, "\n");}
+	| ENUM IDENTIFIER '{' enumerator_list '}' {fprintf(output, "\n");}
+	| ENUM IDENTIFIER {fprintf(output, "\n");}
 	;
 
 enumerator_list
-	: enumerator
-	| enumerator_list ',' enumerator
+	: enumerator {fprintf(output, "\n");}
+	| enumerator_list ',' enumerator {fprintf(output, "\n");}
 	;
 
 enumerator
-	: IDENTIFIER
-	| IDENTIFIER '=' constant_expression
+	: IDENTIFIER {fprintf(output, "\n");}
+	| IDENTIFIER '=' constant_expression {fprintf(output, "\n");}
 	;
 
 type_qualifier
-	: CONST
-	| VOLATILE
+	: CONST {fprintf(output, "\n");}
+	| VOLATILE {fprintf(output, "\n");}
 	;
 
 declarator
-	: pointer direct_declarator
-	| direct_declarator
+	: pointer direct_declarator {fprintf(output, "\n");}
+	| direct_declarator {fprintf(output, "\n");}
 	;
 
 direct_declarator
-	: IDENTIFIER
-	| '(' declarator ')'
-	| direct_declarator '[' constant_expression ']'
-	| direct_declarator '[' ']'
-	| direct_declarator '(' parameter_type_list ')'
-	| direct_declarator '(' identifier_list ')'
-	| direct_declarator '(' ')'
+	: IDENTIFIER {fprintf(output, "\n");}
+	| '(' declarator ')' {fprintf(output, "\n");}
+	| direct_declarator '[' constant_expression ']' {fprintf(output, "\n");}
+	| direct_declarator '[' ']' {fprintf(output, "\n");}
+	| direct_declarator '(' parameter_type_list ')' {fprintf(output, "\n");}
+	| direct_declarator '(' identifier_list ')' {fprintf(output, "\n");}
+	| direct_declarator '(' ')' {fprintf(output, "\n");}
 	;
 
 pointer
-	: '*'
-	| '*' type_qualifier_list
-	| '*' pointer
-	| '*' type_qualifier_list pointer
+	: '*' {fprintf(output, "\n");}
+	| '*' type_qualifier_list {fprintf(output, "\n");}
+	| '*' pointer {fprintf(output, "\n");}
+	| '*' type_qualifier_list pointer {fprintf(output, "\n");}
 	;
 
 type_qualifier_list
-	: type_qualifier
-	| type_qualifier_list type_qualifier
+	: type_qualifier {fprintf(output, "\n");}
+	| type_qualifier_list type_qualifier {fprintf(output, "\n");}
 	;
 
 
 parameter_type_list
-	: parameter_list
-	| parameter_list ',' ELLIPSIS
+	: parameter_list {fprintf(output, "\n");}
+	| parameter_list ',' ELLIPSIS {fprintf(output, "\n");}
 	;
 
 parameter_list
-	: parameter_declaration
-	| parameter_list ',' parameter_declaration
+	: parameter_declaration {fprintf(output, "\n");}
+	| parameter_list ',' parameter_declaration {fprintf(output, "\n");}
 	;
 
 parameter_declaration
-	: declaration_specifiers declarator
-	| declaration_specifiers abstract_declarator
-	| declaration_specifiers
+	: declaration_specifiers declarator {fprintf(output, "\n");}
+	| declaration_specifiers abstract_declarator {fprintf(output, "\n");}
+	| declaration_specifiers {fprintf(output, "\n");}
 	;
 
 identifier_list
-	: IDENTIFIER 
-	| identifier_list ',' IDENTIFIER
+	: IDENTIFIER {fprintf(output, "\n");}
+	| identifier_list ',' IDENTIFIER {fprintf(output, "\n");}
 	;
 
-type_name
-	: specifier_qualifier_list
-	| specifier_qualifier_list abstract_declarator
+type_name 
+	: specifier_qualifier_list {fprintf(output, "\n");}
+	| specifier_qualifier_list abstract_declarator {fprintf(output, "\n");}
 	;
 
 abstract_declarator
-	: pointer
-	| direct_abstract_declarator
-	| pointer direct_abstract_declarator
+	: pointer {fprintf(output, "\n");}
+	| direct_abstract_declarator {fprintf(output, "\n");}
+	| pointer direct_abstract_declarator {fprintf(output, "\n");}
 	;
 
 direct_abstract_declarator
-	: '(' abstract_declarator ')'
-	| '[' ']'
-	| '[' constant_expression ']'
-	| direct_abstract_declarator '[' ']'
-	| direct_abstract_declarator '[' constant_expression ']'
-	| '(' ')'
-	| '(' parameter_type_list ')'
-	| direct_abstract_declarator '(' ')'
-	| direct_abstract_declarator '(' parameter_type_list ')'
+	: '(' abstract_declarator ')' {fprintf(output, "\n");}
+	| '[' ']' {fprintf(output, "\n");}
+	| '[' constant_expression ']' {fprintf(output, "\n");}
+	| direct_abstract_declarator '[' ']' {fprintf(output, "\n");}
+	| direct_abstract_declarator '[' constant_expression ']' {fprintf(output, "\n");}
+	| '(' ')' {fprintf(output, "\n");}
+	| '(' parameter_type_list ')' {fprintf(output, "\n");}
+	| direct_abstract_declarator '(' ')' {fprintf(output, "\n");}
+	| direct_abstract_declarator '(' parameter_type_list ')' {fprintf(output, "\n");}
 	;
 
 initializer
