@@ -66,18 +66,20 @@
  int myFunction ( char		reduce type_specifier -> char
  int myFunction ( char *		shift * 
  int myFunction ( char *		reduce declaration_specifiers -> type_specifier
- int myFunction ( char * )		shift ) 
- int myFunction ( char * )		reduce pointer -> *
- int myFunction ( char * )		reduce abstract_declarator -> pointer
- int myFunction ( char * )		reduce parameter_declaration -> declaration_specifiers abstract_declarator
- int myFunction ( char * )		reduce parameter_list -> parameter_declaration
- int myFunction ( char * )		reduce parameter_type_list -> parameter_list
- int myFunction ( char * )		reduce direct_declarator -> direct_declarator(parameter_type_list)
- int myFunction ( char * ) ;		shift ;
- int myFunction ( char * ) ;		reduce declarator -> direct_declarator
- int myFunction ( char * ) ;		reduce init_declarator -> declarator
- int myFunction ( char * ) ;		reduce init_declarator_list -> init_declarator
- int myFunction ( char * ) ;		reduce declaration -> declaration_specifiers init_declaratior_list;
+ int myFunction ( char * a		shift a
+ int myFunction ( char * a		reduce pointer -> *
+ int myFunction ( char * a		reduce direct_declarator -> identifier
+ int myFunction ( char * a )		shift ) 
+ int myFunction ( char * a )		reduce declarator -> pointer direct_declarator
+ int myFunction ( char * a )		reduce parameter_declaration -> declaration_specifiers declarator
+ int myFunction ( char * a )		reduce parameter_list -> parameter_declaration
+ int myFunction ( char * a )		reduce parameter_type_list -> parameter_list
+ int myFunction ( char * a )		reduce direct_declarator -> direct_declarator(parameter_type_list)
+ int myFunction ( char * a ) ;		shift ;
+ int myFunction ( char * a ) ;		reduce declarator -> direct_declarator
+ int myFunction ( char * a ) ;		reduce init_declarator -> declarator
+ int myFunction ( char * a ) ;		reduce init_declarator_list -> init_declarator
+ int myFunction ( char * a ) ;		reduce declaration -> declaration_specifiers init_declaratior_list;
 		reduce 
 		reduce 
  void		shift void
