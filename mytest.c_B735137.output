@@ -2,9 +2,9 @@
  int		reduce type_specifier -> int
  int a		shift a
  int a		reduce declaration_specifiers -> type_specifier
- int a		reduce 
+ int a		reduce direct_declarator -> identifier
  int a ;		shift ;
- int a ;		reduce 
+ int a ;		reduce declarator -> direct_declarator
  int a ;		reduce init_declarator -> declarator
  int a ;		reduce init_declarator_list -> init_declarator
  int a ;		reduce declaration -> declaration_specifiers init_declaratior_list;
@@ -13,10 +13,10 @@
  char *		shift * 
  char *		reduce declaration_specifiers -> type_specifier
  char * str		shift str
- char * str		reduce 
- char * str		reduce 
+ char * str		reduce pointer -> *
+ char * str		reduce direct_declarator -> identifier
  char * str ;		shift ;
- char * str ;		reduce 
+ char * str ;		reduce declarator -> pointer direct_declarator
  char * str ;		reduce init_declarator -> declarator
  char * str ;		reduce init_declarator_list -> init_declarator
  char * str ;		reduce declaration -> declaration_specifiers init_declaratior_list;
@@ -24,7 +24,7 @@
  float		reduce type_specifier -> float
  float f		shift f
  float f		reduce declaration_specifiers -> type_specifier
- float f		reduce 
+ float f		reduce direct_declarator -> identifier
  float f [		shift [ 
  float f [ 10		shift 10
  float f [ 10		reduce primary_expression -> constant 
@@ -44,49 +44,71 @@
  float f [ 10 ]		reduce logical_or_expression -> logical_and_expression
  float f [ 10 ]		reduce conditional_expression -> logical_or_expression
  float f [ 10 ]		reduce constant_expression -> conditional_expression
- float f [ 10 ]		reduce 
+ float f [ 10 ]		reduce direct_declarator -> direct_declarator [constant_expression]
  float f [ 10 ] ;		shift ;
- float f [ 10 ] ;		reduce 
+ float f [ 10 ] ;		reduce declarator -> direct_declarator
  float f [ 10 ] ;		reduce init_declarator -> declarator
  float f [ 10 ] ;		reduce init_declarator_list -> init_declarator
  float f [ 10 ] ;		reduce declaration -> declaration_specifiers init_declaratior_list;
+ int		shift int
+ int		reduce type_specifier -> int
+ int myFunction		shift myFunction
+ int myFunction		reduce declaration_specifiers -> type_specifier
+ int myFunction		reduce direct_declarator -> identifier
+ int myFunction (		shift ( 
+ int myFunction ( char		shift char
+ int myFunction ( char		reduce type_specifier -> char
+ int myFunction ( char *		shift * 
+ int myFunction ( char *		reduce declaration_specifiers -> type_specifier
+ int myFunction ( char * )		shift ) 
+ int myFunction ( char * )		reduce pointer -> *
+ int myFunction ( char * )		reduce abstract_declarator -> pointer
+ int myFunction ( char * )		reduce parameter_declaration -> declaration_specifiers abstract_declarator
+ int myFunction ( char * )		reduce parameter_list -> parameter_declaration
+ int myFunction ( char * )		reduce parameter_type_list -> parameter_list
+ int myFunction ( char * )		reduce direct_declarator -> direct_declarator(parameter_type_list)
+ int myFunction ( char * ) ;		shift ;
+ int myFunction ( char * ) ;		reduce declarator -> direct_declarator
+ int myFunction ( char * ) ;		reduce init_declarator -> declarator
+ int myFunction ( char * ) ;		reduce init_declarator_list -> init_declarator
+ int myFunction ( char * ) ;		reduce declaration -> declaration_specifiers init_declaratior_list;
  void		shift void
  void		reduce type_specifier -> void
  void main		shift main
  void main		reduce declaration_specifiers -> type_specifier
- void main		reduce 
+ void main		reduce direct_declarator -> identifier
  void main (		shift ( 
  void main ( int		shift int
  void main ( int		reduce type_specifier -> int
  void main ( int argc		shift argc
  void main ( int argc		reduce declaration_specifiers -> type_specifier
- void main ( int argc		reduce 
+ void main ( int argc		reduce direct_declarator -> identifier
  void main ( int argc ,		shift , 
- void main ( int argc ,		reduce 
- void main ( int argc ,		reduce 
- void main ( int argc ,		reduce 
+ void main ( int argc ,		reduce declarator -> direct_declarator
+ void main ( int argc ,		reduce parameter_declaration -> declaration_specifiers declarator
+ void main ( int argc ,		reduce parameter_list -> parameter_declaration
  void main ( int argc , char		shift char
  void main ( int argc , char		reduce type_specifier -> char
  void main ( int argc , char *		shift * 
  void main ( int argc , char *		reduce declaration_specifiers -> type_specifier
  void main ( int argc , char * argv		shift argv
- void main ( int argc , char * argv		reduce 
- void main ( int argc , char * argv		reduce 
+ void main ( int argc , char * argv		reduce pointer -> *
+ void main ( int argc , char * argv		reduce direct_declarator -> identifier
  void main ( int argc , char * argv )		shift ) 
- void main ( int argc , char * argv )		reduce 
- void main ( int argc , char * argv )		reduce 
- void main ( int argc , char * argv )		reduce 
- void main ( int argc , char * argv )		reduce 
- void main ( int argc , char * argv )		reduce 
+ void main ( int argc , char * argv )		reduce declarator -> pointer direct_declarator
+ void main ( int argc , char * argv )		reduce parameter_declaration -> declaration_specifiers declarator
+ void main ( int argc , char * argv )		reduce parameter_list -> parameter_list ',' parameter_declaration
+ void main ( int argc , char * argv )		reduce parameter_type_list -> parameter_list
+ void main ( int argc , char * argv )		reduce direct_declarator -> direct_declarator(parameter_type_list)
  void main ( int argc , char * argv ) {		shift { <line terminate> 
-		reduce 
+		reduce declarator -> direct_declarator
  char		shift char
  char		reduce type_specifier -> char
  char c		shift c
  char c		reduce declaration_specifiers -> type_specifier
- char c		reduce 
+ char c		reduce direct_declarator -> identifier
  char c ;		shift ;
- char c ;		reduce 
+ char c ;		reduce declarator -> direct_declarator
  char c ;		reduce init_declarator -> declarator
  char c ;		reduce init_declarator_list -> init_declarator
  char c ;		reduce declaration -> declaration_specifiers init_declaratior_list;
@@ -94,9 +116,9 @@
  int		reduce type_specifier -> int
  int d		shift d
  int d		reduce declaration_specifiers -> type_specifier
- int d		reduce 
+ int d		reduce direct_declarator -> identifier
  int d ;		shift ;
- int d ;		reduce 
+ int d ;		reduce declarator -> direct_declarator
  int d ;		reduce init_declarator -> declarator
  int d ;		reduce init_declarator_list -> init_declarator
  int d ;		reduce declaration -> declaration_specifiers init_declaratior_list;
@@ -104,9 +126,9 @@
  int		reduce type_specifier -> int
  int i		shift i
  int i		reduce declaration_specifiers -> type_specifier
- int i		reduce 
+ int i		reduce direct_declarator -> identifier
  int i =		shift = 
- int i =		reduce 
+ int i =		reduce declarator -> direct_declarator
  int i = 0		shift 0
  int i = 0		reduce primary_expression -> constant 
  int i = 0		reduce postfix_expression -> primary_expression 
@@ -270,30 +292,30 @@
  int		reduce type_specifier -> int
  int myFunction		shift myFunction
  int myFunction		reduce declaration_specifiers -> type_specifier
- int myFunction		reduce 
+ int myFunction		reduce direct_declarator -> identifier
  int myFunction (		shift ( 
  int myFunction ( char		shift char
  int myFunction ( char		reduce type_specifier -> char
  int myFunction ( char *		shift * 
  int myFunction ( char *		reduce declaration_specifiers -> type_specifier
  int myFunction ( char * str		shift str
- int myFunction ( char * str		reduce 
- int myFunction ( char * str		reduce 
+ int myFunction ( char * str		reduce pointer -> *
+ int myFunction ( char * str		reduce direct_declarator -> identifier
  int myFunction ( char * str )		shift ) 
- int myFunction ( char * str )		reduce 
- int myFunction ( char * str )		reduce 
- int myFunction ( char * str )		reduce 
- int myFunction ( char * str )		reduce 
- int myFunction ( char * str )		reduce 
+ int myFunction ( char * str )		reduce declarator -> pointer direct_declarator
+ int myFunction ( char * str )		reduce parameter_declaration -> declaration_specifiers declarator
+ int myFunction ( char * str )		reduce parameter_list -> parameter_declaration
+ int myFunction ( char * str )		reduce parameter_type_list -> parameter_list
+ int myFunction ( char * str )		reduce direct_declarator -> direct_declarator(parameter_type_list)
  int myFunction ( char * str ) {		shift { <line terminate> 
-		reduce 
+		reduce declarator -> direct_declarator
  char		shift char
  char		reduce type_specifier -> char
  char c		shift c
  char c		reduce declaration_specifiers -> type_specifier
- char c		reduce 
+ char c		reduce direct_declarator -> identifier
  char c ;		shift ;
- char c ;		reduce 
+ char c ;		reduce declarator -> direct_declarator
  char c ;		reduce init_declarator -> declarator
  char c ;		reduce init_declarator_list -> init_declarator
  char c ;		reduce declaration -> declaration_specifiers init_declaratior_list;
@@ -438,4 +460,4 @@
  return 0 ;		reduce conditional_expression -> logical_or_expression
  return 0 ;		reduce assignment_expression -> conditional_expression 
  return 0 ;		reduce expression -> assignment_expression
- }		shift } <line terminate> 
+ int		shift int
