@@ -14,12 +14,12 @@ return;
 }
 
 int myFunction(char* str) {
-    char c;
+    char c; 
+    int i;
     if( c!='c') {
         str = strdup("test");
         printf("test");
     }
-    int i;
     for( i = 3; i<2; i++);
     return 0;
 }
