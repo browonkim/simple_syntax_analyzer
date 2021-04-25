@@ -352,6 +352,17 @@
  char c ;		reduce init_declarator_list -> init_declarator
  char c ;		reduce declaration -> declaration_specifiers init_declaratior_list;
 		reduce declaration_list -> declaration
+ int		shift int
+ int		reduce type_specifier -> int
+ int i		shift i
+ int i		reduce declaration_specifiers -> type_specifier
+ int i		reduce direct_declarator -> identifier
+ int i ;		shift ;
+ int i ;		reduce declarator -> direct_declarator
+ int i ;		reduce init_declarator -> declarator
+ int i ;		reduce init_declarator_list -> init_declarator
+ int i ;		reduce declaration -> declaration_specifiers init_declaratior_list;
+		reduce declaration_list -> declaration_list declaration
  if		shift if
  if (		shift ( 
  if ( c		shift c
@@ -481,7 +492,120 @@
  }		shift } <line terminate> 
 		reduce compound_statement -> {statement_list}
 		reduce statement -> compound_statement 
- int		shift int
- int		reduce selection_statement -> if(expression) statement
- int		reduce statement -> selection_statement
- int		reduce statement_list -> statement
+ for		shift for
+ for		reduce selection_statement -> if(expression) statement
+ for		reduce statement -> selection_statement
+ for		reduce statement_list -> statement
+ for (		shift ( 
+ for ( i		shift i
+ for ( i		reduce primary_expression -> identifier 
+ for ( i		reduce postfix_expression -> primary_expression 
+ for ( i =		shift = 
+ for ( i =		reduce unary_expression -> postfix_expression
+ for ( i =		 reduce assignment_operator -> =
+ for ( i = 3		shift 3
+ for ( i = 3		reduce primary_expression -> constant 
+ for ( i = 3		reduce postfix_expression -> primary_expression 
+ for ( i = 3 ;		shift ;
+ for ( i = 3 ;		reduce unary_expression -> postfix_expression
+ for ( i = 3 ;		reduce cast_expression -> unary_expression
+ for ( i = 3 ;		reduce multiplicative_expression -> cast_expression
+ for ( i = 3 ;		reduce additive_expression -> multiplicative_expression
+ for ( i = 3 ;		reduce shift_expression -> additive_expression
+ for ( i = 3 ;		reduce relational_expression -> shift_expression
+ for ( i = 3 ;		reduce equality_expression -> relational_expression
+ for ( i = 3 ;		reduce and_expression -> equality_expression
+ for ( i = 3 ;		reduce exclusive_or_expression -> and_expression
+ for ( i = 3 ;		reduce inclusive_or_expression -> exclusive_or_expression
+ for ( i = 3 ;		reduce logical_and_expression -> inclusive_or_expression
+ for ( i = 3 ;		reduce logical_or_expression -> logical_and_expression
+ for ( i = 3 ;		reduce conditional_expression -> logical_or_expression
+ for ( i = 3 ;		reduce assignment_expression -> conditional_expression 
+ for ( i = 3 ;		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
+ for ( i = 3 ;		reduce expression -> assignment_expression
+ for ( i = 3 ;		reduce expression_statement -> expression;
+ i		shift i
+ i		reduce primary_expression -> identifier 
+ i		reduce postfix_expression -> primary_expression 
+ i <		shift < 
+ i <		reduce unary_expression -> postfix_expression
+ i <		reduce cast_expression -> unary_expression
+ i <		reduce multiplicative_expression -> cast_expression
+ i <		reduce additive_expression -> multiplicative_expression
+ i <		reduce shift_expression -> additive_expression
+ i <		reduce relational_expression -> shift_expression
+ i < 2		shift 2
+ i < 2		reduce primary_expression -> constant 
+ i < 2		reduce postfix_expression -> primary_expression 
+ i < 2 ;		shift ;
+ i < 2 ;		reduce unary_expression -> postfix_expression
+ i < 2 ;		reduce cast_expression -> unary_expression
+ i < 2 ;		reduce multiplicative_expression -> cast_expression
+ i < 2 ;		reduce additive_expression -> multiplicative_expression
+ i < 2 ;		reduce shift_expression -> additive_expression
+ i < 2 ;		reduce relational_expression < shift_expression
+ i < 2 ;		reduce equality_expression -> relational_expression
+ i < 2 ;		reduce and_expression -> equality_expression
+ i < 2 ;		reduce exclusive_or_expression -> and_expression
+ i < 2 ;		reduce inclusive_or_expression -> exclusive_or_expression
+ i < 2 ;		reduce logical_and_expression -> inclusive_or_expression
+ i < 2 ;		reduce logical_or_expression -> logical_and_expression
+ i < 2 ;		reduce conditional_expression -> logical_or_expression
+ i < 2 ;		reduce assignment_expression -> conditional_expression 
+ i < 2 ;		reduce expression -> assignment_expression
+ i < 2 ;		reduce expression_statement -> expression;
+ i		shift i
+ i		reduce primary_expression -> identifier 
+ i		reduce postfix_expression -> primary_expression 
+ i ++		shift ++ 
+ i ++		reduce postfix_expression -> postfix_expression++
+ i ++ )		shift ) 
+ i ++ )		reduce unary_expression -> postfix_expression
+ i ++ )		reduce cast_expression -> unary_expression
+ i ++ )		reduce multiplicative_expression -> cast_expression
+ i ++ )		reduce additive_expression -> multiplicative_expression
+ i ++ )		reduce shift_expression -> additive_expression
+ i ++ )		reduce relational_expression -> shift_expression
+ i ++ )		reduce equality_expression -> relational_expression
+ i ++ )		reduce and_expression -> equality_expression
+ i ++ )		reduce exclusive_or_expression -> and_expression
+ i ++ )		reduce inclusive_or_expression -> exclusive_or_expression
+ i ++ )		reduce logical_and_expression -> inclusive_or_expression
+ i ++ )		reduce logical_or_expression -> logical_and_expression
+ i ++ )		reduce conditional_expression -> logical_or_expression
+ i ++ )		reduce assignment_expression -> conditional_expression 
+ i ++ )		reduce expression -> assignment_expression
+ i ++ ) ;		shift ;
+ i ++ ) ;		reduce expression_statement -> ;
+		reduce statement -> expression_statement 
+		reduce iteration_statement -> for (expression_statement expression_statement expression) statement
+		reduce statement -> iteration_statement
+		reduce statement_list -> statement_list statement
+ return		shift return
+ return 0		shift 0
+ return 0		reduce primary_expression -> constant 
+ return 0		reduce postfix_expression -> primary_expression 
+ return 0 ;		shift ;
+ return 0 ;		reduce unary_expression -> postfix_expression
+ return 0 ;		reduce cast_expression -> unary_expression
+ return 0 ;		reduce multiplicative_expression -> cast_expression
+ return 0 ;		reduce additive_expression -> multiplicative_expression
+ return 0 ;		reduce shift_expression -> additive_expression
+ return 0 ;		reduce relational_expression -> shift_expression
+ return 0 ;		reduce equality_expression -> relational_expression
+ return 0 ;		reduce and_expression -> equality_expression
+ return 0 ;		reduce exclusive_or_expression -> and_expression
+ return 0 ;		reduce inclusive_or_expression -> exclusive_or_expression
+ return 0 ;		reduce logical_and_expression -> inclusive_or_expression
+ return 0 ;		reduce logical_or_expression -> logical_and_expression
+ return 0 ;		reduce conditional_expression -> logical_or_expression
+ return 0 ;		reduce assignment_expression -> conditional_expression 
+ return 0 ;		reduce expression -> assignment_expression
+ return 0 ;		reduce jump_statement -> return expression;
+		reduce statement -> jump_statement 
+		reduce statement_list -> statement_list statement
+ }		shift } <line terminate> 
+		reduce compound_statement -> {declaration_list statement_list}
+		reduce function_definition -> declaration_specifiers declarator compound_statement
+		reduce external_declaration -> function_definition
+		reduce translation_unit -> translation_unit external_declaration
