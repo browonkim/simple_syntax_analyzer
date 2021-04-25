@@ -19,98 +19,98 @@ void count();
 %%
 "/*"			{ comment(); }
 
-"auto"			{ strcat(totalstr, " auto"); fprintf(output," %s \t \t shift auto\n", totalstr);  count(); return(AUTO); }
-"break"			{ strcat(totalstr, " break"); fprintf(output," %s \t \t shift break\n", totalstr);  count(); return(BREAK); }
-"case"			{ strcat(totalstr, " case");  fprintf(output," %s \t \t shift case\n", totalstr);  count(); return(CASE); }
-"char"			{ strcat(totalstr, " char");  fprintf(output," %s \t \t shift char\n", totalstr);  count(); return(CHAR); }
-"const"			{ strcat(totalstr, " const");  fprintf(output," %s \t \t shift const\n", totalstr);  count(); return(CONST); }
-"continue"		{ strcat(totalstr, " continue");  fprintf(output," %s \t \t shift continue\n", totalstr);  count(); return(CONTINUE); }
-"default"		{ strcat(totalstr, " default");  fprintf(output," %s \t \t shift default\n", totalstr);  count(); return(DEFAULT); }
-"do"			{ strcat(totalstr, " do");  fprintf(output," %s \t \t shift do\n", totalstr);  count(); return(DO); }
-"double"		{ strcat(totalstr, " double");  fprintf(output," %s \t \t shift double\n", totalstr);  count(); return(DOUBLE); }
-"else"			{ strcat(totalstr, " else");  fprintf(output," %s \t \t shift else\n", totalstr);  count(); return(ELSE); }
-"enum"			{ strcat(totalstr, " enum");  fprintf(output," %s \t \t shift enum\n", totalstr);  count(); return(ENUM); }
-"extern"		{ strcat(totalstr, " extern");  fprintf(output," %s \t \t shift extern\n", totalstr);  count(); return(EXTERN); }
-"float"			{ strcat(totalstr, " float");  fprintf(output," %s \t \t shift float\n", totalstr);  count(); return(FLOAT); }
-"for"			{ strcat(totalstr, " for");  fprintf(output," %s \t \t shift for\n", totalstr);  count(); return(FOR); }
-"goto"			{ strcat(totalstr, " goto");  fprintf(output," %s \t \t shift goto\n", totalstr);  count(); return(GOTO); }
-"if"			{ strcat(totalstr, " if");  fprintf(output," %s \t \t shift if\n", totalstr); count(); return(IF); }
-"int"			{ strcat(totalstr, " int");  fprintf(output," %s \t \t shift int\n", totalstr); count(); return(INT); }
-"long"			{ strcat(totalstr, " long");  fprintf(output," %s \t \t shift long\n", totalstr); count(); return(LONG); }
-"register"		{ strcat(totalstr, " register");  fprintf(output," %s \t \t shift register\n", totalstr); count(); return(REGISTER); }
-"return"		{ strcat(totalstr, " return");  fprintf(output," %s \t \t shift return\n", totalstr); count(); return(RETURN); }
-"short"			{ strcat(totalstr, " short");  fprintf(output," %s \t \t shift short\n", totalstr); count(); return(SHORT); }
-"signed"		{ strcat(totalstr, " signed");  fprintf(output," %s \t \t shift signed\n", totalstr); count(); return(SIGNED); }
-"sizeof"		{ strcat(totalstr, " sizeof");  fprintf(output," %s \t \t shift sizeof\n", totalstr); count(); return(SIZEOF); }
-"static"		{ strcat(totalstr, " static");  fprintf(output," %s \t \t shift static\n", totalstr); count(); return(STATIC); }
-"struct"		{ strcat(totalstr, " struct");  fprintf(output," %s \t \t shift struct\n", totalstr); count(); return(STRUCT); }
-"switch"		{ strcat(totalstr, " switch");  fprintf(output," %s \t \t shift switch\n", totalstr); count(); return(SWITCH); }
-"typedef"		{ strcat(totalstr, " typedef");  fprintf(output," %s \t \t shift typedef\n", totalstr); count(); return(TYPEDEF); }
-"union"			{ strcat(totalstr, " union");  fprintf(output," %s \t \t shift union\n", totalstr); count(); return(UNION); }
-"unsigned"		{ strcat(totalstr, " unsigned");  fprintf(output," %s \t \t shift unsigned\n", totalstr); count(); return(UNSIGNED); }
-"void"			{ strcat(totalstr, " void");  fprintf(output," %s \t \t shift void\n", totalstr); count(); return(VOID); }
-"volatile"		{ strcat(totalstr, " volatile");  fprintf(output," %s \t \t shift volatile\n", totalstr); count(); return(VOLATILE); }
-"while"			{ strcat(totalstr, " while");  fprintf(output," %s \t \t shift while\n", totalstr); count(); return(WHILE); }
+"auto"			{ strcat(totalstr, " auto"); fprintf(output,"%s\t\tshift auto\n", totalstr);  count(); return(AUTO); }
+"break"			{ strcat(totalstr, " break"); fprintf(output,"%s\t\tshift break\n", totalstr);  count(); return(BREAK); }
+"case"			{ strcat(totalstr, " case");  fprintf(output,"%s\t\tshift case\n", totalstr);  count(); return(CASE); }
+"char"			{ strcat(totalstr, " char");  fprintf(output,"%s\t\tshift char\n", totalstr);  count(); return(CHAR); }
+"const"			{ strcat(totalstr, " const");  fprintf(output,"%s\t\tshift const\n", totalstr);  count(); return(CONST); }
+"continue"		{ strcat(totalstr, " continue");  fprintf(output,"%s\t\tshift continue\n", totalstr);  count(); return(CONTINUE); }
+"default"		{ strcat(totalstr, " default");  fprintf(output,"%s\t\tshift default\n", totalstr);  count(); return(DEFAULT); }
+"do"			{ strcat(totalstr, " do");  fprintf(output,"%s\t\tshift do\n", totalstr);  count(); return(DO); }
+"double"		{ strcat(totalstr, " double");  fprintf(output,"%s\t\tshift double\n", totalstr);  count(); return(DOUBLE); }
+"else"			{ strcat(totalstr, " else");  fprintf(output,"%s\t\tshift else\n", totalstr);  count(); return(ELSE); }
+"enum"			{ strcat(totalstr, " enum");  fprintf(output,"%s\t\tshift enum\n", totalstr);  count(); return(ENUM); }
+"extern"		{ strcat(totalstr, " extern");  fprintf(output,"%s\t\tshift extern\n", totalstr);  count(); return(EXTERN); }
+"float"			{ strcat(totalstr, " float");  fprintf(output,"%s\t\tshift float\n", totalstr);  count(); return(FLOAT); }
+"for"			{ strcat(totalstr, " for");  fprintf(output,"%s\t\tshift for\n", totalstr);  count(); return(FOR); }
+"goto"			{ strcat(totalstr, " goto");  fprintf(output,"%s\t\tshift goto\n", totalstr);  count(); return(GOTO); }
+"if"			{ strcat(totalstr, " if");  fprintf(output,"%s\t\tshift if\n", totalstr); count(); return(IF); }
+"int"			{ strcat(totalstr, " int");  fprintf(output,"%s\t\tshift int\n", totalstr); count(); return(INT); }
+"long"			{ strcat(totalstr, " long");  fprintf(output,"%s\t\tshift long\n", totalstr); count(); return(LONG); }
+"register"		{ strcat(totalstr, " register");  fprintf(output,"%s\t\tshift register\n", totalstr); count(); return(REGISTER); }
+"return"		{ strcat(totalstr, " return");  fprintf(output,"%s\t\tshift return\n", totalstr); count(); return(RETURN); }
+"short"			{ strcat(totalstr, " short");  fprintf(output,"%s\t\tshift short\n", totalstr); count(); return(SHORT); }
+"signed"		{ strcat(totalstr, " signed");  fprintf(output,"%s\t\tshift signed\n", totalstr); count(); return(SIGNED); }
+"sizeof"		{ strcat(totalstr, " sizeof");  fprintf(output,"%s\t\tshift sizeof\n", totalstr); count(); return(SIZEOF); }
+"static"		{ strcat(totalstr, " static");  fprintf(output,"%s\t\tshift static\n", totalstr); count(); return(STATIC); }
+"struct"		{ strcat(totalstr, " struct");  fprintf(output,"%s\t\tshift struct\n", totalstr); count(); return(STRUCT); }
+"switch"		{ strcat(totalstr, " switch");  fprintf(output,"%s\t\tshift switch\n", totalstr); count(); return(SWITCH); }
+"typedef"		{ strcat(totalstr, " typedef");  fprintf(output,"%s\t\tshift typedef\n", totalstr); count(); return(TYPEDEF); }
+"union"			{ strcat(totalstr, " union");  fprintf(output,"%s\t\tshift union\n", totalstr); count(); return(UNION); }
+"unsigned"		{ strcat(totalstr, " unsigned");  fprintf(output,"%s\t\t shift unsigned\n", totalstr); count(); return(UNSIGNED); }
+"void"			{ strcat(totalstr, " void");  fprintf(output,"%s\t\tshift void\n", totalstr); count(); return(VOID); }
+"volatile"		{ strcat(totalstr, " volatile");  fprintf(output,"%s\t\tshift volatile\n", totalstr); count(); return(VOLATILE); }
+"while"			{ strcat(totalstr, " while");  fprintf(output,"%s\t\tshift while\n", totalstr); count(); return(WHILE); }
 
-{L}({L}|{D})*		{strcat(totalstr, " "); strcat(totalstr, yytext); fprintf(output," %s \t \t shift %s <identifier> \n", totalstr, yytext); count(); return(IDENTIFIER); }
+{L}({L}|{D})*		{strcat(totalstr, " "); strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <identifier> \n", totalstr, yytext); count(); return(IDENTIFIER); }
 
-0[xX]{H}+{IS}?		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output," %s \t \t shift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
-0{D}+{IS}?		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output," %s \t \t shift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
-{D}+{IS}?		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output," %s \t \t shift %s <constant> \n", totalstr, yytext); count();  return(CONSTANT); }
-L?'(\\.|[^\\'])+'	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output," %s \t \t shift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
+0[xX]{H}+{IS}?		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
+0{D}+{IS}?		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
+{D}+{IS}?		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <constant> \n", totalstr, yytext); count();  return(CONSTANT); }
+L?'(\\.|[^\\'])+'	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
 
-{D}+{E}{FS}?		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output," %s \t \t shift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
-{D}*"."{D}+({E})?{FS}?	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output," %s \t \t shift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
-{D}+"."{D}*({E})?{FS}?	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output," %s \t \t shift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
+{D}+{E}{FS}?		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
+{D}*"."{D}+({E})?{FS}?	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
+{D}+"."{D}*({E})?{FS}?	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <constant> \n", totalstr, yytext); count(); return(CONSTANT); }
 
-L?\"(\\.|[^\\"])*\"	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output," %s \t\t shift %s <string_literal> \n", totalstr, yytext); count(); return(STRING_LITERAL); }
+L?\"(\\.|[^\\"])*\"	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %s <string_literal> \n", totalstr, yytext); count(); return(STRING_LITERAL); }
 
-"..."			{strcat(totalstr, " ");strcat(totalstr, yytext); (output,"%s \t \t shift ... \n", totalstr); count(); return(ELLIPSIS); }
-">>="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t shift >>= \n", totalstr); count(); return(RIGHT_ASSIGN); }
-"<<="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift <<= \n", totalstr); count(); return(LEFT_ASSIGN); }
-"+="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift += \n", totalstr); count(); return(ADD_ASSIGN); }
-"-="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift -= \n", totalstr); count(); return(SUB_ASSIGN); }
-"*="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift *= \n", totalstr); count(); return(MUL_ASSIGN); }
-"/="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift /= \n", totalstr); count(); return(DIV_ASSIGN); }
-"%="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift %= \n", totalstr); count(); return(MOD_ASSIGN); }
-"&="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift &= \n", totalstr); count(); return(AND_ASSIGN); }
-"^="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift ^= \n", totalstr); count(); return(XOR_ASSIGN); }
-"|="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift |= \n", totalstr); count(); return(OR_ASSIGN); }
-">>"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift >> \n", totalstr); count(); return(RIGHT_OP); }
-"<<"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift << \n", totalstr); count(); return(LEFT_OP); }
-"++"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift ++ \n", totalstr); count(); return(INC_OP); }
-"--"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift -- \n", totalstr); count(); return(DEC_OP); }
-"->"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift -> \n", totalstr); count(); return(PTR_OP); }
-"&&"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift && \n", totalstr); count(); return(AND_OP); }
-"||"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift || \n", totalstr); count(); return(OR_OP); }
-"<="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift <= \n", totalstr); count(); return(LE_OP); }
-">="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift >= \n", totalstr); count(); return(GE_OP); }
-"=="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift == \n", totalstr); count(); return(EQ_OP); }
-"!="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift != \n", totalstr); count(); return(NE_OP); }
-";"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift ; <line terminate> \n", totalstr); strcpy(totalstr, ""); count(); return(';'); }
-("{"|"<%")		{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift { <line terminate> \n", totalstr); strcpy(totalstr, ""); count(); return('{'); }
-("}"|"%>")		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift } <line terminate> \n", totalstr); strcpy(totalstr, ""); count(); return('}'); }
-","			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift , \n", totalstr); count(); return(','); }
-":"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift : \n", totalstr); count(); return(':'); }
-"="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift = \n", totalstr); count(); return('='); }
-"("			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift ( \n", totalstr); count(); return('('); }
-")"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift ) \n", totalstr); count(); return(')'); }
-("["|"<:")		{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift [ \n", totalstr); count(); return('['); }
-("]"|":>")		{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift ] \n", totalstr); count(); return(']'); }
-"."			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift . \n", totalstr); count(); return('.'); }
-"&"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift & \n", totalstr); count(); return('&'); }
-"!"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift ! \n", totalstr); count(); return('!'); }
-"~"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift ~ \n", totalstr); count(); return('~'); }
-"-"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift - \n", totalstr); count(); return('-'); }
-"+"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift + \n", totalstr); count(); return('+'); }
-"*"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift * \n", totalstr); count(); return('*'); }
-"/"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift / \n", totalstr); count(); return('/'); }
-"%"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift % \n", totalstr); count(); return('%'); }
-"<"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s \t \t  shift < \n", totalstr); count(); return('<'); }
-">"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift > \n", totalstr); count(); return('>'); }
-"^"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift ^ \n", totalstr); count(); return('^'); }
-"|"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift | \n", totalstr); count(); return('|'); }
-"?"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s \t \t  shift ? \n", totalstr); count(); return('?'); }
+"..."			{strcat(totalstr, " ");strcat(totalstr, yytext); (output,"%s\t\tshift ... \n", totalstr); count(); return(ELLIPSIS); }
+">>="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift >>= \n", totalstr); count(); return(RIGHT_ASSIGN); }
+"<<="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift <<= \n", totalstr); count(); return(LEFT_ASSIGN); }
+"+="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift += \n", totalstr); count(); return(ADD_ASSIGN); }
+"-="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift -= \n", totalstr); count(); return(SUB_ASSIGN); }
+"*="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift *= \n", totalstr); count(); return(MUL_ASSIGN); }
+"/="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift /= \n", totalstr); count(); return(DIV_ASSIGN); }
+"%="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift %= \n", totalstr); count(); return(MOD_ASSIGN); }
+"&="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift &= \n", totalstr); count(); return(AND_ASSIGN); }
+"^="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift ^= \n", totalstr); count(); return(XOR_ASSIGN); }
+"|="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift |= \n", totalstr); count(); return(OR_ASSIGN); }
+">>"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift >> \n", totalstr); count(); return(RIGHT_OP); }
+"<<"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift << \n", totalstr); count(); return(LEFT_OP); }
+"++"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift ++ \n", totalstr); count(); return(INC_OP); }
+"--"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift -- \n", totalstr); count(); return(DEC_OP); }
+"->"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift -> \n", totalstr); count(); return(PTR_OP); }
+"&&"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift && \n", totalstr); count(); return(AND_OP); }
+"||"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift || \n", totalstr); count(); return(OR_OP); }
+"<="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift <= \n", totalstr); count(); return(LE_OP); }
+">="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift >= \n", totalstr); count(); return(GE_OP); }
+"=="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift == \n", totalstr); count(); return(EQ_OP); }
+"!="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift != \n", totalstr); count(); return(NE_OP); }
+";"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift ; <line terminate> \n", totalstr); strcpy(totalstr, ""); count(); return(';'); }
+("{"|"<%")		{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift { <line terminate> \n", totalstr); strcpy(totalstr, ""); count(); return('{'); }
+("}"|"%>")		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift } <line terminate> \n", totalstr); strcpy(totalstr, ""); count(); return('}'); }
+","			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift , \n", totalstr); count(); return(','); }
+":"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift : \n", totalstr); count(); return(':'); }
+"="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift = \n", totalstr); count(); return('='); }
+"("			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift ( \n", totalstr); count(); return('('); }
+")"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift ) \n", totalstr); count(); return(')'); }
+("["|"<:")		{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift [ \n", totalstr); count(); return('['); }
+("]"|":>")		{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift ] \n", totalstr); count(); return(']'); }
+"."			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift . \n", totalstr); count(); return('.'); }
+"&"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift & \n", totalstr); count(); return('&'); }
+"!"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift ! \n", totalstr); count(); return('!'); }
+"~"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift ~ \n", totalstr); count(); return('~'); }
+"-"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift - \n", totalstr); count(); return('-'); }
+"+"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift + \n", totalstr); count(); return('+'); }
+"*"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift * \n", totalstr); count(); return('*'); }
+"/"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift / \n", totalstr); count(); return('/'); }
+"%"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift % \n", totalstr); count(); return('%'); }
+"<"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift < \n", totalstr); count(); return('<'); }
+">"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift > \n", totalstr); count(); return('>'); }
+"^"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift ^ \n", totalstr); count(); return('^'); }
+"|"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift | \n", totalstr); count(); return('|'); }
+"?"			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift ? \n", totalstr); count(); return('?'); }
 
 [ \t\v\n\f]		{ count(); }
 .			{ /* ignore bad characters */ }
