@@ -378,8 +378,8 @@ declaration_list
 	;
 
 statement_list
-	: statement {fprintf(output, "%s\t\treduce statement_list -> statement\n", totalstr);}
-	| statement_list statement {fprintf(output, "%s\t\treduce statement_list -> statement_list statement\n", totalstr);}
+	: statement {fprintf(output, "%s\t\treduce statement_list -> statement\n", totalstr);  strcpy(totalstr,"");}
+	| statement_list statement {fprintf(output, "%s\t\treduce statement_list -> statement_list statement\n", totalstr);  strcpy(totalstr,"");}
 	;
 
 expression_statement
@@ -401,11 +401,11 @@ iteration_statement
 	;
 
 jump_statement
-	: GOTO IDENTIFIER ';' {fprintf(output, "%s\t\treduce jump_statement -> goto identifier;\n", totalstr); strcpy(totalstr,"");}
-	| CONTINUE ';' {fprintf(output, "%s\t\treduce jump_statement -> continue;\n", totalstr); strcpy(totalstr,"");}
-	| BREAK ';' {fprintf(output, "%s\t\treduce jump_statement -> break;\n", totalstr); strcpy(totalstr,"");}
-	| RETURN ';' { fprintf(output, "%s\t\treduce jump_statement -> return;\n", totalstr);strcpy(totalstr,"");}
-	| RETURN expression ';' {fprintf(output, "%s\t\treduce jump_statement -> return expression;\n", totalstr); strcpy(totalstr,"");}
+	: GOTO IDENTIFIER ';' {fprintf(output, "%s\t\treduce jump_statement -> goto identifier;\n", totalstr);}
+	| CONTINUE ';' {fprintf(output, "%s\t\treduce jump_statement -> continue;\n", totalstr);}
+	| BREAK ';' {fprintf(output, "%s\t\treduce jump_statement -> break;\n", totalstr);}
+	| RETURN ';' { fprintf(output, "%s\t\treduce jump_statement -> return;\n", totalstr);}
+	| RETURN expression ';' {fprintf(output, "%s\t\treduce jump_statement -> return expression;\n", totalstr);}
 	;
 
 translation_unit
