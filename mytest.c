@@ -20,4 +20,8 @@ int myFunction(char* str) {
         printf("test");
     }
 return 0;
+    int i;
+    for(i=3;i<3;i++){
+        i++;
+    }
 }
