@@ -1,32 +1,32 @@
  int		shift int
  int		reduce type_specifier -> int
- int a		shift a <identifier> 
+ int a		shift a
  int a		reduce declaration_specifiers -> type_specifier
  int a		reduce 
- int a ;		shift ; <line terminate> 
-		reduce 
-		reduce init_declarator -> declarator
-		reduce init_declarator_list -> init_declarator
-		reduce declaration -> declaration_specifiers init_declaratior_list;
+ int a ;		shift ;
+ int a ;		reduce 
+ int a ;		reduce init_declarator -> declarator
+ int a ;		reduce init_declarator_list -> init_declarator
+ int a ;		reduce declaration -> declaration_specifiers init_declaratior_list;
  char		shift char
  char		reduce type_specifier -> char
  char *		shift * 
  char *		reduce declaration_specifiers -> type_specifier
- char * str		shift str <identifier> 
+ char * str		shift str
  char * str		reduce 
  char * str		reduce 
- char * str ;		shift ; <line terminate> 
-		reduce 
-		reduce init_declarator -> declarator
-		reduce init_declarator_list -> init_declarator
-		reduce declaration -> declaration_specifiers init_declaratior_list;
+ char * str ;		shift ;
+ char * str ;		reduce 
+ char * str ;		reduce init_declarator -> declarator
+ char * str ;		reduce init_declarator_list -> init_declarator
+ char * str ;		reduce declaration -> declaration_specifiers init_declaratior_list;
  float		shift float
  float		reduce type_specifier -> float
- float f		shift f <identifier> 
+ float f		shift f
  float f		reduce declaration_specifiers -> type_specifier
  float f		reduce 
  float f [		shift [ 
- float f [ 10		shift 10 <constant> 
+ float f [ 10		shift 10
  float f [ 10		reduce primary_expression -> constant 
  float f [ 10		reduce postfix_expression -> primary_expression 
  float f [ 10 ]		shift ] 
@@ -45,20 +45,20 @@
  float f [ 10 ]		reduce conditional_expression -> logical_or_expression
  float f [ 10 ]		reduce constant_expression -> conditional_expression
  float f [ 10 ]		reduce 
- float f [ 10 ] ;		shift ; <line terminate> 
-		reduce 
-		reduce init_declarator -> declarator
-		reduce init_declarator_list -> init_declarator
-		reduce declaration -> declaration_specifiers init_declaratior_list;
+ float f [ 10 ] ;		shift ;
+ float f [ 10 ] ;		reduce 
+ float f [ 10 ] ;		reduce init_declarator -> declarator
+ float f [ 10 ] ;		reduce init_declarator_list -> init_declarator
+ float f [ 10 ] ;		reduce declaration -> declaration_specifiers init_declaratior_list;
  void		shift void
  void		reduce type_specifier -> void
- void main		shift main <identifier> 
+ void main		shift main
  void main		reduce declaration_specifiers -> type_specifier
  void main		reduce 
  void main (		shift ( 
  void main ( int		shift int
  void main ( int		reduce type_specifier -> int
- void main ( int argc		shift argc <identifier> 
+ void main ( int argc		shift argc
  void main ( int argc		reduce declaration_specifiers -> type_specifier
  void main ( int argc		reduce 
  void main ( int argc ,		shift , 
@@ -69,7 +69,7 @@
  void main ( int argc , char		reduce type_specifier -> char
  void main ( int argc , char *		shift * 
  void main ( int argc , char *		reduce declaration_specifiers -> type_specifier
- void main ( int argc , char * argv		shift argv <identifier> 
+ void main ( int argc , char * argv		shift argv
  void main ( int argc , char * argv		reduce 
  void main ( int argc , char * argv		reduce 
  void main ( int argc , char * argv )		shift ) 
@@ -82,55 +82,55 @@
 		reduce 
  char		shift char
  char		reduce type_specifier -> char
- char c		shift c <identifier> 
+ char c		shift c
  char c		reduce declaration_specifiers -> type_specifier
  char c		reduce 
- char c ;		shift ; <line terminate> 
-		reduce 
-		reduce init_declarator -> declarator
-		reduce init_declarator_list -> init_declarator
-		reduce declaration -> declaration_specifiers init_declaratior_list;
+ char c ;		shift ;
+ char c ;		reduce 
+ char c ;		reduce init_declarator -> declarator
+ char c ;		reduce init_declarator_list -> init_declarator
+ char c ;		reduce declaration -> declaration_specifiers init_declaratior_list;
  int		shift int
  int		reduce type_specifier -> int
- int d		shift d <identifier> 
+ int d		shift d
  int d		reduce declaration_specifiers -> type_specifier
  int d		reduce 
- int d ;		shift ; <line terminate> 
-		reduce 
-		reduce init_declarator -> declarator
-		reduce init_declarator_list -> init_declarator
-		reduce declaration -> declaration_specifiers init_declaratior_list;
+ int d ;		shift ;
+ int d ;		reduce 
+ int d ;		reduce init_declarator -> declarator
+ int d ;		reduce init_declarator_list -> init_declarator
+ int d ;		reduce declaration -> declaration_specifiers init_declaratior_list;
  int		shift int
  int		reduce type_specifier -> int
- int i		shift i <identifier> 
+ int i		shift i
  int i		reduce declaration_specifiers -> type_specifier
  int i		reduce 
  int i =		shift = 
  int i =		reduce 
- int i = 0		shift 0 <constant> 
+ int i = 0		shift 0
  int i = 0		reduce primary_expression -> constant 
  int i = 0		reduce postfix_expression -> primary_expression 
- int i = 0 ;		shift ; <line terminate> 
-		reduce unary_expression -> postfix_expression
-		reduce cast_expression -> unary_expression
-		reduce multiplicative_expression -> cast_expression
-		reduce additive_expression -> multiplicative_expression
-		reduce shift_expression -> additive_expression
-		reduce relational_expression -> shift_expression
-		reduce equality_expression -> relational_expression
-		reduce and_expression -> equality_expression
-		reduce exclusive_or_expression -> and_expression
-		reduce inclusive_or_expression -> exclusive_or_expression
-		reduce logical_and_expression -> inclusive_or_expression
-		reduce logical_or_expression -> logical_and_expression
-		reduce conditional_expression -> logical_or_expression
-		reduce assignment_expression -> conditional_expression 
-		reduce init_declarator -> declarator = initializer
-		reduce init_declarator_list -> init_declarator
-		reduce declaration -> declaration_specifiers init_declaratior_list;
+ int i = 0 ;		shift ;
+ int i = 0 ;		reduce unary_expression -> postfix_expression
+ int i = 0 ;		reduce cast_expression -> unary_expression
+ int i = 0 ;		reduce multiplicative_expression -> cast_expression
+ int i = 0 ;		reduce additive_expression -> multiplicative_expression
+ int i = 0 ;		reduce shift_expression -> additive_expression
+ int i = 0 ;		reduce relational_expression -> shift_expression
+ int i = 0 ;		reduce equality_expression -> relational_expression
+ int i = 0 ;		reduce and_expression -> equality_expression
+ int i = 0 ;		reduce exclusive_or_expression -> and_expression
+ int i = 0 ;		reduce inclusive_or_expression -> exclusive_or_expression
+ int i = 0 ;		reduce logical_and_expression -> inclusive_or_expression
+ int i = 0 ;		reduce logical_or_expression -> logical_and_expression
+ int i = 0 ;		reduce conditional_expression -> logical_or_expression
+ int i = 0 ;		reduce assignment_expression -> conditional_expression 
+ int i = 0 ;		reduce init_declarator -> declarator = initializer
+ int i = 0 ;		reduce init_declarator_list -> init_declarator
+ int i = 0 ;		reduce declaration -> declaration_specifiers init_declaratior_list;
  while		shift while
  while (		shift ( 
- while ( i		shift i <identifier> 
+ while ( i		shift i
  while ( i		reduce primary_expression -> identifier 
  while ( i		reduce postfix_expression -> primary_expression 
  while ( i <		shift < 
@@ -140,7 +140,7 @@
  while ( i <		reduce additive_expression -> multiplicative_expression
  while ( i <		reduce shift_expression -> additive_expression
  while ( i <		reduce relational_expression -> shift_expression
- while ( i < 10		shift 10 <constant> 
+ while ( i < 10		shift 10
  while ( i < 10		reduce primary_expression -> constant 
  while ( i < 10		reduce postfix_expression -> primary_expression 
  while ( i < 10 )		shift ) 
@@ -160,14 +160,14 @@
  while ( i < 10 )		reduce assignment_expression -> conditional_expression 
  while ( i < 10 )		reduce expression -> assignment_expression
  while ( i < 10 ) {		shift { <line terminate> 
- a		shift a <identifier> 
+ a		shift a
  a +=		shift += 
  a +=		reduce primary_expression -> identifier 
  a +=		reduce postfix_expression -> primary_expression 
  a +=		reduce unary_expression -> postfix_expression
  a +=		 reduce assignment_operator -> +=
  a += (		shift ( 
- a += ( d		shift d <identifier> 
+ a += ( d		shift d
  a += ( d		reduce primary_expression -> identifier 
  a += ( d		reduce postfix_expression -> primary_expression 
  a += ( d +		shift + 
@@ -175,7 +175,7 @@
  a += ( d +		reduce cast_expression -> unary_expression
  a += ( d +		reduce multiplicative_expression -> cast_expression
  a += ( d +		reduce additive_expression -> multiplicative_expression
- a += ( d + 1		shift 1 <constant> 
+ a += ( d + 1		shift 1
  a += ( d + 1		reduce primary_expression -> constant 
  a += ( d + 1		reduce postfix_expression -> primary_expression 
  a += ( d + 1 )		shift ) 
@@ -196,79 +196,79 @@
  a += ( d + 1 )		reduce expression -> assignment_expression
  a += ( d + 1 )		reduce primary_expression -> (expression) 
  a += ( d + 1 )		reduce postfix_expression -> primary_expression 
- a += ( d + 1 ) ;		shift ; <line terminate> 
-		reduce unary_expression -> postfix_expression
-		reduce cast_expression -> unary_expression
-		reduce multiplicative_expression -> cast_expression
-		reduce additive_expression -> multiplicative_expression
-		reduce shift_expression -> additive_expression
-		reduce relational_expression -> shift_expression
-		reduce equality_expression -> relational_expression
-		reduce and_expression -> equality_expression
-		reduce exclusive_or_expression -> and_expression
-		reduce inclusive_or_expression -> exclusive_or_expression
-		reduce logical_and_expression -> inclusive_or_expression
-		reduce logical_or_expression -> logical_and_expression
-		reduce conditional_expression -> logical_or_expression
-		reduce assignment_expression -> conditional_expression 
-		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
-		reduce expression -> assignment_expression
- f		shift f <identifier> 
- f [		shift [ 
- f [		reduce primary_expression -> identifier 
- f [		reduce postfix_expression -> primary_expression 
- f [ i		shift i <identifier> 
- f [ i		reduce primary_expression -> identifier 
- f [ i		reduce postfix_expression -> primary_expression 
- f [ i ++		shift ++ 
- f [ i ++		reduce postfix_expression -> postfix_expression++
- f [ i ++ ]		shift ] 
- f [ i ++ ]		reduce unary_expression -> postfix_expression
- f [ i ++ ]		reduce cast_expression -> unary_expression
- f [ i ++ ]		reduce multiplicative_expression -> cast_expression
- f [ i ++ ]		reduce additive_expression -> multiplicative_expression
- f [ i ++ ]		reduce shift_expression -> additive_expression
- f [ i ++ ]		reduce relational_expression -> shift_expression
- f [ i ++ ]		reduce equality_expression -> relational_expression
- f [ i ++ ]		reduce and_expression -> equality_expression
- f [ i ++ ]		reduce exclusive_or_expression -> and_expression
- f [ i ++ ]		reduce inclusive_or_expression -> exclusive_or_expression
- f [ i ++ ]		reduce logical_and_expression -> inclusive_or_expression
- f [ i ++ ]		reduce logical_or_expression -> logical_and_expression
- f [ i ++ ]		reduce conditional_expression -> logical_or_expression
- f [ i ++ ]		reduce assignment_expression -> conditional_expression 
- f [ i ++ ]		reduce expression -> assignment_expression
- f [ i ++ ]		reduce postfix_expression -> postfix_expreesion [expression] 
- f [ i ++ ] =		shift = 
- f [ i ++ ] =		reduce unary_expression -> postfix_expression
- f [ i ++ ] =		 reduce assignment_operator -> =
- f [ i ++ ] = 0		shift 0 <constant> 
- f [ i ++ ] = 0		reduce primary_expression -> constant 
- f [ i ++ ] = 0		reduce postfix_expression -> primary_expression 
- f [ i ++ ] = 0 ;		shift ; <line terminate> 
-		reduce unary_expression -> postfix_expression
-		reduce cast_expression -> unary_expression
-		reduce multiplicative_expression -> cast_expression
-		reduce additive_expression -> multiplicative_expression
-		reduce shift_expression -> additive_expression
-		reduce relational_expression -> shift_expression
-		reduce equality_expression -> relational_expression
-		reduce and_expression -> equality_expression
-		reduce exclusive_or_expression -> and_expression
-		reduce inclusive_or_expression -> exclusive_or_expression
-		reduce logical_and_expression -> inclusive_or_expression
-		reduce logical_or_expression -> logical_and_expression
-		reduce conditional_expression -> logical_or_expression
-		reduce assignment_expression -> conditional_expression 
-		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
-		reduce expression -> assignment_expression
- }		shift } <line terminate> 
+ a += ( d + 1 ) ;		shift ;
+ a += ( d + 1 ) ;		reduce unary_expression -> postfix_expression
+ a += ( d + 1 ) ;		reduce cast_expression -> unary_expression
+ a += ( d + 1 ) ;		reduce multiplicative_expression -> cast_expression
+ a += ( d + 1 ) ;		reduce additive_expression -> multiplicative_expression
+ a += ( d + 1 ) ;		reduce shift_expression -> additive_expression
+ a += ( d + 1 ) ;		reduce relational_expression -> shift_expression
+ a += ( d + 1 ) ;		reduce equality_expression -> relational_expression
+ a += ( d + 1 ) ;		reduce and_expression -> equality_expression
+ a += ( d + 1 ) ;		reduce exclusive_or_expression -> and_expression
+ a += ( d + 1 ) ;		reduce inclusive_or_expression -> exclusive_or_expression
+ a += ( d + 1 ) ;		reduce logical_and_expression -> inclusive_or_expression
+ a += ( d + 1 ) ;		reduce logical_or_expression -> logical_and_expression
+ a += ( d + 1 ) ;		reduce conditional_expression -> logical_or_expression
+ a += ( d + 1 ) ;		reduce assignment_expression -> conditional_expression 
+ a += ( d + 1 ) ;		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
+ a += ( d + 1 ) ;		reduce expression -> assignment_expression
+ a += ( d + 1 ) ; f		shift f
+ a += ( d + 1 ) ; f [		shift [ 
+ a += ( d + 1 ) ; f [		reduce primary_expression -> identifier 
+ a += ( d + 1 ) ; f [		reduce postfix_expression -> primary_expression 
+ a += ( d + 1 ) ; f [ i		shift i
+ a += ( d + 1 ) ; f [ i		reduce primary_expression -> identifier 
+ a += ( d + 1 ) ; f [ i		reduce postfix_expression -> primary_expression 
+ a += ( d + 1 ) ; f [ i ++		shift ++ 
+ a += ( d + 1 ) ; f [ i ++		reduce postfix_expression -> postfix_expression++
+ a += ( d + 1 ) ; f [ i ++ ]		shift ] 
+ a += ( d + 1 ) ; f [ i ++ ]		reduce unary_expression -> postfix_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce cast_expression -> unary_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce multiplicative_expression -> cast_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce additive_expression -> multiplicative_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce shift_expression -> additive_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce relational_expression -> shift_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce equality_expression -> relational_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce and_expression -> equality_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce exclusive_or_expression -> and_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce inclusive_or_expression -> exclusive_or_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce logical_and_expression -> inclusive_or_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce logical_or_expression -> logical_and_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce conditional_expression -> logical_or_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce assignment_expression -> conditional_expression 
+ a += ( d + 1 ) ; f [ i ++ ]		reduce expression -> assignment_expression
+ a += ( d + 1 ) ; f [ i ++ ]		reduce postfix_expression -> postfix_expreesion [expression] 
+ a += ( d + 1 ) ; f [ i ++ ] =		shift = 
+ a += ( d + 1 ) ; f [ i ++ ] =		reduce unary_expression -> postfix_expression
+ a += ( d + 1 ) ; f [ i ++ ] =		 reduce assignment_operator -> =
+ a += ( d + 1 ) ; f [ i ++ ] = 0		shift 0
+ a += ( d + 1 ) ; f [ i ++ ] = 0		reduce primary_expression -> constant 
+ a += ( d + 1 ) ; f [ i ++ ] = 0		reduce postfix_expression -> primary_expression 
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		shift ;
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce unary_expression -> postfix_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce cast_expression -> unary_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce multiplicative_expression -> cast_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce additive_expression -> multiplicative_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce shift_expression -> additive_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce relational_expression -> shift_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce equality_expression -> relational_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce and_expression -> equality_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce exclusive_or_expression -> and_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce inclusive_or_expression -> exclusive_or_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce logical_and_expression -> inclusive_or_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce logical_or_expression -> logical_and_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce conditional_expression -> logical_or_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce assignment_expression -> conditional_expression 
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ;		reduce expression -> assignment_expression
+ a += ( d + 1 ) ; f [ i ++ ] = 0 ; }		shift } <line terminate> 
  return		shift return
- return ;		shift ; <line terminate> 
- }		shift } <line terminate> 
+ return ;		shift ;
+ return ; }		shift } <line terminate> 
  int		shift int
  int		reduce type_specifier -> int
- int myFunction		shift myFunction <identifier> 
+ int myFunction		shift myFunction
  int myFunction		reduce declaration_specifiers -> type_specifier
  int myFunction		reduce 
  int myFunction (		shift ( 
@@ -276,7 +276,7 @@
  int myFunction ( char		reduce type_specifier -> char
  int myFunction ( char *		shift * 
  int myFunction ( char *		reduce declaration_specifiers -> type_specifier
- int myFunction ( char * str		shift str <identifier> 
+ int myFunction ( char * str		shift str
  int myFunction ( char * str		reduce 
  int myFunction ( char * str		reduce 
  int myFunction ( char * str )		shift ) 
@@ -289,17 +289,17 @@
 		reduce 
  char		shift char
  char		reduce type_specifier -> char
- char c		shift c <identifier> 
+ char c		shift c
  char c		reduce declaration_specifiers -> type_specifier
  char c		reduce 
- char c ;		shift ; <line terminate> 
-		reduce 
-		reduce init_declarator -> declarator
-		reduce init_declarator_list -> init_declarator
-		reduce declaration -> declaration_specifiers init_declaratior_list;
+ char c ;		shift ;
+ char c ;		reduce 
+ char c ;		reduce init_declarator -> declarator
+ char c ;		reduce init_declarator_list -> init_declarator
+ char c ;		reduce declaration -> declaration_specifiers init_declaratior_list;
  if		shift if
  if (		shift ( 
- if ( c		shift c <identifier> 
+ if ( c		shift c
  if ( c		reduce primary_expression -> identifier 
  if ( c		reduce postfix_expression -> primary_expression 
  if ( c !=		shift != 
@@ -310,7 +310,7 @@
  if ( c !=		reduce shift_expression -> additive_expression
  if ( c !=		reduce relational_expression -> shift_expression
  if ( c !=		reduce equality_expression -> relational_expression
- if ( c != 'c'		shift 'c' <constant> 
+ if ( c != 'c'		shift 'c'
  if ( c != 'c'		reduce primary_expression -> constant 
  if ( c != 'c'		reduce postfix_expression -> primary_expression 
  if ( c != 'c' )		shift ) 
@@ -330,17 +330,17 @@
  if ( c != 'c' )		reduce assignment_expression -> conditional_expression 
  if ( c != 'c' )		reduce expression -> assignment_expression
  if ( c != 'c' ) {		shift { <line terminate> 
- str		shift str <identifier> 
+ str		shift str
  str =		shift = 
  str =		reduce primary_expression -> identifier 
  str =		reduce postfix_expression -> primary_expression 
  str =		reduce unary_expression -> postfix_expression
  str =		 reduce assignment_operator -> =
- str = strdup		shift strdup <identifier> 
+ str = strdup		shift strdup
  str = strdup		reduce primary_expression -> identifier 
  str = strdup		reduce postfix_expression -> primary_expression 
  str = strdup (		shift ( 
- str = strdup ( "test"		shift "test" <string_literal> 
+ str = strdup ( "test"		shift "test"
  str = strdup ( "test"		reduce primary_expression -> string literal 
  str = strdup ( "test"		reduce postfix_expression -> primary_expression 
  str = strdup ( "test" )		shift ) 
@@ -360,82 +360,82 @@
  str = strdup ( "test" )		reduce assignment_expression -> conditional_expression 
  str = strdup ( "test" )		reduce argument_expression_list -> assignment_expression
  str = strdup ( "test" )		reduce postfix_expression -> postfix_expression(argument_expression_list)
- str = strdup ( "test" ) ;		shift ; <line terminate> 
-		reduce unary_expression -> postfix_expression
-		reduce cast_expression -> unary_expression
-		reduce multiplicative_expression -> cast_expression
-		reduce additive_expression -> multiplicative_expression
-		reduce shift_expression -> additive_expression
-		reduce relational_expression -> shift_expression
-		reduce equality_expression -> relational_expression
-		reduce and_expression -> equality_expression
-		reduce exclusive_or_expression -> and_expression
-		reduce inclusive_or_expression -> exclusive_or_expression
-		reduce logical_and_expression -> inclusive_or_expression
-		reduce logical_or_expression -> logical_and_expression
-		reduce conditional_expression -> logical_or_expression
-		reduce assignment_expression -> conditional_expression 
-		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
-		reduce expression -> assignment_expression
- printf		shift printf <identifier> 
- printf (		shift ( 
- printf (		reduce primary_expression -> identifier 
- printf (		reduce postfix_expression -> primary_expression 
- printf ( "test"		shift "test" <string_literal> 
- printf ( "test"		reduce primary_expression -> string literal 
- printf ( "test"		reduce postfix_expression -> primary_expression 
- printf ( "test" )		shift ) 
- printf ( "test" )		reduce unary_expression -> postfix_expression
- printf ( "test" )		reduce cast_expression -> unary_expression
- printf ( "test" )		reduce multiplicative_expression -> cast_expression
- printf ( "test" )		reduce additive_expression -> multiplicative_expression
- printf ( "test" )		reduce shift_expression -> additive_expression
- printf ( "test" )		reduce relational_expression -> shift_expression
- printf ( "test" )		reduce equality_expression -> relational_expression
- printf ( "test" )		reduce and_expression -> equality_expression
- printf ( "test" )		reduce exclusive_or_expression -> and_expression
- printf ( "test" )		reduce inclusive_or_expression -> exclusive_or_expression
- printf ( "test" )		reduce logical_and_expression -> inclusive_or_expression
- printf ( "test" )		reduce logical_or_expression -> logical_and_expression
- printf ( "test" )		reduce conditional_expression -> logical_or_expression
- printf ( "test" )		reduce assignment_expression -> conditional_expression 
- printf ( "test" )		reduce argument_expression_list -> assignment_expression
- printf ( "test" )		reduce postfix_expression -> postfix_expression(argument_expression_list)
- printf ( "test" ) ;		shift ; <line terminate> 
-		reduce unary_expression -> postfix_expression
-		reduce cast_expression -> unary_expression
-		reduce multiplicative_expression -> cast_expression
-		reduce additive_expression -> multiplicative_expression
-		reduce shift_expression -> additive_expression
-		reduce relational_expression -> shift_expression
-		reduce equality_expression -> relational_expression
-		reduce and_expression -> equality_expression
-		reduce exclusive_or_expression -> and_expression
-		reduce inclusive_or_expression -> exclusive_or_expression
-		reduce logical_and_expression -> inclusive_or_expression
-		reduce logical_or_expression -> logical_and_expression
-		reduce conditional_expression -> logical_or_expression
-		reduce assignment_expression -> conditional_expression 
-		reduce expression -> assignment_expression
- }		shift } <line terminate> 
+ str = strdup ( "test" ) ;		shift ;
+ str = strdup ( "test" ) ;		reduce unary_expression -> postfix_expression
+ str = strdup ( "test" ) ;		reduce cast_expression -> unary_expression
+ str = strdup ( "test" ) ;		reduce multiplicative_expression -> cast_expression
+ str = strdup ( "test" ) ;		reduce additive_expression -> multiplicative_expression
+ str = strdup ( "test" ) ;		reduce shift_expression -> additive_expression
+ str = strdup ( "test" ) ;		reduce relational_expression -> shift_expression
+ str = strdup ( "test" ) ;		reduce equality_expression -> relational_expression
+ str = strdup ( "test" ) ;		reduce and_expression -> equality_expression
+ str = strdup ( "test" ) ;		reduce exclusive_or_expression -> and_expression
+ str = strdup ( "test" ) ;		reduce inclusive_or_expression -> exclusive_or_expression
+ str = strdup ( "test" ) ;		reduce logical_and_expression -> inclusive_or_expression
+ str = strdup ( "test" ) ;		reduce logical_or_expression -> logical_and_expression
+ str = strdup ( "test" ) ;		reduce conditional_expression -> logical_or_expression
+ str = strdup ( "test" ) ;		reduce assignment_expression -> conditional_expression 
+ str = strdup ( "test" ) ;		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
+ str = strdup ( "test" ) ;		reduce expression -> assignment_expression
+ str = strdup ( "test" ) ; printf		shift printf
+ str = strdup ( "test" ) ; printf (		shift ( 
+ str = strdup ( "test" ) ; printf (		reduce primary_expression -> identifier 
+ str = strdup ( "test" ) ; printf (		reduce postfix_expression -> primary_expression 
+ str = strdup ( "test" ) ; printf ( "test"		shift "test"
+ str = strdup ( "test" ) ; printf ( "test"		reduce primary_expression -> string literal 
+ str = strdup ( "test" ) ; printf ( "test"		reduce postfix_expression -> primary_expression 
+ str = strdup ( "test" ) ; printf ( "test" )		shift ) 
+ str = strdup ( "test" ) ; printf ( "test" )		reduce unary_expression -> postfix_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce cast_expression -> unary_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce multiplicative_expression -> cast_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce additive_expression -> multiplicative_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce shift_expression -> additive_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce relational_expression -> shift_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce equality_expression -> relational_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce and_expression -> equality_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce exclusive_or_expression -> and_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce inclusive_or_expression -> exclusive_or_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce logical_and_expression -> inclusive_or_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce logical_or_expression -> logical_and_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce conditional_expression -> logical_or_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce assignment_expression -> conditional_expression 
+ str = strdup ( "test" ) ; printf ( "test" )		reduce argument_expression_list -> assignment_expression
+ str = strdup ( "test" ) ; printf ( "test" )		reduce postfix_expression -> postfix_expression(argument_expression_list)
+ str = strdup ( "test" ) ; printf ( "test" ) ;		shift ;
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce unary_expression -> postfix_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce cast_expression -> unary_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce multiplicative_expression -> cast_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce additive_expression -> multiplicative_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce shift_expression -> additive_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce relational_expression -> shift_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce equality_expression -> relational_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce and_expression -> equality_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce exclusive_or_expression -> and_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce inclusive_or_expression -> exclusive_or_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce logical_and_expression -> inclusive_or_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce logical_or_expression -> logical_and_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce conditional_expression -> logical_or_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce assignment_expression -> conditional_expression 
+ str = strdup ( "test" ) ; printf ( "test" ) ;		reduce expression -> assignment_expression
+ str = strdup ( "test" ) ; printf ( "test" ) ; }		shift } <line terminate> 
  return		shift return
- return 0		shift 0 <constant> 
+ return 0		shift 0
  return 0		reduce primary_expression -> constant 
  return 0		reduce postfix_expression -> primary_expression 
- return 0 ;		shift ; <line terminate> 
-		reduce unary_expression -> postfix_expression
-		reduce cast_expression -> unary_expression
-		reduce multiplicative_expression -> cast_expression
-		reduce additive_expression -> multiplicative_expression
-		reduce shift_expression -> additive_expression
-		reduce relational_expression -> shift_expression
-		reduce equality_expression -> relational_expression
-		reduce and_expression -> equality_expression
-		reduce exclusive_or_expression -> and_expression
-		reduce inclusive_or_expression -> exclusive_or_expression
-		reduce logical_and_expression -> inclusive_or_expression
-		reduce logical_or_expression -> logical_and_expression
-		reduce conditional_expression -> logical_or_expression
-		reduce assignment_expression -> conditional_expression 
-		reduce expression -> assignment_expression
- }		shift } <line terminate> 
+ return 0 ;		shift ;
+ return 0 ;		reduce unary_expression -> postfix_expression
+ return 0 ;		reduce cast_expression -> unary_expression
+ return 0 ;		reduce multiplicative_expression -> cast_expression
+ return 0 ;		reduce additive_expression -> multiplicative_expression
+ return 0 ;		reduce shift_expression -> additive_expression
+ return 0 ;		reduce relational_expression -> shift_expression
+ return 0 ;		reduce equality_expression -> relational_expression
+ return 0 ;		reduce and_expression -> equality_expression
+ return 0 ;		reduce exclusive_or_expression -> and_expression
+ return 0 ;		reduce inclusive_or_expression -> exclusive_or_expression
+ return 0 ;		reduce logical_and_expression -> inclusive_or_expression
+ return 0 ;		reduce logical_or_expression -> logical_and_expression
+ return 0 ;		reduce conditional_expression -> logical_or_expression
+ return 0 ;		reduce assignment_expression -> conditional_expression 
+ return 0 ;		reduce expression -> assignment_expression
+ return 0 ; }		shift } <line terminate> 
