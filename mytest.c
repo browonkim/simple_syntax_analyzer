@@ -1,7 +1,7 @@
 int a; char* str;
 float f[10];
 
-int myFunction(char*);
+int myFunction(char* a);
 
 void main(int argc, char* argv) {
     char c;      int d;
@@ -22,7 +22,6 @@ int myFunction(char* str) {
 return 0;
     int i;
     for(i=3;i<3;i++){
-        i < 2;
         i ++;
     }
 }
