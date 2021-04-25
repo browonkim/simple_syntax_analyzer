@@ -1,29 +1,29 @@
  int		shift int
  int		reduce type_specifier -> int
  int a		shift a <identifier> 
- int a		reduce 
+ int a		reduce declaration_specifiers -> type_specifier
  int a		reduce 
  int a ;		shift ; <line terminate> 
 		reduce 
-		reduce 
-		reduce 
-
+		reduce init_declarator -> declarator
+		reduce init_declarator_list -> init_declarator
+		reduce declaration -> declaration_specifiers init_declaratior_list;
  char		shift char
  char		reduce type_specifier -> char
  char *		shift * 
- char *		reduce 
+ char *		reduce declaration_specifiers -> type_specifier
  char * str		shift str <identifier> 
  char * str		reduce 
  char * str		reduce 
  char * str ;		shift ; <line terminate> 
 		reduce 
-		reduce 
-		reduce 
-
+		reduce init_declarator -> declarator
+		reduce init_declarator_list -> init_declarator
+		reduce declaration -> declaration_specifiers init_declaratior_list;
  float		shift float
  float		reduce type_specifier -> float
  float f		shift f <identifier> 
- float f		reduce 
+ float f		reduce declaration_specifiers -> type_specifier
  float f		reduce 
  float f [		shift [ 
  float f [ 10		shift 10 <constant> 
@@ -43,23 +43,23 @@
  float f [ 10 ]		reduce logical_and_expression -> inclusive_or_expression
  float f [ 10 ]		reduce logical_or_expression -> logical_and_expression
  float f [ 10 ]		reduce conditional_expression -> logical_or_expression
-
+ float f [ 10 ]		reduce constant_expression -> conditional_expression
  float f [ 10 ]		reduce 
  float f [ 10 ] ;		shift ; <line terminate> 
 		reduce 
-		reduce 
-		reduce 
-
+		reduce init_declarator -> declarator
+		reduce init_declarator_list -> init_declarator
+		reduce declaration -> declaration_specifiers init_declaratior_list;
  void		shift void
  void		reduce type_specifier -> void
  void main		shift main <identifier> 
- void main		reduce 
+ void main		reduce declaration_specifiers -> type_specifier
  void main		reduce 
  void main (		shift ( 
  void main ( int		shift int
  void main ( int		reduce type_specifier -> int
  void main ( int argc		shift argc <identifier> 
- void main ( int argc		reduce 
+ void main ( int argc		reduce declaration_specifiers -> type_specifier
  void main ( int argc		reduce 
  void main ( int argc ,		shift , 
  void main ( int argc ,		reduce 
@@ -68,7 +68,7 @@
  void main ( int argc , char		shift char
  void main ( int argc , char		reduce type_specifier -> char
  void main ( int argc , char *		shift * 
- void main ( int argc , char *		reduce 
+ void main ( int argc , char *		reduce declaration_specifiers -> type_specifier
  void main ( int argc , char * argv		shift argv <identifier> 
  void main ( int argc , char * argv		reduce 
  void main ( int argc , char * argv		reduce 
@@ -83,27 +83,27 @@
  char		shift char
  char		reduce type_specifier -> char
  char c		shift c <identifier> 
- char c		reduce 
+ char c		reduce declaration_specifiers -> type_specifier
  char c		reduce 
  char c ;		shift ; <line terminate> 
 		reduce 
-		reduce 
-		reduce 
-
+		reduce init_declarator -> declarator
+		reduce init_declarator_list -> init_declarator
+		reduce declaration -> declaration_specifiers init_declaratior_list;
  int		shift int
  int		reduce type_specifier -> int
  int d		shift d <identifier> 
- int d		reduce 
+ int d		reduce declaration_specifiers -> type_specifier
  int d		reduce 
  int d ;		shift ; <line terminate> 
 		reduce 
-		reduce 
-		reduce 
-
+		reduce init_declarator -> declarator
+		reduce init_declarator_list -> init_declarator
+		reduce declaration -> declaration_specifiers init_declaratior_list;
  int		shift int
  int		reduce type_specifier -> int
  int i		shift i <identifier> 
- int i		reduce 
+ int i		reduce declaration_specifiers -> type_specifier
  int i		reduce 
  int i =		shift = 
  int i =		reduce 
@@ -124,10 +124,10 @@
 		reduce logical_and_expression -> inclusive_or_expression
 		reduce logical_or_expression -> logical_and_expression
 		reduce conditional_expression -> logical_or_expression
-
-		reduce 
-		reduce 
-
+		reduce assignment_expression -> conditional_expression 
+		reduce init_declarator -> declarator = initializer
+		reduce init_declarator_list -> init_declarator
+		reduce declaration -> declaration_specifiers init_declaratior_list;
  while		shift while
  while (		shift ( 
  while ( i		shift i <identifier> 
@@ -157,15 +157,15 @@
  while ( i < 10 )		reduce logical_and_expression -> inclusive_or_expression
  while ( i < 10 )		reduce logical_or_expression -> logical_and_expression
  while ( i < 10 )		reduce conditional_expression -> logical_or_expression
-
-
+ while ( i < 10 )		reduce assignment_expression -> conditional_expression 
+ while ( i < 10 )		reduce expression -> assignment_expression
  while ( i < 10 ) {		shift { <line terminate> 
  a		shift a <identifier> 
  a +=		shift += 
  a +=		reduce primary_expression -> identifier 
  a +=		reduce postfix_expression -> primary_expression 
  a +=		reduce unary_expression -> postfix_expression
-
+ a +=		 reduce assignment_operator -> +=
  a += (		shift ( 
  a += ( d		shift d <identifier> 
  a += ( d		reduce primary_expression -> identifier 
@@ -192,8 +192,8 @@
  a += ( d + 1 )		reduce logical_and_expression -> inclusive_or_expression
  a += ( d + 1 )		reduce logical_or_expression -> logical_and_expression
  a += ( d + 1 )		reduce conditional_expression -> logical_or_expression
-
-
+ a += ( d + 1 )		reduce assignment_expression -> conditional_expression 
+ a += ( d + 1 )		reduce expression -> assignment_expression
  a += ( d + 1 )		reduce primary_expression -> (expression) 
  a += ( d + 1 )		reduce postfix_expression -> primary_expression 
  a += ( d + 1 ) ;		shift ; <line terminate> 
@@ -210,9 +210,9 @@
 		reduce logical_and_expression -> inclusive_or_expression
 		reduce logical_or_expression -> logical_and_expression
 		reduce conditional_expression -> logical_or_expression
-
-
-
+		reduce assignment_expression -> conditional_expression 
+		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
+		reduce expression -> assignment_expression
  f		shift f <identifier> 
  f [		shift [ 
  f [		reduce primary_expression -> identifier 
@@ -236,12 +236,12 @@
  f [ i ++ ]		reduce logical_and_expression -> inclusive_or_expression
  f [ i ++ ]		reduce logical_or_expression -> logical_and_expression
  f [ i ++ ]		reduce conditional_expression -> logical_or_expression
-
-
+ f [ i ++ ]		reduce assignment_expression -> conditional_expression 
+ f [ i ++ ]		reduce expression -> assignment_expression
  f [ i ++ ]		reduce postfix_expression -> postfix_expreesion [expression] 
  f [ i ++ ] =		shift = 
  f [ i ++ ] =		reduce unary_expression -> postfix_expression
-
+ f [ i ++ ] =		 reduce assignment_operator -> =
  f [ i ++ ] = 0		shift 0 <constant> 
  f [ i ++ ] = 0		reduce primary_expression -> constant 
  f [ i ++ ] = 0		reduce postfix_expression -> primary_expression 
@@ -259,9 +259,9 @@
 		reduce logical_and_expression -> inclusive_or_expression
 		reduce logical_or_expression -> logical_and_expression
 		reduce conditional_expression -> logical_or_expression
-
-
-
+		reduce assignment_expression -> conditional_expression 
+		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
+		reduce expression -> assignment_expression
  }		shift } <line terminate> 
  return		shift return
  return ;		shift ; <line terminate> 
@@ -269,13 +269,13 @@
  int		shift int
  int		reduce type_specifier -> int
  int myFunction		shift myFunction <identifier> 
- int myFunction		reduce 
+ int myFunction		reduce declaration_specifiers -> type_specifier
  int myFunction		reduce 
  int myFunction (		shift ( 
  int myFunction ( char		shift char
  int myFunction ( char		reduce type_specifier -> char
  int myFunction ( char *		shift * 
- int myFunction ( char *		reduce 
+ int myFunction ( char *		reduce declaration_specifiers -> type_specifier
  int myFunction ( char * str		shift str <identifier> 
  int myFunction ( char * str		reduce 
  int myFunction ( char * str		reduce 
@@ -290,13 +290,13 @@
  char		shift char
  char		reduce type_specifier -> char
  char c		shift c <identifier> 
- char c		reduce 
+ char c		reduce declaration_specifiers -> type_specifier
  char c		reduce 
  char c ;		shift ; <line terminate> 
 		reduce 
-		reduce 
-		reduce 
-
+		reduce init_declarator -> declarator
+		reduce init_declarator_list -> init_declarator
+		reduce declaration -> declaration_specifiers init_declaratior_list;
  if		shift if
  if (		shift ( 
  if ( c		shift c <identifier> 
@@ -327,15 +327,15 @@
  if ( c != 'c' )		reduce logical_and_expression -> inclusive_or_expression
  if ( c != 'c' )		reduce logical_or_expression -> logical_and_expression
  if ( c != 'c' )		reduce conditional_expression -> logical_or_expression
-
-
+ if ( c != 'c' )		reduce assignment_expression -> conditional_expression 
+ if ( c != 'c' )		reduce expression -> assignment_expression
  if ( c != 'c' ) {		shift { <line terminate> 
  str		shift str <identifier> 
  str =		shift = 
  str =		reduce primary_expression -> identifier 
  str =		reduce postfix_expression -> primary_expression 
  str =		reduce unary_expression -> postfix_expression
-
+ str =		 reduce assignment_operator -> =
  str = strdup		shift strdup <identifier> 
  str = strdup		reduce primary_expression -> identifier 
  str = strdup		reduce postfix_expression -> primary_expression 
@@ -357,7 +357,7 @@
  str = strdup ( "test" )		reduce logical_and_expression -> inclusive_or_expression
  str = strdup ( "test" )		reduce logical_or_expression -> logical_and_expression
  str = strdup ( "test" )		reduce conditional_expression -> logical_or_expression
-
+ str = strdup ( "test" )		reduce assignment_expression -> conditional_expression 
  str = strdup ( "test" )		reduce argument_expression_list -> assignment_expression
  str = strdup ( "test" )		reduce postfix_expression -> postfix_expression(argument_expression_list)
  str = strdup ( "test" ) ;		shift ; <line terminate> 
@@ -374,9 +374,9 @@
 		reduce logical_and_expression -> inclusive_or_expression
 		reduce logical_or_expression -> logical_and_expression
 		reduce conditional_expression -> logical_or_expression
-
-
-
+		reduce assignment_expression -> conditional_expression 
+		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
+		reduce expression -> assignment_expression
  printf		shift printf <identifier> 
  printf (		shift ( 
  printf (		reduce primary_expression -> identifier 
@@ -398,7 +398,7 @@
  printf ( "test" )		reduce logical_and_expression -> inclusive_or_expression
  printf ( "test" )		reduce logical_or_expression -> logical_and_expression
  printf ( "test" )		reduce conditional_expression -> logical_or_expression
-
+ printf ( "test" )		reduce assignment_expression -> conditional_expression 
  printf ( "test" )		reduce argument_expression_list -> assignment_expression
  printf ( "test" )		reduce postfix_expression -> postfix_expression(argument_expression_list)
  printf ( "test" ) ;		shift ; <line terminate> 
@@ -415,8 +415,8 @@
 		reduce logical_and_expression -> inclusive_or_expression
 		reduce logical_or_expression -> logical_and_expression
 		reduce conditional_expression -> logical_or_expression
-
-
+		reduce assignment_expression -> conditional_expression 
+		reduce expression -> assignment_expression
  }		shift } <line terminate> 
  return		shift return
  return 0		shift 0 <constant> 
@@ -436,6 +436,6 @@
 		reduce logical_and_expression -> inclusive_or_expression
 		reduce logical_or_expression -> logical_and_expression
 		reduce conditional_expression -> logical_or_expression
-
-
+		reduce assignment_expression -> conditional_expression 
+		reduce expression -> assignment_expression
  }		shift } <line terminate> 
