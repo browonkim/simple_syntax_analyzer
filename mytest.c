@@ -1,6 +1,8 @@
 int a; char* str;
 float f[10];
 
+int myFunction(char*);
+
 void main(int argc, char* argv) {
     char c;      int d;
     int i=0;
@@ -18,4 +20,9 @@ int myFunction(char* str) {
         printf("test");
     }
 return 0;
+    int i;
+    for(i=3;i<3;i++){
+        i < 2;
+        i ++;
+    }
 }

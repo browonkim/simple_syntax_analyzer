@@ -186,11 +186,11 @@ init_declarator
 	;
 
 storage_class_specifier
-	: TYPEDEF {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| EXTERN {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| STATIC {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| AUTO {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| REGISTER {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: TYPEDEF {fprintf(output, "%s\t\treduce storage_class_specifier -> typedef\n", totalstr);}
+	| EXTERN {fprintf(output, "%s\t\treduce storage_class_specifier -> extern\n", totalstr);}
+	| STATIC {fprintf(output, "%s\t\treduce storage_class_specifier -> static\n", totalstr);}
+	| AUTO {fprintf(output, "%s\t\treduce storage_class_specifier -> auto\n", totalstr);}
+	| REGISTER {fprintf(output, "%s\t\treduce storage_class_specifier -> register\n", totalstr);}
 	;
 
 type_specifier
@@ -209,134 +209,134 @@ type_specifier
 	;
 
 struct_or_union_specifier
-	: struct_or_union IDENTIFIER '{' struct_declaration_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| struct_or_union '{' struct_declaration_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| struct_or_union IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: struct_or_union IDENTIFIER '{' struct_declaration_list '}' {fprintf(output, "%s\t\treduce struct_or_union_specifier -> struct_or_union identifier {struct_declaration_list}\n", totalstr);}
+	| struct_or_union '{' struct_declaration_list '}' {fprintf(output, "%s\t\treduce struct_or_union_specifier -> struct_or_union {struct_declaration_list}\n", totalstr);}
+	| struct_or_union IDENTIFIER {fprintf(output, "%s\t\treduce struct_or_union_specifier -> struct_or_union identifier\n", totalstr);}
 	;
 
 struct_or_union
-	: STRUCT {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| UNION {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: STRUCT {fprintf(output, "%s\t\treduce struct_or_union -> struct\n", totalstr);}
+	| UNION {fprintf(output, "%s\t\treduce struct_or_union -> union\n", totalstr);}
 	;
 
 struct_declaration_list
-	: struct_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| struct_declaration_list struct_declaration {fprintf(output, "%s\t\treduce \n"), totalstr;}
+	: struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration\n", totalstr);}
+	| struct_declaration_list struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration_list struct_declaration\n"), totalstr;}
 	;
 
 struct_declaration
-	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce \n"); strcpy(totalstr, "");}
+	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce struct_declaration -> specifier_qualifier_list struct_declarator_list;\n"); strcpy(totalstr, "");}
 	;
 
 specifier_qualifier_list
-	: type_specifier specifier_qualifier_list {fprintf(output, "%s\t\treduce \n", totalstr, totalstr);}
-	| type_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| type_qualifier specifier_qualifier_list {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| type_qualifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: type_specifier specifier_qualifier_list {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_specifier specifier_qualifier_list\n", totalstr, totalstr);}
+	| type_specifier {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_specifier\n", totalstr);}
+	| type_qualifier specifier_qualifier_list {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_qualifier specifier_qualifier_list\n", totalstr);}
+	| type_qualifier {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_qualifier\n", totalstr);}
 	;
 
 struct_declarator_list
-	: struct_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| struct_declarator_list ',' struct_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: struct_declarator {fprintf(output, "%s\t\treduce struct_declarator_list -> struct_declarator\n", totalstr);}
+	| struct_declarator_list ',' struct_declarator {fprintf(output, "%s\t\treduce struct_declarator_list -> struct_declarator_list, struct_declarator\n", totalstr);}
 	;
 
 struct_declarator
-	: declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| ':' constant_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declarator ':' constant_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: declarator {fprintf(output, "%s\t\treduce struct_declarator -> declarator\n", totalstr);}
+	| ':' constant_expression {fprintf(output, "%s\t\treduce struct_declarator:constant_expression\n", totalstr);}
+	| declarator ':' constant_expression {fprintf(output, "%s\t\treduce struct_declarator -> declarator:constant_expression\n", totalstr);}
 	;
 
 enum_specifier
-	: ENUM '{' enumerator_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| ENUM IDENTIFIER '{' enumerator_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| ENUM IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: ENUM '{' enumerator_list '}' {fprintf(output, "%s\t\treduce enum_specifier -> enum {enumerator_list}\n", totalstr);}
+	| ENUM IDENTIFIER '{' enumerator_list '}' {fprintf(output, "%s\t\treduce enum_specifier -> enum identifier {enumerator_list}\n", totalstr);}
+	| ENUM IDENTIFIER {fprintf(output, "%s\t\treduce enum_specifier -> enum identifier\n", totalstr);}
 	;
 
 enumerator_list
-	: enumerator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| enumerator_list ',' enumerator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: enumerator {fprintf(output, "%s\t\treduce enumerator_list -> enumerator\n", totalstr);}
+	| enumerator_list ',' enumerator {fprintf(output, "%s\t\treduce enumerator_list -> enumerator_list, enumerator\n", totalstr);}
 	;
 
 enumerator
-	: IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| IDENTIFIER '=' constant_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: IDENTIFIER {fprintf(output, "%s\t\treduce enumerator -> identifier\n", totalstr);}
+	| IDENTIFIER '=' constant_expression {fprintf(output, "%s\t\treduce enumerator -> identifier = constant_expression\n", totalstr);}
 	;
 
 type_qualifier
-	: CONST {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| VOLATILE {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: CONST {fprintf(output, "%s\t\treduce type_qualifier -> const\n", totalstr);}
+	| VOLATILE {fprintf(output, "%s\t\treduce type_qualifier -> volatile\n", totalstr);}
 	;
 
 declarator
-	: pointer direct_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: pointer direct_declarator {fprintf(output, "%s\t\treduce declarator -> pointer direct_declarator\n", totalstr);}
+	| direct_declarator {fprintf(output, "%s\t\treduce declarator -> direct_declarator\n", totalstr);}
 	;
 
 direct_declarator
-	: IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '(' declarator ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_declarator '[' constant_expression ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_declarator '[' ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_declarator '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_declarator '(' identifier_list ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_declarator '(' ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: IDENTIFIER {fprintf(output, "%s\t\treduce direct_declarator -> identifier\n", totalstr);}
+	| '(' declarator ')' {fprintf(output, "%s\t\treduce direct_declarator -> (declarator)\n", totalstr);}
+	| direct_declarator '[' constant_expression ']' {fprintf(output, "%s\t\treduce direct_declarator -> direct_declarator [constant_expression]\n", totalstr);}
+	| direct_declarator '[' ']' {fprintf(output, "%s\t\treduce direct_declarator -> direct_declarator[]\n", totalstr);}
+	| direct_declarator '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce direct_declarator -> direct_declarator(parameter_type_list)\n", totalstr);}
+	| direct_declarator '(' identifier_list ')' {fprintf(output, "%s\t\treduce direct_declarator -> direct_declarator(identifier_list) \n", totalstr);}
+	| direct_declarator '(' ')' {fprintf(output, "%s\t\treduce direct_declarator -> direct_declarator()\n", totalstr);}
 	;
 
 pointer
-	: '*' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '*' type_qualifier_list {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '*' pointer {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '*' type_qualifier_list pointer {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: '*' {fprintf(output, "%s\t\treduce pointer -> *\n", totalstr);}
+	| '*' type_qualifier_list {fprintf(output, "%s\t\treduce pointer -> *type_qualifier_list\n", totalstr);}
+	| '*' pointer {fprintf(output, "%s\t\treduce pointer -> *pointer\n", totalstr);}
+	| '*' type_qualifier_list pointer {fprintf(output, "%s\t\treduce pointer -> *type_qualifier_list pointer\n", totalstr);}
 	;
 
 type_qualifier_list
-	: type_qualifier {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| type_qualifier_list type_qualifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: type_qualifier {fprintf(output, "%s\t\treduce type_qualifier_list -> type_qualifier\n", totalstr);}
+	| type_qualifier_list type_qualifier {fprintf(output, "%s\t\treduce type_qualifier_list -> type_qualifier_list type_qualifier \n", totalstr);}
 	;
 
 
 parameter_type_list
-	: parameter_list {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| parameter_list ',' ELLIPSIS {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: parameter_list {fprintf(output, "%s\t\treduce parameter_type_list -> parameter_list\n", totalstr);}
+	| parameter_list ',' ELLIPSIS {fprintf(output, "%s\t\treduce parameter_type_list -> parameter_list, ...\n", totalstr);}
 	;
 
 parameter_list
-	: parameter_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| parameter_list ',' parameter_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: parameter_declaration {fprintf(output, "%s\t\treduce parameter_list -> parameter_declaration\n", totalstr);}
+	| parameter_list ',' parameter_declaration {fprintf(output, "%s\t\treduce parameter_list -> parameter_list ',' parameter_declaration\n", totalstr);}
 	;
 
 parameter_declaration
-	: declaration_specifiers declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declaration_specifiers abstract_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declaration_specifiers {fprintf(output, "%s\t\treduce \n, totalstr");}
+	: declaration_specifiers declarator {fprintf(output, "%s\t\treduce parameter_declaration -> declaration_specifiers declarator\n", totalstr);}
+	| declaration_specifiers abstract_declarator {fprintf(output, "%s\t\treduce parameter_declaration -> declaration_specifiers abstract_declarator\n", totalstr);}
+	| declaration_specifiers {fprintf(output, "%s\t\treduce parameter_declaration -> declaration_specifiers\n", totalstr);}
 	;
 
 identifier_list
-	: IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| identifier_list ',' IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: IDENTIFIER {fprintf(output, "%s\t\treduce identifier_list -> identifier\n", totalstr);}
+	| identifier_list ',' IDENTIFIER {fprintf(output, "%s\t\treduce identifier_list -> identifier_list, identifier\n", totalstr);}
 	;
 
 type_name 
-	: specifier_qualifier_list {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| specifier_qualifier_list abstract_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: specifier_qualifier_list {fprintf(output, "%s\t\treduce type_name -> specifier_qualifier_list\n", totalstr);}
+	| specifier_qualifier_list abstract_declarator {fprintf(output, "%s\t\treduce type_name -> specifier_qualifier_list abstract_declarator\n", totalstr);}
 	;
 
 abstract_declarator
-	: pointer {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_abstract_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| pointer direct_abstract_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: pointer {fprintf(output, "%s\t\treduce abstract_declarator -> pointer\n", totalstr);}
+	| direct_abstract_declarator {fprintf(output, "%s\t\treduce abstract_declarator -> direct_abstract_declarator\n", totalstr);}
+	| pointer direct_abstract_declarator {fprintf(output, "%s\t\treduce abstract_declarator -> pointer direct_abstract_declarator\n", totalstr);}
 	;
 
 direct_abstract_declarator
-	: '(' abstract_declarator ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '[' ']' {fprintf(output, "%s\t\t\n", totalstr);}
-	| '[' constant_expression ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_abstract_declarator '[' ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_abstract_declarator '[' constant_expression ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '(' ')' {fprintf(output, "%s\t\t\n", totalstr);}
-	| '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_abstract_declarator '(' ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| direct_abstract_declarator '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: '(' abstract_declarator ')' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> (abstract_declarator)\n", totalstr);}
+	| '[' ']' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> []\n", totalstr);}
+	| '[' constant_expression ']' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> [constant_expression] \n", totalstr);}
+	| direct_abstract_declarator '[' ']' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> direct_abstract_declarator[]\n", totalstr);}
+	| direct_abstract_declarator '[' constant_expression ']' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> direct_abstract_declarator[constant_expression]\n", totalstr);}
+	| '(' ')' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> ()\n", totalstr);}
+	| '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> (parameter_type_list)\n", totalstr);}
+	| direct_abstract_declarator '(' ')' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> direct_abstract_declarator()\n", totalstr);}
+	| direct_abstract_declarator '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce direct_abstract_declarator -> direct_abstract_declarator(parameter_type_list)\n", totalstr);}
 	;
 
 initializer
