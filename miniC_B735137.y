@@ -360,69 +360,69 @@ statement
 	;
 
 labeled_statement
-	: IDENTIFIER ':' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| CASE constant_expression ':' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| DEFAULT ':' statement {fprintf(output, "%s\t\treduce \n", totalstr);} 
+	: IDENTIFIER ':' statement {fprintf(output, "%s\t\treduce labeled_statement -> identifier :statement\n", totalstr);}
+	| CASE constant_expression ':' statement {fprintf(output, "%s\t\treduce labeled_statement -> case constant_expression :statement\n", totalstr);}
+	| DEFAULT ':' statement {fprintf(output, "%s\t\treduce labeled_statement -> default: statement\n", totalstr);} 
 	;
 
 compound_statement
-	: '{' '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '{' statement_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '{' declaration_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '{' declaration_list statement_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: '{' '}' {fprintf(output, "%s\t\treduce compound_statement -> {}\n", totalstr);}
+	| '{' statement_list '}' {fprintf(output, "%s\t\treduce compound_statement -> {statement_list}\n", totalstr);}
+	| '{' declaration_list '}' {fprintf(output, "%s\t\treduce compound_statement -> {declaration_list}\n", totalstr);}
+	| '{' declaration_list statement_list '}' {fprintf(output, "%s\t\treduce compound_statement -> {declaration_list statement_list}\n", totalstr);}
 	;
 
 declaration_list
-	: declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declaration_list declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: declaration {fprintf(output, "%s\t\treduce declaration_list -> declaration\n", totalstr);}
+	| declaration_list declaration {fprintf(output, "%s\t\treduce declaration_list -> declaration_list declaration\n", totalstr);}
 	;
 
 statement_list
-	: statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| statement_list statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: statement {fprintf(output, "%s\t\treduce statement_list -> statement\n", totalstr);}
+	| statement_list statement {fprintf(output, "%s\t\treduce statement_list -> statement_list statement\n", totalstr);}
 	;
 
 expression_statement
-	: ';' {fprintf(output, "%s\t\treduce \n", totalstr);strcpy(totalstr,"");}
-	| expression ';' {fprintf(output, "%s\t\treduce \n", totalstr);strcpy(totalstr,"");}
+	: ';' {fprintf(output, "%s\t\treduce expression_statement -> ;\n", totalstr);strcpy(totalstr,"");}
+	| expression ';' {fprintf(output, "%s\t\treduce expression_statement -> expression;\n", totalstr);strcpy(totalstr,"");}
 	;
 
 selection_statement
-	: IF '(' expression ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| IF '(' expression ')' statement ELSE statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| SWITCH '(' expression ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: IF '(' expression ')' statement {fprintf(output, "%s\t\treduce selection_statement -> if(expression) statement\n", totalstr);}
+	| IF '(' expression ')' statement ELSE statement {fprintf(output, "%s\t\treduce if (expression) statement else statement\n", totalstr);}
+	| SWITCH '(' expression ')' statement {fprintf(output, "%s\t\treduce selection_statement -> switch(expression) statement\n", totalstr);}
 	;
 
 iteration_statement
-	: WHILE '(' expression ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| DO statement WHILE '(' expression ')' ';' {fprintf(output, "%s\t\treduce \n", totalstr);strcpy(totalstr,"");}
-	| FOR '(' expression_statement expression_statement ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| FOR '(' expression_statement expression_statement expression ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: WHILE '(' expression ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> while(expression) statement\n", totalstr);}
+	| DO statement WHILE '(' expression ')' ';' {fprintf(output, "%s\t\treduce iteration_statement -> do statement while(expression);\n", totalstr);strcpy(totalstr,"");}
+	| FOR '(' expression_statement expression_statement ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> for (expression_statement expression_statement) statement\n", totalstr);}
+	| FOR '(' expression_statement expression_statement expression ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> for (expression_statement expression_statement expression) statement\n", totalstr);}
 	;
 
 jump_statement
-	: GOTO IDENTIFIER ';' {{fprintf(output, "%s\t\treduce \n", totalstr);} strcpy(totalstr,"");}
-	| CONTINUE ';' {{fprintf(output, "%s\t\treduce \n", totalstr);} strcpy(totalstr,"");}
-	| BREAK ';' {{fprintf(output, "%s\t\treduce \n", totalstr);} strcpy(totalstr,"");}
-	| RETURN ';' { {fprintf(output, "%s\t\treduce \n", totalstr);}strcpy(totalstr,"");}
-	| RETURN expression ';' {{fprintf(output, "%s\t\treduce \n", totalstr);} strcpy(totalstr,"");}
+	: GOTO IDENTIFIER ';' {fprintf(output, "%s\t\treduce jump_statement -> goto identifier;\n", totalstr); strcpy(totalstr,"");}
+	| CONTINUE ';' {fprintf(output, "%s\t\treduce jump_statement -> continue;\n", totalstr); strcpy(totalstr,"");}
+	| BREAK ';' {fprintf(output, "%s\t\treduce jump_statement -> break;\n", totalstr); strcpy(totalstr,"");}
+	| RETURN ';' { fprintf(output, "%s\t\treduce jump_statement -> return;\n", totalstr);strcpy(totalstr,"");}
+	| RETURN expression ';' {fprintf(output, "%s\t\treduce jump_statement -> return expression;\n", totalstr); strcpy(totalstr,"");}
 	;
 
 translation_unit
-	: external_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| translation_unit external_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: external_declaration {fprintf(output, "%s\t\treduce translation_unit -> external_declaration\n", totalstr);}
+	| translation_unit external_declaration {fprintf(output, "%s\t\treduce translation_unit -> translation_unit external_declaration\n", totalstr);}
 	;
 
 external_declaration
-	: function_definition {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: function_definition {fprintf(output, "%s\t\treduce external_declaration -> function_definition\n", totalstr);}
+	| declaration {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", totalstr);}
 	;
 
 function_definition
-	: declaration_specifiers declarator declaration_list compound_statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declaration_specifiers declarator compound_statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declarator declaration_list compound_statement {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declarator compound_statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: declaration_specifiers declarator declaration_list compound_statement {fprintf(output, "%s\t\treduce function_definition -> declaration_specifiers declarator declaration_list compound_statement\n", totalstr);}
+	| declaration_specifiers declarator compound_statement {fprintf(output, "%s\t\treduce function_definition -> declaration_specifiers declarator compound_statement\n", totalstr);}
+	| declarator declaration_list compound_statement {fprintf(output, "%s\t\treduce function_definition -> declarator declaration_list compound_statement\n", totalstr);}
+	| declarator compound_statement {fprintf(output, "%s\t\treduce function_definition -> declarator compound_statement\n", totalstr);}
 	;
 
 %%
