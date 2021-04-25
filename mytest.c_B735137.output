@@ -481,34 +481,7 @@
  }		shift } <line terminate> 
 		reduce compound_statement -> {statement_list}
 		reduce statement -> compound_statement 
- return		shift return
- return		reduce selection_statement -> if(expression) statement
- return		reduce statement -> selection_statement
- return		reduce statement_list -> statement
- return 0		shift 0
- return 0		reduce primary_expression -> constant 
- return 0		reduce postfix_expression -> primary_expression 
- return 0 ;		shift ;
- return 0 ;		reduce unary_expression -> postfix_expression
- return 0 ;		reduce cast_expression -> unary_expression
- return 0 ;		reduce multiplicative_expression -> cast_expression
- return 0 ;		reduce additive_expression -> multiplicative_expression
- return 0 ;		reduce shift_expression -> additive_expression
- return 0 ;		reduce relational_expression -> shift_expression
- return 0 ;		reduce equality_expression -> relational_expression
- return 0 ;		reduce and_expression -> equality_expression
- return 0 ;		reduce exclusive_or_expression -> and_expression
- return 0 ;		reduce inclusive_or_expression -> exclusive_or_expression
- return 0 ;		reduce logical_and_expression -> inclusive_or_expression
- return 0 ;		reduce logical_or_expression -> logical_and_expression
- return 0 ;		reduce conditional_expression -> logical_or_expression
- return 0 ;		reduce assignment_expression -> conditional_expression 
- return 0 ;		reduce expression -> assignment_expression
- return 0 ;		reduce jump_statement -> return expression;
-		reduce statement -> jump_statement 
-		reduce statement_list -> statement_list statement
- }		shift } <line terminate> 
-		reduce compound_statement -> {declaration_list statement_list}
-		reduce function_definition -> declaration_specifiers declarator compound_statement
-		reduce external_declaration -> function_definition
-		reduce translation_unit -> translation_unit external_declaration
+ int		shift int
+ int		reduce selection_statement -> if(expression) statement
+ int		reduce statement -> selection_statement
+ int		reduce statement_list -> statement
