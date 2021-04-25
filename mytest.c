@@ -19,5 +19,7 @@ int myFunction(char* str) {
         str = strdup("test");
         printf("test");
     }
+    int i;
+    for( i = 3; i<2; i++);
     return 0;
 }
