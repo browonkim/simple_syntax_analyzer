@@ -25,87 +25,87 @@ char totalstr[500];
 %%
 
 primary_expression
-	: IDENTIFIER {fprintf(output, "reduce primary_expression -> IDENTIFIER \n");}
-	| CONSTANT {fprintf(output, "reduce primary_expression -> CONSTANT \n");}
-	| STRING_LITERAL {fprintf(output, "reduce primary_expression -> STRING_LITERAL \n");}
-	| '(' expression ')' {fprintf(output, "reduce primary_expression -> ( expression ) -> \n");}
+	: IDENTIFIER {fprintf(output, "%s\t\treduce primary_expression -> identifier \n", totalstr);}
+	| CONSTANT {fprintf(output, "%s\t\treduce primary_expression -> constant \n", totalstr);}
+	| STRING_LITERAL {fprintf(output, "%s\t\treduce primary_expression -> string literal \n", totalstr);}
+	| '(' expression ')' {fprintf(output, "%s\t\treduce primary_expression -> (expression) \n", totalstr);}
 	;
 
 postfix_expression
-	: primary_expression {fprintf(output, "reduce postfix_expression -> primary_expression \n");}
-	| postfix_expression '[' expression ']' {fprintf(output, "\n");}
-	| postfix_expression '(' ')' {fprintf(output, "\n");}
-	| postfix_expression '(' argument_expression_list ')' {fprintf(output, "\n");}
-	| postfix_expression '.' IDENTIFIER {fprintf(output, "\n");}
-	| postfix_expression PTR_OP IDENTIFIER {fprintf(output, "\n");}
-	| postfix_expression INC_OP {fprintf(output, "\n");}
-	| postfix_expression DEC_OP {fprintf(output, "\n");}
+	: primary_expression {fprintf(output, "%s\t\treduce postfix_expression -> primary_expression \n", totalstr);}
+	| postfix_expression '[' expression ']' {fprintf(output, "%s\t\treduce postfix_expression -> postfix_expreesion [expression] \n", totalstr);}
+	| postfix_expression '(' ')' {fprintf(output, "%s\t\treduce postfix_expression -> postfix_expression() \n", totalstr);}
+	| postfix_expression '(' argument_expression_list ')' {fprintf(output, "%s\t\treduce postfix_expression -> postfix_expression(argument_expression_list)\n", totalstr);}
+	| postfix_expression '.' IDENTIFIER {fprintf(output, "%s\t\treduce postfix_expression -> postfix_expression.identifier\n", totalstr);}
+	| postfix_expression PTR_OP IDENTIFIER {fprintf(output, "%s\t\treduce postfix_expression -> postfix_expression->identifier\n", totalstr);}
+	| postfix_expression INC_OP {fprintf(output, "%s\t\treduce postfix_expression -> postfix_expression++\n", totalstr);}
+	| postfix_expression DEC_OP {fprintf(output, "%s\t\treduce postfix_expression -> postfix_expression--\n", totalstr);}
 	;
 
 argument_expression_list
-	: assignment_expression {fprintf(output, "\n");}
-	| argument_expression_list ',' assignment_expression {fprintf(output, "\n");}
+	: assignment_expression {fprintf(output, "%s\t\treduce argument_expression_list -> assignment_expression\n", totalstr);}
+	| argument_expression_list ',' assignment_expression {fprintf(output, "%s\t\treduce argument_expression_list -> argument_expression_list, assignment_expression\n", totalstr);}
 	;
 
 unary_expression
-	: postfix_expression {fprintf(output, "\n");}
-	| INC_OP unary_expression {fprintf(output, "\n");}
-	| DEC_OP unary_expression {fprintf(output, "\n");}
-	| unary_operator cast_expression {fprintf(output, "\n");}
-	| SIZEOF unary_expression {fprintf(output, "\n");}
-	| SIZEOF '(' type_name ')' {fprintf(output, "\n");}
+	: postfix_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| INC_OP unary_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| DEC_OP unary_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| unary_operator cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| SIZEOF unary_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| SIZEOF '(' type_name ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 unary_operator
-	: '&' {fprintf(output, "\n");}
-	| '*' {fprintf(output, "\n");}
-	| '+' {fprintf(output, "\n");}
-	| '-' {fprintf(output, "\n");}
-	| '~' {fprintf(output, "\n");}
-	| '!' {fprintf(output, "\n");}
+	: '&' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '*' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '+' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '-' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '~' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '!' {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 cast_expression
-	: unary_expression {fprintf(output, "\n");}
-	| '(' type_name ')' cast_expression {fprintf(output, "\n");}
+	: unary_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '(' type_name ')' cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 multiplicative_expression
-	: cast_expression {fprintf(output, "\n");}
-	| multiplicative_expression '*' cast_expression {fprintf(output, "\n");}
-	| multiplicative_expression '/' cast_expression {fprintf(output, "\n");}
-	| multiplicative_expression '%' cast_expression {fprintf(output, "\n");}
+	: cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| multiplicative_expression '*' cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| multiplicative_expression '/' cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| multiplicative_expression '%' cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 additive_expression
-	: multiplicative_expression {fprintf(output, "\n");}
-	| additive_expression '+' multiplicative_expression {fprintf(output, "\n");}
-	| additive_expression '-' multiplicative_expression {fprintf(output, "\n");}
+	: multiplicative_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| additive_expression '+' multiplicative_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| additive_expression '-' multiplicative_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 shift_expression
-	: additive_expression {fprintf(output, "\n");}
-	| shift_expression LEFT_OP additive_expression {fprintf(output, "\n");}
-	| shift_expression RIGHT_OP additive_expression {fprintf(output, "\n");}
+	: additive_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| shift_expression LEFT_OP additive_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| shift_expression RIGHT_OP additive_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 relational_expression
-	: shift_expression {fprintf(output, "\n");}
-	| relational_expression '<' shift_expression {fprintf(output, "\n");}
-	| relational_expression '>' shift_expression {fprintf(output, "\n");}
-	| relational_expression LE_OP shift_expression {fprintf(output, "\n");}
-	| relational_expression GE_OP shift_expression {fprintf(output, "\n");}
+	: shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| relational_expression '<' shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| relational_expression '>' shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| relational_expression LE_OP shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| relational_expression GE_OP shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 equality_expression
-	: relational_expression {fprintf(output, "\n");}
-	| equality_expression EQ_OP relational_expression {fprintf(output, "\n");}
-	| equality_expression NE_OP relational_expression {fprintf(output, "\n");}
+	: relational_expression {fprintf(output, "\n", totalstr);}
+	| equality_expression EQ_OP relational_expression {fprintf(output, "\n", totalstr);}
+	| equality_expression NE_OP relational_expression {fprintf(output, "\n", totalstr);}
 	;
 
 and_expression
-	: equality_expression {fprintf(output, "\n");}
-	| and_expression '&' equality_expression {fprintf(output, "\n");}
+	: equality_expression {fprintf(output, "\n", totalstr);}
+	| and_expression '&' equality_expression {fprintf(output, "\n", totalstr);}
 	;
 
 exclusive_or_expression
@@ -114,229 +114,229 @@ exclusive_or_expression
 	;
 
 inclusive_or_expression
-	: exclusive_or_expression {fprintf(output, "\n");}
-	| inclusive_or_expression '|' exclusive_or_expression {fprintf(output, "\n");}
+	: exclusive_or_expression {fprintf(output, "\n", totalstr);}
+	| inclusive_or_expression '|' exclusive_or_expression {fprintf(output, "\n", totalstr);}
 	;
 
 logical_and_expression
-	: inclusive_or_expression {fprintf(output, "\n");}
-	| logical_and_expression AND_OP inclusive_or_expression {fprintf(output, "\n");}
+	: inclusive_or_expression {fprintf(output, "\n", totalstr);}
+	| logical_and_expression AND_OP inclusive_or_expression {fprintf(output, "\n", totalstr);}
 	;
 
 logical_or_expression
-	: logical_and_expression {fprintf(output, "\n");}
-	| logical_or_expression OR_OP logical_and_expression {fprintf(output, "\n");}
+	: logical_and_expression {fprintf(output, "\n", totalstr);}
+	| logical_or_expression OR_OP logical_and_expression {fprintf(output, "\n", totalstr);}
 	;
 
 conditional_expression
-	: logical_or_expression {fprintf(output, "\n");}
-	| logical_or_expression '?' expression ':' conditional_expression {fprintf(output, "\n");}
+	: logical_or_expression {fprintf(output, "\n", totalstr);}
+	| logical_or_expression '?' expression ':' conditional_expression {fprintf(output, "\n", totalstr);}
 	;
 
 assignment_expression
-	: conditional_expression {fprintf(output, "\n");}
-	| unary_expression assignment_operator assignment_expression {fprintf(output, "\n");}
+	: conditional_expression {fprintf(output, "\n", totalstr);}
+	| unary_expression assignment_operator assignment_expression {fprintf(output, "\n", totalstr);}
 	;
 
 assignment_operator
-	: '=' {fprintf(output, "\n");}
-	| MUL_ASSIGN {fprintf(output, "\n");}
-	| DIV_ASSIGN {fprintf(output, "\n");}
-	| MOD_ASSIGN {fprintf(output, "\n");}
-	| ADD_ASSIGN {fprintf(output, "\n");}
-	| SUB_ASSIGN {fprintf(output, "\n");}
-	| LEFT_ASSIGN {fprintf(output, "\n");}
-	| RIGHT_ASSIGN {fprintf(output, "\n");}
-	| AND_ASSIGN {fprintf(output, "\n");}
-	| XOR_ASSIGN {fprintf(output, "\n");}
-	| OR_ASSIGN {fprintf(output, "\n");}
+	: '=' {fprintf(output, "\n", totalstr);}
+	| MUL_ASSIGN {fprintf(output, "\n", totalstr);}
+	| DIV_ASSIGN {fprintf(output, "\n", totalstr);}
+	| MOD_ASSIGN {fprintf(output, "\n", totalstr);}
+	| ADD_ASSIGN {fprintf(output, "\n", totalstr);}
+	| SUB_ASSIGN {fprintf(output, "\n", totalstr);}
+	| LEFT_ASSIGN {fprintf(output, "\n", totalstr);}
+	| RIGHT_ASSIGN {fprintf(output, "\n", totalstr);}
+	| AND_ASSIGN {fprintf(output, "\n", totalstr);}
+	| XOR_ASSIGN {fprintf(output, "\n", totalstr);}
+	| OR_ASSIGN {fprintf(output, "\n", totalstr);}
 	;
 
 expression
-	: assignment_expression {fprintf(output, "\n");}
-	| expression ',' assignment_expression {fprintf(output, "\n");}
+	: assignment_expression {fprintf(output, "\n", totalstr);}
+	| expression ',' assignment_expression {fprintf(output, "\n", totalstr);}
 	;
 
 constant_expression
-	: conditional_expression {fprintf(output, "\n");}
+	: conditional_expression {fprintf(output, "\n", totalstr);}
 	;
 
 declaration
-	: declaration_specifiers ';' {fprintf(output, "\n");}
-	| declaration_specifiers init_declarator_list ';' {fprintf(output, "\n");}
+	: declaration_specifiers ';' {fprintf(output, "\n", totalstr);}
+	| declaration_specifiers init_declarator_list ';' {fprintf(output, "\n", totalstr);}
 	;
 
 declaration_specifiers
-	: storage_class_specifier {fprintf(output, "\n");}
-	| storage_class_specifier declaration_specifiers {fprintf(output, "\n");}
-	| type_specifier {fprintf(output, "\n");}
-	| type_specifier declaration_specifiers {fprintf(output, "\n");}
-	| type_qualifier {fprintf(output, "\n");}
-	| type_qualifier declaration_specifiers {fprintf(output, "\n");}
+	: storage_class_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| storage_class_specifier declaration_specifiers {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| type_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| type_specifier declaration_specifiers {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| type_qualifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| type_qualifier declaration_specifiers {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 init_declarator_list
-	: init_declarator {fprintf(output, "\n");}
-	| init_declarator_list ',' init_declarator {fprintf(output, "\n");}
+	: init_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| init_declarator_list ',' init_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 init_declarator
-	: declarator {fprintf(output, "\n");}
-	| declarator '=' initializer {fprintf(output, "\n");}
+	: declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declarator '=' initializer {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 storage_class_specifier
-	: TYPEDEF {fprintf(output, "\n");}
-	| EXTERN {fprintf(output, "\n");}
-	| STATIC {fprintf(output, "\n");}
-	| AUTO {fprintf(output, "\n");}
-	| REGISTER {fprintf(output, "\n");}
+	: TYPEDEF {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| EXTERN {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| STATIC {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| AUTO {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| REGISTER {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 type_specifier
-	: VOID {fprintf(output, "\n");}
-	| CHAR {fprintf(output, "\n");}
-	| SHORT {fprintf(output, "\n");}
-	| INT {fprintf(output, "\n");}
-	| LONG {fprintf(output, "\n");}
-	| FLOAT {fprintf(output, "\n");}
-	| DOUBLE {fprintf(output, "\n");}
-	| SIGNED {fprintf(output, "\n");}
-	| UNSIGNED {fprintf(output, "\n");}
-	| struct_or_union_specifier {fprintf(output, "\n");}
-	| enum_specifier {fprintf(output, "\n");}
-	| TYPE_NAME {fprintf(output, "\n");}
+	: VOID {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| CHAR {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| SHORT {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| INT {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| LONG {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| FLOAT {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| DOUBLE {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| SIGNED {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| UNSIGNED {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| struct_or_union_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| enum_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| TYPE_NAME {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 struct_or_union_specifier
-	: struct_or_union IDENTIFIER '{' struct_declaration_list '}' {fprintf(output, "\n");}
-	| struct_or_union '{' struct_declaration_list '}' {fprintf(output, "\n");}
-	| struct_or_union IDENTIFIER {fprintf(output, "\n");}
+	: struct_or_union IDENTIFIER '{' struct_declaration_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| struct_or_union '{' struct_declaration_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| struct_or_union IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 struct_or_union
-	: STRUCT {fprintf(output, "\n");}
-	| UNION {fprintf(output, "\n");}
+	: STRUCT {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| UNION {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 struct_declaration_list
-	: struct_declaration {fprintf(output, "\n");}
-	| struct_declaration_list struct_declaration {fprintf(output, "\n");}
+	: struct_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| struct_declaration_list struct_declaration {fprintf(output, "%s\t\treduce \n"), totalstr;}
 	;
 
 struct_declaration
-	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "\n");}
+	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce \n");}
 	;
 
 specifier_qualifier_list
-	: type_specifier specifier_qualifier_list {fprintf(output, "\n");}
-	| type_specifier {fprintf(output, "\n");}
-	| type_qualifier specifier_qualifier_list {fprintf(output, "\n");}
-	| type_qualifier {fprintf(output, "\n");}
+	: type_specifier specifier_qualifier_list {fprintf(output, "%s\t\treduce \n", totalstr, totalstr);}
+	| type_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| type_qualifier specifier_qualifier_list {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| type_qualifier {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 struct_declarator_list
-	: struct_declarator {fprintf(output, "\n");}
-	| struct_declarator_list ',' struct_declarator {fprintf(output, "\n");}
+	: struct_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| struct_declarator_list ',' struct_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 struct_declarator
-	: declarator {fprintf(output, "\n");}
-	| ':' constant_expression {fprintf(output, "\n");}
-	| declarator ':' constant_expression {fprintf(output, "\n");}
+	: declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| ':' constant_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declarator ':' constant_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 enum_specifier
-	: ENUM '{' enumerator_list '}' {fprintf(output, "\n");}
-	| ENUM IDENTIFIER '{' enumerator_list '}' {fprintf(output, "\n");}
-	| ENUM IDENTIFIER {fprintf(output, "\n");}
+	: ENUM '{' enumerator_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| ENUM IDENTIFIER '{' enumerator_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| ENUM IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 enumerator_list
-	: enumerator {fprintf(output, "\n");}
-	| enumerator_list ',' enumerator {fprintf(output, "\n");}
+	: enumerator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| enumerator_list ',' enumerator {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 enumerator
-	: IDENTIFIER {fprintf(output, "\n");}
-	| IDENTIFIER '=' constant_expression {fprintf(output, "\n");}
+	: IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| IDENTIFIER '=' constant_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 type_qualifier
-	: CONST {fprintf(output, "\n");}
-	| VOLATILE {fprintf(output, "\n");}
+	: CONST {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| VOLATILE {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 declarator
-	: pointer direct_declarator {fprintf(output, "\n");}
-	| direct_declarator {fprintf(output, "\n");}
+	: pointer direct_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 direct_declarator
-	: IDENTIFIER {fprintf(output, "\n");}
-	| '(' declarator ')' {fprintf(output, "\n");}
-	| direct_declarator '[' constant_expression ']' {fprintf(output, "\n");}
-	| direct_declarator '[' ']' {fprintf(output, "\n");}
-	| direct_declarator '(' parameter_type_list ')' {fprintf(output, "\n");}
-	| direct_declarator '(' identifier_list ')' {fprintf(output, "\n");}
-	| direct_declarator '(' ')' {fprintf(output, "\n");}
+	: IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '(' declarator ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_declarator '[' constant_expression ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_declarator '[' ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_declarator '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_declarator '(' identifier_list ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_declarator '(' ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 pointer
-	: '*' {fprintf(output, "\n");}
-	| '*' type_qualifier_list {fprintf(output, "\n");}
-	| '*' pointer {fprintf(output, "\n");}
-	| '*' type_qualifier_list pointer {fprintf(output, "\n");}
+	: '*' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '*' type_qualifier_list {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '*' pointer {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '*' type_qualifier_list pointer {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 type_qualifier_list
-	: type_qualifier {fprintf(output, "\n");}
-	| type_qualifier_list type_qualifier {fprintf(output, "\n");}
+	: type_qualifier {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| type_qualifier_list type_qualifier {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 
 parameter_type_list
-	: parameter_list {fprintf(output, "\n");}
-	| parameter_list ',' ELLIPSIS {fprintf(output, "\n");}
+	: parameter_list {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| parameter_list ',' ELLIPSIS {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 parameter_list
-	: parameter_declaration {fprintf(output, "\n");}
-	| parameter_list ',' parameter_declaration {fprintf(output, "\n");}
+	: parameter_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| parameter_list ',' parameter_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 parameter_declaration
-	: declaration_specifiers declarator {fprintf(output, "\n");}
-	| declaration_specifiers abstract_declarator {fprintf(output, "\n");}
-	| declaration_specifiers {fprintf(output, "\n");}
+	: declaration_specifiers declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declaration_specifiers abstract_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declaration_specifiers {fprintf(output, "%s\t\treduce \n, totalstr");}
 	;
 
 identifier_list
-	: IDENTIFIER {fprintf(output, "\n");}
-	| identifier_list ',' IDENTIFIER {fprintf(output, "\n");}
+	: IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| identifier_list ',' IDENTIFIER {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 type_name 
-	: specifier_qualifier_list {fprintf(output, "\n");}
-	| specifier_qualifier_list abstract_declarator {fprintf(output, "\n");}
+	: specifier_qualifier_list {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| specifier_qualifier_list abstract_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 abstract_declarator
-	: pointer {fprintf(output, "\n");}
-	| direct_abstract_declarator {fprintf(output, "\n");}
-	| pointer direct_abstract_declarator {fprintf(output, "\n");}
+	: pointer {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_abstract_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| pointer direct_abstract_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 direct_abstract_declarator
-	: '(' abstract_declarator ')' {fprintf(output, "\n");}
-	| '[' ']' {fprintf(output, "\n");}
-	| '[' constant_expression ']' {fprintf(output, "\n");}
-	| direct_abstract_declarator '[' ']' {fprintf(output, "\n");}
-	| direct_abstract_declarator '[' constant_expression ']' {fprintf(output, "\n");}
-	| '(' ')' {fprintf(output, "\n");}
-	| '(' parameter_type_list ')' {fprintf(output, "\n");}
-	| direct_abstract_declarator '(' ')' {fprintf(output, "\n");}
-	| direct_abstract_declarator '(' parameter_type_list ')' {fprintf(output, "\n");}
+	: '(' abstract_declarator ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '[' ']' {fprintf(output, "%s\t\t\n", totalstr);}
+	| '[' constant_expression ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_abstract_declarator '[' ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_abstract_declarator '[' constant_expression ']' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '(' ')' {fprintf(output, "%s\t\t\n", totalstr);}
+	| '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_abstract_declarator '(' ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| direct_abstract_declarator '(' parameter_type_list ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 initializer
