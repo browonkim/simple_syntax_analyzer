@@ -340,89 +340,89 @@ direct_abstract_declarator
 	;
 
 initializer
-	: assignment_expression
-	| '{' initializer_list '}'
-	| '{' initializer_list ',' '}'
+	: assignment_expression {fprintf(output, "%s\t\treduce initializer -> assignment_expression\n", totalstr);}
+	| '{' initializer_list '}' {fprintf(output, "%s\t\treduce initializer -> {initializer_list}\n", totalstr);}
+	| '{' initializer_list ',' '}' {fprintf(output, "%s\t\treduce initializer -> {initializer_list, }\n", totalstr);}
 	;
 
 initializer_list
-	: initializer
-	| initializer_list ',' initializer
+	: initializer {fprintf(output, "%s\t\treduce initialzier_list -> initializer\n", totalstr);}
+	| initializer_list ',' initializer {fprintf(output, "%s\t\treduce initializer_list -> initializer_list, initializer\n", totalstr);}
 	;
 
 statement
-	: labeled_statement
-	| compound_statement
-	| expression_statement
-	| selection_statement
-	| iteration_statement
-	| jump_statement
+	: labeled_statement {fprintf(output, "%s\t\treduce statement -> labeled_statement\n", totalstr);}
+	| compound_statement {fprintf(output, "%s\t\treduce statement -> compound_statement \n", totalstr);}
+	| expression_statement {fprintf(output, "%s\t\treduce statement -> expression_statement \n", totalstr);}
+	| selection_statement {fprintf(output, "%s\t\treduce statement -> selection_statement\n", totalstr);}
+	| iteration_statement {fprintf(output, "%s\t\treduce statement -> iteration_statement\n", totalstr);}
+	| jump_statement {fprintf(output, "%s\t\treduce statement -> jump_statement \n", totalstr);}
 	;
 
 labeled_statement
-	: IDENTIFIER ':' statement
-	| CASE constant_expression ':' statement
-	| DEFAULT ':' statement
+	: IDENTIFIER ':' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| CASE constant_expression ':' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| DEFAULT ':' statement {fprintf(output, "%s\t\treduce \n", totalstr);} 
 	;
 
 compound_statement
-	: '{' '}'
-	| '{' statement_list '}'
-	| '{' declaration_list '}'
-	| '{' declaration_list statement_list '}'
+	: '{' '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '{' statement_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '{' declaration_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| '{' declaration_list statement_list '}' {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 declaration_list
-	: declaration
-	| declaration_list declaration
+	: declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declaration_list declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 statement_list
-	: statement
-	| statement_list statement
+	: statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| statement_list statement {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 expression_statement
-	: ';' { strcpy(totalstr,"");}
-	| expression ';' { strcpy(totalstr,"");}
+	: ';' {fprintf(output, "%s\t\treduce \n", totalstr);strcpy(totalstr,"");}
+	| expression ';' {fprintf(output, "%s\t\treduce \n", totalstr);strcpy(totalstr,"");}
 	;
 
 selection_statement
-	: IF '(' expression ')' statement
-	| IF '(' expression ')' statement ELSE statement
-	| SWITCH '(' expression ')' statement
+	: IF '(' expression ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| IF '(' expression ')' statement ELSE statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| SWITCH '(' expression ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 iteration_statement
-	: WHILE '(' expression ')' statement
-	| DO statement WHILE '(' expression ')' ';' { strcpy(totalstr,"");}
-	| FOR '(' expression_statement expression_statement ')' statement
-	| FOR '(' expression_statement expression_statement expression ')' statement
+	: WHILE '(' expression ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| DO statement WHILE '(' expression ')' ';' {fprintf(output, "%s\t\treduce \n", totalstr);strcpy(totalstr,"");}
+	| FOR '(' expression_statement expression_statement ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| FOR '(' expression_statement expression_statement expression ')' statement {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 jump_statement
-	: GOTO IDENTIFIER ';' { strcpy(totalstr,"");}
-	| CONTINUE ';' { strcpy(totalstr,"");}
-	| BREAK ';' { strcpy(totalstr,"");}
-	| RETURN ';' { strcpy(totalstr,"");}
-	| RETURN expression ';' { strcpy(totalstr,"");}
+	: GOTO IDENTIFIER ';' {{fprintf(output, "%s\t\treduce \n", totalstr);} strcpy(totalstr,"");}
+	| CONTINUE ';' {{fprintf(output, "%s\t\treduce \n", totalstr);} strcpy(totalstr,"");}
+	| BREAK ';' {{fprintf(output, "%s\t\treduce \n", totalstr);} strcpy(totalstr,"");}
+	| RETURN ';' { {fprintf(output, "%s\t\treduce \n", totalstr);}strcpy(totalstr,"");}
+	| RETURN expression ';' {{fprintf(output, "%s\t\treduce \n", totalstr);} strcpy(totalstr,"");}
 	;
 
 translation_unit
-	: external_declaration
-	| translation_unit external_declaration
+	: external_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| translation_unit external_declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 external_declaration
-	: function_definition
-	| declaration
+	: function_definition {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declaration {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 function_definition
-	: declaration_specifiers declarator declaration_list compound_statement
-	| declaration_specifiers declarator compound_statement
-	| declarator declaration_list compound_statement
-	| declarator compound_statement
+	: declaration_specifiers declarator declaration_list compound_statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declaration_specifiers declarator compound_statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declarator declaration_list compound_statement {fprintf(output, "%s\t\treduce \n", totalstr);}
+	| declarator compound_statement {fprintf(output, "%s\t\treduce \n", totalstr);}
 	;
 
 %%
