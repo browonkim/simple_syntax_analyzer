@@ -134,55 +134,55 @@ conditional_expression
 	;
 
 assignment_expression
-	: conditional_expression {fprintf(output, "\n", totalstr);}
-	| unary_expression assignment_operator assignment_expression {fprintf(output, "\n", totalstr);}
+	: conditional_expression {fprintf(output, "%s\t\treduce assignment_expression -> conditional_expression \n", totalstr);}
+	| unary_expression assignment_operator assignment_expression {fprintf(output, "%s\t\treduce assignment_expression -> unary_expression assignment_operator assignment_expression\n", totalstr);}
 	;
 
 assignment_operator
-	: '=' {fprintf(output, "\n", totalstr);}
-	| MUL_ASSIGN {fprintf(output, "\n", totalstr);}
-	| DIV_ASSIGN {fprintf(output, "\n", totalstr);}
-	| MOD_ASSIGN {fprintf(output, "\n", totalstr);}
-	| ADD_ASSIGN {fprintf(output, "\n", totalstr);}
-	| SUB_ASSIGN {fprintf(output, "\n", totalstr);}
-	| LEFT_ASSIGN {fprintf(output, "\n", totalstr);}
-	| RIGHT_ASSIGN {fprintf(output, "\n", totalstr);}
-	| AND_ASSIGN {fprintf(output, "\n", totalstr);}
-	| XOR_ASSIGN {fprintf(output, "\n", totalstr);}
-	| OR_ASSIGN {fprintf(output, "\n", totalstr);}
+	: '=' {fprintf(output, "%s\t\t reduce assignment_operator -> =\n", totalstr);}
+	| MUL_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> *=\n", totalstr);}
+	| DIV_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> /=\n", totalstr);}
+	| MOD_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> %=\n", totalstr);}
+	| ADD_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> +=\n", totalstr);}
+	| SUB_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> -=\n", totalstr);}
+	| LEFT_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> <<=\n", totalstr);}
+	| RIGHT_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> >>=\n", totalstr);}
+	| AND_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> &=\n", totalstr);}
+	| XOR_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> ^=\n", totalstr);}
+	| OR_ASSIGN {fprintf(output, "%s\t\t reduce assignment_operator -> |=\n", totalstr);}
 	;
 
 expression
-	: assignment_expression {fprintf(output, "\n", totalstr);}
-	| expression ',' assignment_expression {fprintf(output, "\n", totalstr);}
+	: assignment_expression {fprintf(output, "%s\t\treduce expression -> assignment_expression\n", totalstr);}
+	| expression ',' assignment_expression {fprintf(output, "%s\t\treduce expression -> expression, assignement_expression\n", totalstr);}
 	;
 
 constant_expression
-	: conditional_expression {fprintf(output, "\n", totalstr);}
+	: conditional_expression {fprintf(output, "%s\t\treduce constant_expression -> conditional_expression\n", totalstr);}
 	;
 
 declaration
-	: declaration_specifiers ';' {fprintf(output, "\n", totalstr);}
-	| declaration_specifiers init_declarator_list ';' {fprintf(output, "\n", totalstr);}
+	: declaration_specifiers ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers;\n", totalstr);}
+	| declaration_specifiers init_declarator_list ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers init_declaratior_list;\n", totalstr);}
 	;
 
 declaration_specifiers
-	: storage_class_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| storage_class_specifier declaration_specifiers {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| type_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| type_specifier declaration_specifiers {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| type_qualifier {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| type_qualifier declaration_specifiers {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: storage_class_specifier {fprintf(output, "%s\t\treduce declaration_specifiers -> stroage_class_specifier\n", totalstr);}
+	| storage_class_specifier declaration_specifiers {fprintf(output, "%s\t\treduce declaration_specifiers -> storage_class_specifier declaration_specifiers\n", totalstr);}
+	| type_specifier {fprintf(output, "%s\t\treduce declaration_specifiers -> type_specifier\n", totalstr);}
+	| type_specifier declaration_specifiers {fprintf(output, "%s\t\treduce declaration_specifiers -> type_specifier declaration_specifiers \n", totalstr);}
+	| type_qualifier {fprintf(output, "%s\t\treduce declaration_specifiers -> type_qualifier \n", totalstr);}
+	| type_qualifier declaration_specifiers {fprintf(output, "%s\t\treduce declaration_specifiers -> type_qualifier declaration_specifiers\n", totalstr);}
 	;
 
 init_declarator_list
-	: init_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| init_declarator_list ',' init_declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: init_declarator {fprintf(output, "%s\t\treduce init_declarator_list -> init_declarator\n", totalstr);}
+	| init_declarator_list ',' init_declarator {fprintf(output, "%s\t\treduce init_declarator_list -> init_declarator_list, init_declarator\n", totalstr);}
 	;
 
 init_declarator
-	: declarator {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| declarator '=' initializer {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: declarator {fprintf(output, "%s\t\treduce init_declarator -> declarator\n", totalstr);}
+	| declarator '=' initializer {fprintf(output, "%s\t\treduce init_declarator -> declarator = initializer\n", totalstr);}
 	;
 
 storage_class_specifier
