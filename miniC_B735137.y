@@ -162,8 +162,8 @@ constant_expression
 	;
 
 declaration
-	: declaration_specifiers ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers;\n", totalstr);}
-	| declaration_specifiers init_declarator_list ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers init_declaratior_list;\n", totalstr);}
+	: declaration_specifiers ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers;\n", totalstr); strcpy(totalstr, "");}
+	| declaration_specifiers init_declarator_list ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers init_declaratior_list;\n", totalstr); strcpy(totalstr, "");}
 	;
 
 declaration_specifiers
@@ -225,7 +225,7 @@ struct_declaration_list
 	;
 
 struct_declaration
-	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce \n");}
+	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce \n"); strcpy(totalstr, "");}
 	;
 
 specifier_qualifier_list
