@@ -313,8 +313,8 @@
  return		shift return
  return ;		shift ;
  return ;		reduce jump_statement -> return;
-		reduce statement -> jump_statement 
-		reduce statement_list -> statement_list statement
+ return ;		reduce statement -> jump_statement 
+ return ;		reduce statement_list -> statement_list statement
  }		shift } <line terminate> 
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
@@ -485,28 +485,28 @@
  return		reduce selection_statement -> if(expression) statement
  return		reduce statement -> selection_statement
  return		reduce statement_list -> statement
- return 0		shift 0
- return 0		reduce primary_expression -> constant 
- return 0		reduce postfix_expression -> primary_expression 
- return 0 ;		shift ;
- return 0 ;		reduce unary_expression -> postfix_expression
- return 0 ;		reduce cast_expression -> unary_expression
- return 0 ;		reduce multiplicative_expression -> cast_expression
- return 0 ;		reduce additive_expression -> multiplicative_expression
- return 0 ;		reduce shift_expression -> additive_expression
- return 0 ;		reduce relational_expression -> shift_expression
- return 0 ;		reduce equality_expression -> relational_expression
- return 0 ;		reduce and_expression -> equality_expression
- return 0 ;		reduce exclusive_or_expression -> and_expression
- return 0 ;		reduce inclusive_or_expression -> exclusive_or_expression
- return 0 ;		reduce logical_and_expression -> inclusive_or_expression
- return 0 ;		reduce logical_or_expression -> logical_and_expression
- return 0 ;		reduce conditional_expression -> logical_or_expression
- return 0 ;		reduce assignment_expression -> conditional_expression 
- return 0 ;		reduce expression -> assignment_expression
- return 0 ;		reduce jump_statement -> return expression;
-		reduce statement -> jump_statement 
-		reduce statement_list -> statement_list statement
+ 0		shift 0
+ 0		reduce primary_expression -> constant 
+ 0		reduce postfix_expression -> primary_expression 
+ 0 ;		shift ;
+ 0 ;		reduce unary_expression -> postfix_expression
+ 0 ;		reduce cast_expression -> unary_expression
+ 0 ;		reduce multiplicative_expression -> cast_expression
+ 0 ;		reduce additive_expression -> multiplicative_expression
+ 0 ;		reduce shift_expression -> additive_expression
+ 0 ;		reduce relational_expression -> shift_expression
+ 0 ;		reduce equality_expression -> relational_expression
+ 0 ;		reduce and_expression -> equality_expression
+ 0 ;		reduce exclusive_or_expression -> and_expression
+ 0 ;		reduce inclusive_or_expression -> exclusive_or_expression
+ 0 ;		reduce logical_and_expression -> inclusive_or_expression
+ 0 ;		reduce logical_or_expression -> logical_and_expression
+ 0 ;		reduce conditional_expression -> logical_or_expression
+ 0 ;		reduce assignment_expression -> conditional_expression 
+ 0 ;		reduce expression -> assignment_expression
+ 0 ;		reduce jump_statement -> return expression;
+ 0 ;		reduce statement -> jump_statement 
+ 0 ;		reduce statement_list -> statement_list statement
  }		shift } <line terminate> 
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
