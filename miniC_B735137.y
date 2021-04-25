@@ -221,15 +221,15 @@ struct_or_union
 
 struct_declaration_list
 	: struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration\n", totalstr);}
-	| struct_declaration_list struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration_list struct_declaration\n"), totalstr;}
+	| struct_declaration_list struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration_list struct_declaration\n", totalstr);}
 	;
 
 struct_declaration
-	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce struct_declaration -> specifier_qualifier_list struct_declarator_list;\n"); strcpy(totalstr, "");}
+	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce struct_declaration -> specifier_qualifier_list struct_declarator_list;\n", totalstr); strcpy(totalstr, "");}
 	;
 
 specifier_qualifier_list
-	: type_specifier specifier_qualifier_list {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_specifier specifier_qualifier_list\n", totalstr, totalstr);}
+	: type_specifier specifier_qualifier_list {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_specifier specifier_qualifier_list\n", totalstr);}
 	| type_specifier {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_specifier\n", totalstr);}
 	| type_qualifier specifier_qualifier_list {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_qualifier specifier_qualifier_list\n", totalstr);}
 	| type_qualifier {fprintf(output, "%s\t\treduce specifier_qualifier_list -> type_qualifier\n", totalstr);}
