@@ -48,89 +48,89 @@ argument_expression_list
 	;
 
 unary_expression
-	: postfix_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| INC_OP unary_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| DEC_OP unary_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| unary_operator cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| SIZEOF unary_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| SIZEOF '(' type_name ')' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: postfix_expression {fprintf(output, "%s\t\treduce unary_expression -> postfix_expression\n", totalstr);}
+	| INC_OP unary_expression {fprintf(output, "%s\t\treduce unary_expression -> ++unary_expression\n", totalstr);}
+	| DEC_OP unary_expression {fprintf(output, "%s\t\treduce unary_expression -> --unary_expression\n", totalstr);}
+	| unary_operator cast_expression {fprintf(output, "%s\t\treduce unary_expression -> unary_operator cast_expression \n", totalstr);}
+	| SIZEOF unary_expression {fprintf(output, "%s\t\treduce unary_expression -> sizeof unary_expression\n", totalstr);}
+	| SIZEOF '(' type_name ')' {fprintf(output, "%s\t\treduce unary_expression -> sizeof(type_name)\n", totalstr);}
 	;
 
 unary_operator
-	: '&' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '*' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '+' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '-' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '~' {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '!' {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: '&' {fprintf(output, "%s\t\treduce unary_operator -> &\n", totalstr);}
+	| '*' {fprintf(output, "%s\t\treduce unary_operator -> *\n", totalstr);}
+	| '+' {fprintf(output, "%s\t\treduce unary_operator -> +\n", totalstr);}
+	| '-' {fprintf(output, "%s\t\treduce unary_operator -> -\n", totalstr);}
+	| '~' {fprintf(output, "%s\t\treduce unary_operator -> ~\n", totalstr);}
+	| '!' {fprintf(output, "%s\t\treduce unary_operator -> !\n", totalstr);}
 	;
 
 cast_expression
-	: unary_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| '(' type_name ')' cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: unary_expression {fprintf(output, "%s\t\treduce cast_expression -> unary_expression\n", totalstr);}
+	| '(' type_name ')' cast_expression {fprintf(output, "%s\t\treduce cast_expression -> (type_name)cast_expression\n", totalstr);}
 	;
 
 multiplicative_expression
-	: cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| multiplicative_expression '*' cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| multiplicative_expression '/' cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| multiplicative_expression '%' cast_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: cast_expression {fprintf(output, "%s\t\treduce multiplicative_expression -> cast_expression\n", totalstr);}
+	| multiplicative_expression '*' cast_expression {fprintf(output, "%s\t\treduce multiplicative_expression -> multiplicative_expression * cast_expression\n", totalstr);}
+	| multiplicative_expression '/' cast_expression {fprintf(output, "%s\t\treduce multiplicative_expression -> multiplicative_expression / cast_expression\n", totalstr);}
+	| multiplicative_expression '%' cast_expression {fprintf(output, "%s\t\treduce multiplicative_expression % cast_expression\n", totalstr);}
 	;
 
 additive_expression
-	: multiplicative_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| additive_expression '+' multiplicative_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| additive_expression '-' multiplicative_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: multiplicative_expression {fprintf(output, "%s\t\treduce additive_expression -> multiplicative_expression\n", totalstr);}
+	| additive_expression '+' multiplicative_expression {fprintf(output, "%s\t\treduce additive_expression -> additive_expression + multiplicative_expression\n", totalstr);}
+	| additive_expression '-' multiplicative_expression {fprintf(output, "%s\t\treduce additive_expression -> addtive_expression - multiplicative_expression\n", totalstr);}
 	;
 
 shift_expression
-	: additive_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| shift_expression LEFT_OP additive_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| shift_expression RIGHT_OP additive_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: additive_expression {fprintf(output, "%s\t\treduce shift_expression -> additive_expression\n", totalstr);}
+	| shift_expression LEFT_OP additive_expression {fprintf(output, "%s\t\treduce shift_expression -> shift_expression << additive_expression\n", totalstr);}
+	| shift_expression RIGHT_OP additive_expression {fprintf(output, "%s\t\treduce shift_expression -> shift_expression >> additive_expression\n", totalstr);}
 	;
 
 relational_expression
-	: shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| relational_expression '<' shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| relational_expression '>' shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| relational_expression LE_OP shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| relational_expression GE_OP shift_expression {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: shift_expression {fprintf(output, "%s\t\treduce relational_expression -> shift_expression\n", totalstr);}
+	| relational_expression '<' shift_expression {fprintf(output, "%s\t\treduce relational_expression < shift_expression\n", totalstr);}
+	| relational_expression '>' shift_expression {fprintf(output, "%s\t\treduce relational_expression > shift_expression\n", totalstr);}
+	| relational_expression LE_OP shift_expression {fprintf(output, "%s\t\treduce relational_expression <= shift_expression\n", totalstr);}
+	| relational_expression GE_OP shift_expression {fprintf(output, "%s\t\treduce relational_expression >= shift_expression\n", totalstr);}
 	;
 
 equality_expression
-	: relational_expression {fprintf(output, "\n", totalstr);}
-	| equality_expression EQ_OP relational_expression {fprintf(output, "\n", totalstr);}
-	| equality_expression NE_OP relational_expression {fprintf(output, "\n", totalstr);}
+	: relational_expression {fprintf(output, "%s\t\treduce equality_expression -> relational_expression\n", totalstr);}
+	| equality_expression EQ_OP relational_expression {fprintf(output, "%s\t\treduce equality_epression -> equality_expression == relational_expression\n", totalstr);}
+	| equality_expression NE_OP relational_expression {fprintf(output, "%s\t\treduce equality_expression -> equality_expression != relational_expression\n", totalstr);}
 	;
 
 and_expression
-	: equality_expression {fprintf(output, "\n", totalstr);}
-	| and_expression '&' equality_expression {fprintf(output, "\n", totalstr);}
+	: equality_expression {fprintf(output, "%s\t\treduce and_expression -> equality_expression\n", totalstr);}
+	| and_expression '&' equality_expression {fprintf(output, "%s\t\treduce and_expression -> and_expression & equality_expression\n", totalstr);}
 	;
 
 exclusive_or_expression
-	: and_expression {fprintf(output, "\n");}
-	| exclusive_or_expression '^' and_expression {fprintf(output, "\n");}
+	: and_expression {fprintf(output, "%s\t\treduce exclusive_or_expression -> and_expression\n", totalstr);}
+	| exclusive_or_expression '^' and_expression {fprintf(output, "%s\t\treduce exclusive_or_expression ^ and_expression\n", totalstr);}
 	;
 
 inclusive_or_expression
-	: exclusive_or_expression {fprintf(output, "\n", totalstr);}
-	| inclusive_or_expression '|' exclusive_or_expression {fprintf(output, "\n", totalstr);}
+	: exclusive_or_expression {fprintf(output, "%s\t\treduce inclusive_or_expression -> exclusive_or_expression\n", totalstr);}
+	| inclusive_or_expression '|' exclusive_or_expression {fprintf(output, "%s\t\treduce inclusive_or_expression|exclusive_or_expression\n", totalstr);}
 	;
 
 logical_and_expression
-	: inclusive_or_expression {fprintf(output, "\n", totalstr);}
-	| logical_and_expression AND_OP inclusive_or_expression {fprintf(output, "\n", totalstr);}
+	: inclusive_or_expression {fprintf(output, "%s\t\treduce logical_and_expression -> inclusive_or_expression\n", totalstr);}
+	| logical_and_expression AND_OP inclusive_or_expression {fprintf(output, "%s\t\tlogical_and_expression -> logical_and_expression && inclusive_or_expression\n", totalstr);}
 	;
 
 logical_or_expression
-	: logical_and_expression {fprintf(output, "\n", totalstr);}
-	| logical_or_expression OR_OP logical_and_expression {fprintf(output, "\n", totalstr);}
+	: logical_and_expression {fprintf(output, "%s\t\treduce logical_or_expression -> logical_and_expression\n", totalstr);}
+	| logical_or_expression OR_OP logical_and_expression {fprintf(output, "%s\t\treduce logical_or_expression -> logical_or_expression || logical_and_expression\n", totalstr);}
 	;
 
 conditional_expression
-	: logical_or_expression {fprintf(output, "\n", totalstr);}
-	| logical_or_expression '?' expression ':' conditional_expression {fprintf(output, "\n", totalstr);}
+	: logical_or_expression {fprintf(output, "%s\t\treduce conditional_expression -> logical_or_expression\n", totalstr);}
+	| logical_or_expression '?' expression ':' conditional_expression {fprintf(output, "%s\t\treduce conditional_expression -> logical_or_expression ? expression : conditional_expression\t\t\n", totalstr);}
 	;
 
 assignment_expression
@@ -194,18 +194,18 @@ storage_class_specifier
 	;
 
 type_specifier
-	: VOID {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| CHAR {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| SHORT {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| INT {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| LONG {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| FLOAT {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| DOUBLE {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| SIGNED {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| UNSIGNED {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| struct_or_union_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| enum_specifier {fprintf(output, "%s\t\treduce \n", totalstr);}
-	| TYPE_NAME {fprintf(output, "%s\t\treduce \n", totalstr);}
+	: VOID {fprintf(output, "%s\t\treduce type_specifier -> void\n", totalstr);}
+	| CHAR {fprintf(output, "%s\t\treduce type_specifier -> char\n", totalstr);}
+	| SHORT {fprintf(output, "%s\t\treduce type_specifier -> short\n", totalstr);}
+	| INT {fprintf(output, "%s\t\treduce type_specifier -> int\n", totalstr);}
+	| LONG {fprintf(output, "%s\t\treduce type_specifier -> long\n", totalstr);}
+	| FLOAT {fprintf(output, "%s\t\treduce type_specifier -> float\n", totalstr);}
+	| DOUBLE {fprintf(output, "%s\t\treduce type_specifier -> double\n", totalstr);}
+	| SIGNED {fprintf(output, "%s\t\treduce type_specifier -> signed\n", totalstr);}
+	| UNSIGNED {fprintf(output, "%s\t\treduce type_specifier -> unsigned\n", totalstr);}
+	| struct_or_union_specifier {fprintf(output, "%s\t\treduce type_specifier -> struct_or_union_specifier\n", totalstr);}
+	| enum_specifier {fprintf(output, "%s\t\treduce type_specifier -> enum_specifier\n", totalstr);}
+	| TYPE_NAME {fprintf(output, "%s\t\treduce type_specifier -> TYPE_NAME*\n", totalstr);}
 	;
 
 struct_or_union_specifier
