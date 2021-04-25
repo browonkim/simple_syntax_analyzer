@@ -3,6 +3,10 @@ float f[10];
 
 int myFunction(char* a);
 
+struct alpha{
+    int b;
+    int c;
+};
 void main(int argc, char* argv) {
     char c;      int d;
     int i=0;
@@ -10,6 +14,7 @@ void main(int argc, char* argv) {
         a += (d + 1);
         f[i++] = 0;
     }
+    struct alpha test;
 return;
 }
 
