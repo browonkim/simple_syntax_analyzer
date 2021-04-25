@@ -383,8 +383,8 @@ statement_list
 	;
 
 expression_statement
-	: ';'
-	| expression ';'
+	: ';' { strcpy(totalstr,"");}
+	| expression ';' { strcpy(totalstr,"");}
 	;
 
 selection_statement
@@ -395,17 +395,17 @@ selection_statement
 
 iteration_statement
 	: WHILE '(' expression ')' statement
-	| DO statement WHILE '(' expression ')' ';'
+	| DO statement WHILE '(' expression ')' ';' { strcpy(totalstr,"");}
 	| FOR '(' expression_statement expression_statement ')' statement
 	| FOR '(' expression_statement expression_statement expression ')' statement
 	;
 
 jump_statement
-	: GOTO IDENTIFIER ';'
-	| CONTINUE ';'
-	| BREAK ';'
-	| RETURN ';'
-	| RETURN expression ';'
+	: GOTO IDENTIFIER ';' { strcpy(totalstr,"");}
+	| CONTINUE ';' { strcpy(totalstr,"");}
+	| BREAK ';' { strcpy(totalstr,"");}
+	| RETURN ';' { strcpy(totalstr,"");}
+	| RETURN expression ';' { strcpy(totalstr,"");}
 	;
 
 translation_unit
