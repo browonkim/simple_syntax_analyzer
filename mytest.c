@@ -19,9 +19,5 @@ int myFunction(char* str) {
         str = strdup("test");
         printf("test");
     }
-return 0;
-    int i;
-    for(i=3;i<3;i++){
-        i++;
-    }
+    return 0;
 }
