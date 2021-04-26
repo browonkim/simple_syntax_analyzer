@@ -8,8 +8,8 @@
  int a ;		reduce init_declarator -> declarator
  int a ;		reduce init_declarator_list -> init_declarator
  int a ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce external_declaration -> declaration
-		reduce translation_unit -> external_declaration
+ int a ;		reduce external_declaration -> declaration
+ int a ;		reduce translation_unit -> external_declaration
  char		shift char
  char		reduce type_specifier -> char
  char *		shift * 
@@ -22,8 +22,8 @@
  char * str ;		reduce init_declarator -> declarator
  char * str ;		reduce init_declarator_list -> init_declarator
  char * str ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce external_declaration -> declaration
-		reduce translation_unit -> translation_unit external_declaration
+ char * str ;		reduce external_declaration -> declaration
+ char * str ;		reduce translation_unit -> translation_unit external_declaration
  float		shift float
  float		reduce type_specifier -> float
  float f		shift f
@@ -54,8 +54,8 @@
  float f [ 10 ] ;		reduce init_declarator -> declarator
  float f [ 10 ] ;		reduce init_declarator_list -> init_declarator
  float f [ 10 ] ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce external_declaration -> declaration
-		reduce translation_unit -> translation_unit external_declaration
+ float f [ 10 ] ;		reduce external_declaration -> declaration
+ float f [ 10 ] ;		reduce translation_unit -> translation_unit external_declaration
  int		shift int
  int		reduce type_specifier -> int
  int myFunction		shift myFunction
@@ -80,8 +80,8 @@
  int myFunction ( char * a ) ;		reduce init_declarator -> declarator
  int myFunction ( char * a ) ;		reduce init_declarator_list -> init_declarator
  int myFunction ( char * a ) ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce external_declaration -> declaration
-		reduce translation_unit -> translation_unit external_declaration
+ int myFunction ( char * a ) ;		reduce external_declaration -> declaration
+ int myFunction ( char * a ) ;		reduce translation_unit -> translation_unit external_declaration
  struct		shift struct
  struct		reduce struct_or_union -> struct
  struct alpha		shift alpha
@@ -96,7 +96,7 @@
  int b ;		reduce struct_declarator -> declarator
  int b ;		reduce struct_declarator_list -> struct_declarator
  int b ;		reduce struct_declaration -> specifier_qualifier_list struct_declarator_list;
-		reduce struct_declaration_list -> struct_declaration
+ int b ;		reduce struct_declaration_list -> struct_declaration
  int		shift int
  int		reduce type_specifier -> int
  int c		shift c
@@ -107,15 +107,15 @@
  int c ;		reduce struct_declarator -> declarator
  int c ;		reduce struct_declarator_list -> struct_declarator
  int c ;		reduce struct_declaration -> specifier_qualifier_list struct_declarator_list;
-		reduce struct_declaration_list -> struct_declaration_list struct_declaration
+ int c ;		reduce struct_declaration_list -> struct_declaration_list struct_declaration
  }		shift } <line terminate> 
 		reduce struct_or_union_specifier -> struct_or_union identifier {struct_declaration_list}
 		reduce type_specifier -> struct_or_union_specifier
  ;		shift ;
  ;		reduce declaration_specifiers -> type_specifier
  ;		reduce declaration -> declaration_specifiers;
-		reduce external_declaration -> declaration
-		reduce translation_unit -> translation_unit external_declaration
+ ;		reduce external_declaration -> declaration
+ ;		reduce translation_unit -> translation_unit external_declaration
  void		shift void
  void		reduce type_specifier -> void
  void main		shift main
@@ -367,7 +367,7 @@
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
 		reduce external_declaration -> function_definition
-		reduce translation_unit -> translation_unit external_declaration
+ return ;		reduce translation_unit -> translation_unit external_declaration
  int		shift int
  int		reduce type_specifier -> int
  int myFunction		shift myFunction
@@ -656,4 +656,4 @@
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
 		reduce external_declaration -> function_definition
-		reduce translation_unit -> translation_unit external_declaration
+ return 0 ;		reduce translation_unit -> translation_unit external_declaration
