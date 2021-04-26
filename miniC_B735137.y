@@ -162,8 +162,8 @@ constant_expression
 	;
 
 declaration
-	: declaration_specifiers ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers;\n", totalstr); strcpy(totalstr, "");}
-	| declaration_specifiers init_declarator_list ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers init_declaratior_list;\n", totalstr); strcpy(totalstr, "");}
+	: declaration_specifiers ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers;\n", totalstr); strcpy(mystr, totalstr); strcpy(totalstr, "");}
+	| declaration_specifiers init_declarator_list ';' {fprintf(output, "%s\t\treduce declaration -> declaration_specifiers init_declaratior_list;\n", totalstr); strcpy(mystr, totalstr); strcpy(totalstr, "");}
 	;
 
 declaration_specifiers
@@ -220,12 +220,12 @@ struct_or_union
 	;
 
 struct_declaration_list
-	: struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration\n", totalstr);}
-	| struct_declaration_list struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration_list struct_declaration\n", totalstr);}
+	: struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration\n", mystr);}
+	| struct_declaration_list struct_declaration {fprintf(output, "%s\t\treduce struct_declaration_list -> struct_declaration_list struct_declaration\n", mystr);}
 	;
 
 struct_declaration
-	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce struct_declaration -> specifier_qualifier_list struct_declarator_list;\n", totalstr); strcpy(totalstr, "");}
+	: specifier_qualifier_list struct_declarator_list ';' {fprintf(output, "%s\t\treduce struct_declaration -> specifier_qualifier_list struct_declarator_list;\n", totalstr); strcpy(mystr, totalstr);strcpy(totalstr, "");}
 	;
 
 specifier_qualifier_list
@@ -383,8 +383,8 @@ statement_list
 	;
 
 expression_statement
-	: ';' {fprintf(output, "%s\t\treduce expression_statement -> ;\n", totalstr);strcpy(totalstr,"");}
-	| expression ';' {fprintf(output, "%s\t\treduce expression_statement -> expression;\n", totalstr);strcpy(totalstr,"");}
+	: ';' {fprintf(output, "%s\t\treduce expression_statement -> ;\n", totalstr);strcpy(mystr, totalstr);strcpy(totalstr,"");}
+	| expression ';' {fprintf(output, "%s\t\treduce expression_statement -> expression;\n", totalstr);strcpy(mystr, totalstr);strcpy(totalstr,"");}
 	;
 
 selection_statement
@@ -395,27 +395,27 @@ selection_statement
 
 iteration_statement
 	: WHILE '(' expression ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> while(expression) statement\n", totalstr);}
-	| DO statement WHILE '(' expression ')' ';' {fprintf(output, "%s\t\treduce iteration_statement -> do statement while(expression);\n", totalstr);strcpy(totalstr,"");}
+	| DO statement WHILE '(' expression ')' ';' {fprintf(output, "%s\t\treduce iteration_statement -> do statement while(expression);\n", totalstr);strcpy(mystr, totalstr);strcpy(totalstr,"");}
 	| FOR '(' expression_statement expression_statement ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> for (expression_statement expression_statement) statement\n", totalstr);}
 	| FOR '(' expression_statement expression_statement expression ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> for (expression_statement expression_statement expression) statement\n", totalstr);}
 	;
 
 jump_statement
-	: GOTO IDENTIFIER ';' {fprintf(output, "%s\t\treduce jump_statement -> goto identifier;\n", totalstr); strcpy(totalstr,"");}
-	| CONTINUE ';' {fprintf(output, "%s\t\treduce jump_statement -> continue;\n", totalstr); strcpy(totalstr,"");}
-	| BREAK ';' {fprintf(output, "%s\t\treduce jump_statement -> break;\n", totalstr); strcpy(totalstr,"");}
-	| RETURN ';' { fprintf(output, "%s\t\treduce jump_statement -> return;\n", totalstr); strcpy(totalstr,"");}
-	| RETURN expression ';' {fprintf(output, "%s\t\treduce jump_statement -> return expression;\n", totalstr);  strcpy(totalstr,"");}
+	: GOTO IDENTIFIER ';' {fprintf(output, "%s\t\treduce jump_statement -> goto identifier;\n", totalstr);strcpy(mystr, totalstr); strcpy(totalstr,"");}
+	| CONTINUE ';' {fprintf(output, "%s\t\treduce jump_statement -> continue;\n", totalstr); strcpy(mystr, totalstr);strcpy(totalstr,"");}
+	| BREAK ';' {fprintf(output, "%s\t\treduce jump_statement -> break;\n", totalstr); strcpy(mystr, totalstr);strcpy(totalstr,"");}
+	| RETURN ';' { fprintf(output, "%s\t\treduce jump_statement -> return;\n", totalstr); strcpy(mystr, totalstr);strcpy(totalstr,"");}
+	| RETURN expression ';' {fprintf(output, "%s\t\treduce jump_statement -> return expression;\n", totalstr);strcpy(mystr, totalstr);  strcpy(totalstr,"");}
 	;
 
 translation_unit
-	: external_declaration {fprintf(output, "%s\t\treduce translation_unit -> external_declaration\n", totalstr);}
-	| translation_unit external_declaration {fprintf(output, "%s\t\treduce translation_unit -> translation_unit external_declaration\n", totalstr);}
+	: external_declaration {fprintf(output, "%s\t\treduce translation_unit -> external_declaration\n", mystr);}
+	| translation_unit external_declaration {fprintf(output, "%s\t\treduce translation_unit -> translation_unit external_declaration\n", mystr);}
 	;
 
 external_declaration
 	: function_definition {fprintf(output, "%s\t\treduce external_declaration -> function_definition\n", totalstr);}
-	| declaration {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", totalstr);}
+	| declaration {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", mystr);}
 	;
 
 function_definition
