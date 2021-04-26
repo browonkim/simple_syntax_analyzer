@@ -8,8 +8,8 @@
  int a ;		reduce init_declarator -> declarator
  int a ;		reduce init_declarator_list -> init_declarator
  int a ;		reduce declaration -> declaration_specifiers init_declaratior_list;
- int a ;		reduce external_declaration -> declaration
- int a ;		reduce translation_unit -> external_declaration
+		reduce external_declaration -> declaration
+		reduce translation_unit -> external_declaration
  char		shift char
  char		reduce type_specifier -> char
  char *		shift * 
@@ -22,8 +22,8 @@
  char * str ;		reduce init_declarator -> declarator
  char * str ;		reduce init_declarator_list -> init_declarator
  char * str ;		reduce declaration -> declaration_specifiers init_declaratior_list;
- char * str ;		reduce external_declaration -> declaration
- char * str ;		reduce translation_unit -> translation_unit external_declaration
+		reduce external_declaration -> declaration
+		reduce translation_unit -> translation_unit external_declaration
  float		shift float
  float		reduce type_specifier -> float
  float f		shift f
@@ -54,8 +54,8 @@
  float f [ 10 ] ;		reduce init_declarator -> declarator
  float f [ 10 ] ;		reduce init_declarator_list -> init_declarator
  float f [ 10 ] ;		reduce declaration -> declaration_specifiers init_declaratior_list;
- float f [ 10 ] ;		reduce external_declaration -> declaration
- float f [ 10 ] ;		reduce translation_unit -> translation_unit external_declaration
+		reduce external_declaration -> declaration
+		reduce translation_unit -> translation_unit external_declaration
  int		shift int
  int		reduce type_specifier -> int
  int myFunction		shift myFunction
@@ -80,8 +80,8 @@
  int myFunction ( char * a ) ;		reduce init_declarator -> declarator
  int myFunction ( char * a ) ;		reduce init_declarator_list -> init_declarator
  int myFunction ( char * a ) ;		reduce declaration -> declaration_specifiers init_declaratior_list;
- int myFunction ( char * a ) ;		reduce external_declaration -> declaration
- int myFunction ( char * a ) ;		reduce translation_unit -> translation_unit external_declaration
+		reduce external_declaration -> declaration
+		reduce translation_unit -> translation_unit external_declaration
  struct		shift struct
  struct		reduce struct_or_union -> struct
  struct alpha		shift alpha
@@ -114,8 +114,8 @@
  ;		shift ;
  ;		reduce declaration_specifiers -> type_specifier
  ;		reduce declaration -> declaration_specifiers;
- ;		reduce external_declaration -> declaration
- ;		reduce translation_unit -> translation_unit external_declaration
+		reduce external_declaration -> declaration
+		reduce translation_unit -> translation_unit external_declaration
  void		shift void
  void		reduce type_specifier -> void
  void main		shift main
@@ -156,7 +156,7 @@
  char c ;		reduce init_declarator -> declarator
  char c ;		reduce init_declarator_list -> init_declarator
  char c ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce declaration_list -> declaration
+ char c ;		reduce declaration_list -> declaration
  int		shift int
  int		reduce type_specifier -> int
  int d		shift d
@@ -167,7 +167,7 @@
  int d ;		reduce init_declarator -> declarator
  int d ;		reduce init_declarator_list -> init_declarator
  int d ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce declaration_list -> declaration_list declaration
+ int d ;		reduce declaration_list -> declaration_list declaration
  int		shift int
  int		reduce type_specifier -> int
  int i		shift i
@@ -197,7 +197,7 @@
  int i = 0 ;		reduce init_declarator -> declarator = initializer
  int i = 0 ;		reduce init_declarator_list -> init_declarator
  int i = 0 ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce declaration_list -> declaration_list declaration
+ int i = 0 ;		reduce declaration_list -> declaration_list declaration
  struct		shift struct
  struct		reduce struct_or_union -> struct
  struct alpha		shift alpha
@@ -211,7 +211,7 @@
  struct alpha test ;		reduce init_declarator -> declarator
  struct alpha test ;		reduce init_declarator_list -> init_declarator
  struct alpha test ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce declaration_list -> declaration_list declaration
+ struct alpha test ;		reduce declaration_list -> declaration_list declaration
  while		shift while
  while (		shift ( 
  while ( i		shift i
@@ -367,7 +367,7 @@
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
 		reduce external_declaration -> function_definition
- return ;		reduce translation_unit -> translation_unit external_declaration
+		reduce translation_unit -> translation_unit external_declaration
  int		shift int
  int		reduce type_specifier -> int
  int myFunction		shift myFunction
@@ -399,7 +399,7 @@
  char c ;		reduce init_declarator -> declarator
  char c ;		reduce init_declarator_list -> init_declarator
  char c ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce declaration_list -> declaration
+ char c ;		reduce declaration_list -> declaration
  int		shift int
  int		reduce type_specifier -> int
  int i		shift i
@@ -410,7 +410,7 @@
  int i ;		reduce init_declarator -> declarator
  int i ;		reduce init_declarator_list -> init_declarator
  int i ;		reduce declaration -> declaration_specifiers init_declaratior_list;
-		reduce declaration_list -> declaration_list declaration
+ int i ;		reduce declaration_list -> declaration_list declaration
  if		shift if
  if (		shift ( 
  if ( c		shift c
@@ -656,4 +656,4 @@
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
 		reduce external_declaration -> function_definition
- return 0 ;		reduce translation_unit -> translation_unit external_declaration
+		reduce translation_unit -> translation_unit external_declaration
