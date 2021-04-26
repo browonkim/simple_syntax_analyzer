@@ -445,7 +445,7 @@ int main(int argc, char** argv){
 		return -1;
 	}
 	char filename[100] = "";
-	filename = strtok(argv[1], ".");
+	strcat(filename, strtok(argv[1], "."));
 	strcat(filename, "_B735137.output");
 	output = fopen(filename,"w");
 	if(output == NULL){
