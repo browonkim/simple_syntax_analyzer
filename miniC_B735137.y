@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 void yyerror(char * s);
 extern int yylval;
 extern char yytext[];
@@ -426,9 +427,6 @@ function_definition
 	;
 
 %%
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 void yyerror(char * s)
 {
@@ -447,7 +445,7 @@ int main(int argc, char** argv){
 		return -1;
 	}
 	char filename[100] = "";
-	strcat(filename, argv[1]);
+	filename = strtok(argv[1], ".");
 	strcat(filename, "_B735137.output");
 	output = fopen(filename,"w");
 	if(output == NULL){
