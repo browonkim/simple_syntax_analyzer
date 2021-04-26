@@ -373,8 +373,8 @@ compound_statement
 	;
 
 declaration_list
-	: declaration {fprintf(output, "%s\t\treduce declaration_list -> declaration\n", totalstr);}
-	| declaration_list declaration {fprintf(output, "%s\t\treduce declaration_list -> declaration_list declaration\n", totalstr);}
+	: declaration {fprintf(output, "%s\t\treduce declaration_list -> declaration\n", mystr);}
+	| declaration_list declaration {fprintf(output, "%s\t\treduce declaration_list -> declaration_list declaration\n", mystr);}
 	;
 
 statement_list
@@ -409,13 +409,13 @@ jump_statement
 	;
 
 translation_unit
-	: external_declaration {fprintf(output, "%s\t\treduce translation_unit -> external_declaration\n", mystr);}
-	| translation_unit external_declaration {fprintf(output, "%s\t\treduce translation_unit -> translation_unit external_declaration\n", mystr);}
+	: external_declaration {fprintf(output, "%s\t\treduce translation_unit -> external_declaration\n", totalstr);}
+	| translation_unit external_declaration {fprintf(output, "%s\t\treduce translation_unit -> translation_unit external_declaration\n", totalstr);}
 	;
 
 external_declaration
 	: function_definition {fprintf(output, "%s\t\treduce external_declaration -> function_definition\n", totalstr);}
-	| declaration {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", mystr);}
+	| declaration {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", totalstr);}
 	;
 
 function_definition
