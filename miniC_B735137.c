@@ -1236,7 +1236,7 @@ YY_RULE_SETUP
 case 67:
 YY_RULE_SETUP
 #line 92 "miniC_B735137.l"
-{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift } <line terminate> \n", totalstr); strcpy(totalstr, "}");strcpy(mystr, "}"); count(); return('}'); }
+{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift } <line terminate> \n", totalstr); strcpy(totalstr, "");strcpy(mystr, ""); count(); return('}'); }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
