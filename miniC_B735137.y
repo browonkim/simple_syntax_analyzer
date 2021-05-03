@@ -415,8 +415,8 @@ translation_unit
 	;
 
 external_declaration
-	: function_definition {fprintf(output, "%s\t\treduce external_declaration -> function_definition\n", totalstr);}
-	| declaration {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", totalstr);}
+	: function_definition {fprintf(output, "%s\t\treduce external_declaration -> function_definition\n", mystr);}
+	| declaration {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", mystr);}
 	;
 
 function_definition
