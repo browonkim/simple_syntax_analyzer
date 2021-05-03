@@ -354,7 +354,7 @@ initializer_list
 statement
 	: labeled_statement {fprintf(output, "%s\t\treduce statement -> labeled_statement\n", totalstr);}
 	| compound_statement {fprintf(output, "%s\t\treduce statement -> compound_statement \n", totalstr);}
-	| expression_statement {fprintf(output, "%s\t\treduce statement -> expression_statement \n", totalstr);}
+	| expression_statement {fprintf(output, "%s\t\treduce statement -> expression_statement \n", mystr);}
 	| selection_statement {fprintf(output, "%s\t\treduce statement -> selection_statement\n", totalstr);}
 	| iteration_statement {fprintf(output, "%s\t\treduce statement -> iteration_statement\n", totalstr);}
 	| jump_statement {fprintf(output, "%s\t\treduce statement -> jump_statement \n", totalstr);}
@@ -379,8 +379,8 @@ declaration_list
 	;
 
 statement_list
-	: statement {fprintf(output, "%s\t\treduce statement_list -> statement\n", totalstr);}
-	| statement_list statement {fprintf(output, "%s\t\treduce statement_list -> statement_list statement\n", totalstr);}
+	: statement {fprintf(output, "%s\t\treduce statement_list -> statement\n", mystr);}
+	| statement_list statement {fprintf(output, "%s\t\treduce statement_list -> statement_list statement\n", mystr);}
 	;
 
 expression_statement
@@ -396,7 +396,7 @@ selection_statement
 
 iteration_statement
 	: WHILE '(' expression ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> while(expression) statement\n", totalstr);}
-	| DO statement WHILE '(' expression ')' ';' {fprintf(output, "%s\t\treduce iteration_statement -> do statement while(expression);\n", totalstr);strcpy(mystr, totalstr);strcpy(totalstr,"");}
+	| DO statement WHILE '(' expression ')' ';' {fprintf(output, "%e\t\treduce iteration_statement -> do statement while(expression);\n", totalstr);strcpy(mystr, totalstr);strcpy(totalstr,"");}
 	| FOR '(' expression_statement expression_statement ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> for (expression_statement expression_statement) statement\n", totalstr);}
 	| FOR '(' expression_statement expression_statement expression ')' statement {fprintf(output, "%s\t\treduce iteration_statement -> for (expression_statement expression_statement expression) statement\n", totalstr);}
 	;
@@ -410,8 +410,8 @@ jump_statement
 	;
 
 translation_unit
-	: external_declaration {fprintf(output, "%s\t\treduce translation_unit -> external_declaration\n", totalstr);}
-	| translation_unit external_declaration {fprintf(output, "%s\t\treduce translation_unit -> translation_unit external_declaration\n", totalstr);}
+	: external_declaration {fprintf(output, "%s\t\treduce translation_unit -> external_declaration\n", mystr);}
+	| translation_unit external_declaration {fprintf(output, "%s\t\treduce translation_unit -> translation_unit external_declaration\n", mystr);}
 	;
 
 external_declaration
