@@ -9,7 +9,7 @@
  int a ;		reduce init_declarator_list -> init_declarator
  int a ;		reduce declaration -> declaration_specifiers init_declaratior_list;
 		reduce external_declaration -> declaration
-		reduce translation_unit -> external_declaration
+ int a ;		reduce translation_unit -> external_declaration
  char		shift char
  char		reduce type_specifier -> char
  char *		shift * 
@@ -23,7 +23,7 @@
  char * str ;		reduce init_declarator_list -> init_declarator
  char * str ;		reduce declaration -> declaration_specifiers init_declaratior_list;
 		reduce external_declaration -> declaration
-		reduce translation_unit -> translation_unit external_declaration
+ char * str ;		reduce translation_unit -> translation_unit external_declaration
  float		shift float
  float		reduce type_specifier -> float
  float f		shift f
@@ -55,7 +55,7 @@
  float f [ 10 ] ;		reduce init_declarator_list -> init_declarator
  float f [ 10 ] ;		reduce declaration -> declaration_specifiers init_declaratior_list;
 		reduce external_declaration -> declaration
-		reduce translation_unit -> translation_unit external_declaration
+ float f [ 10 ] ;		reduce translation_unit -> translation_unit external_declaration
  int		shift int
  int		reduce type_specifier -> int
  int myFunction		shift myFunction
@@ -81,7 +81,7 @@
  int myFunction ( char * a ) ;		reduce init_declarator_list -> init_declarator
  int myFunction ( char * a ) ;		reduce declaration -> declaration_specifiers init_declaratior_list;
 		reduce external_declaration -> declaration
-		reduce translation_unit -> translation_unit external_declaration
+ int myFunction ( char * a ) ;		reduce translation_unit -> translation_unit external_declaration
  struct		shift struct
  struct		reduce struct_or_union -> struct
  struct alpha		shift alpha
@@ -115,7 +115,7 @@
  ;		reduce declaration_specifiers -> type_specifier
  ;		reduce declaration -> declaration_specifiers;
 		reduce external_declaration -> declaration
-		reduce translation_unit -> translation_unit external_declaration
+ ;		reduce translation_unit -> translation_unit external_declaration
  void		shift void
  void		reduce type_specifier -> void
  void main		shift main
@@ -298,8 +298,8 @@
  a += ( d + 1 ) ;		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
  a += ( d + 1 ) ;		reduce expression -> assignment_expression
  a += ( d + 1 ) ;		reduce expression_statement -> expression;
-		reduce statement -> expression_statement 
-		reduce statement_list -> statement
+ a += ( d + 1 ) ;		reduce statement -> expression_statement 
+ a += ( d + 1 ) ;		reduce statement_list -> statement
  f		shift f
  f [		shift [ 
  f [		reduce primary_expression -> identifier 
@@ -350,24 +350,24 @@
  f [ i ++ ] = 0 ;		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
  f [ i ++ ] = 0 ;		reduce expression -> assignment_expression
  f [ i ++ ] = 0 ;		reduce expression_statement -> expression;
-		reduce statement -> expression_statement 
-		reduce statement_list -> statement_list statement
+ f [ i ++ ] = 0 ;		reduce statement -> expression_statement 
+ f [ i ++ ] = 0 ;		reduce statement_list -> statement_list statement
  }		shift } <line terminate> 
 		reduce compound_statement -> {statement_list}
 		reduce statement -> compound_statement 
 		reduce iteration_statement -> while(expression) statement
 		reduce statement -> iteration_statement
-		reduce statement_list -> statement
+ f [ i ++ ] = 0 ;		reduce statement_list -> statement
  return		shift return
  return ;		shift ;
  return ;		reduce jump_statement -> return;
 		reduce statement -> jump_statement 
-		reduce statement_list -> statement_list statement
+ return ;		reduce statement_list -> statement_list statement
  }		shift } <line terminate> 
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
 		reduce external_declaration -> function_definition
-		reduce translation_unit -> translation_unit external_declaration
+ return ;		reduce translation_unit -> translation_unit external_declaration
  int		shift int
  int		reduce type_specifier -> int
  int myFunction		shift myFunction
@@ -492,8 +492,8 @@
  str = strdup ( "test" ) ;		reduce assignment_expression -> unary_expression assignment_operator assignment_expression
  str = strdup ( "test" ) ;		reduce expression -> assignment_expression
  str = strdup ( "test" ) ;		reduce expression_statement -> expression;
-		reduce statement -> expression_statement 
-		reduce statement_list -> statement
+ str = strdup ( "test" ) ;		reduce statement -> expression_statement 
+ str = strdup ( "test" ) ;		reduce statement_list -> statement
  printf		shift printf
  printf (		shift ( 
  printf (		reduce primary_expression -> identifier 
@@ -535,15 +535,15 @@
  printf ( "test" ) ;		reduce assignment_expression -> conditional_expression 
  printf ( "test" ) ;		reduce expression -> assignment_expression
  printf ( "test" ) ;		reduce expression_statement -> expression;
-		reduce statement -> expression_statement 
-		reduce statement_list -> statement_list statement
+ printf ( "test" ) ;		reduce statement -> expression_statement 
+ printf ( "test" ) ;		reduce statement_list -> statement_list statement
  }		shift } <line terminate> 
 		reduce compound_statement -> {statement_list}
 		reduce statement -> compound_statement 
  for		shift for
  for		reduce selection_statement -> if(expression) statement
  for		reduce statement -> selection_statement
- for		reduce statement_list -> statement
+ printf ( "test" ) ;		reduce statement_list -> statement
  for (		shift ( 
  for ( i		shift i
  for ( i		reduce primary_expression -> identifier 
@@ -625,10 +625,10 @@
  i ++ )		reduce expression -> assignment_expression
  i ++ ) ;		shift ;
  i ++ ) ;		reduce expression_statement -> ;
-		reduce statement -> expression_statement 
+ i ++ ) ;		reduce statement -> expression_statement 
 		reduce iteration_statement -> for (expression_statement expression_statement expression) statement
 		reduce statement -> iteration_statement
-		reduce statement_list -> statement_list statement
+ i ++ ) ;		reduce statement_list -> statement_list statement
  return		shift return
  return 0		shift 0
  return 0		reduce primary_expression -> constant 
@@ -651,9 +651,9 @@
  return 0 ;		reduce expression -> assignment_expression
  return 0 ;		reduce jump_statement -> return expression;
 		reduce statement -> jump_statement 
-		reduce statement_list -> statement_list statement
+ return 0 ;		reduce statement_list -> statement_list statement
  }		shift } <line terminate> 
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
 		reduce external_declaration -> function_definition
-		reduce translation_unit -> translation_unit external_declaration
+ return 0 ;		reduce translation_unit -> translation_unit external_declaration
