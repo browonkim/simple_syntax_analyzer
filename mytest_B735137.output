@@ -357,7 +357,7 @@
 		reduce statement -> compound_statement 
 		reduce iteration_statement -> while(expression) statement
 		reduce statement -> iteration_statement
- f [ i ++ ] = 0 ;		reduce statement_list -> statement
+		reduce statement_list -> statement
  return		shift return
  return ;		shift ;
  return ;		reduce jump_statement -> return;
@@ -366,8 +366,8 @@
  }		shift } <line terminate> 
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
- return ;		reduce external_declaration -> function_definition
- return ;		reduce translation_unit -> translation_unit external_declaration
+		reduce external_declaration -> function_definition
+		reduce translation_unit -> translation_unit external_declaration
  int		shift int
  int		reduce type_specifier -> int
  int myFunction		shift myFunction
@@ -543,7 +543,7 @@
  for		shift for
  for		reduce selection_statement -> if(expression) statement
  for		reduce statement -> selection_statement
- printf ( "test" ) ;		reduce statement_list -> statement
+		reduce statement_list -> statement
  for (		shift ( 
  for ( i		shift i
  for ( i		reduce primary_expression -> identifier 
@@ -655,5 +655,5 @@
  }		shift } <line terminate> 
 		reduce compound_statement -> {declaration_list statement_list}
 		reduce function_definition -> declaration_specifiers declarator compound_statement
- return 0 ;		reduce external_declaration -> function_definition
- return 0 ;		reduce translation_unit -> translation_unit external_declaration
+		reduce external_declaration -> function_definition
+		reduce translation_unit -> translation_unit external_declaration
