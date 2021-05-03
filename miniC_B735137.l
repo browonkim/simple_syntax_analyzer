@@ -88,8 +88,8 @@ L?\"(\\.|[^\\"])*\"	{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(out
 "=="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift == \n", totalstr); count(); return(EQ_OP); }
 "!="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift != \n", totalstr); count(); return(NE_OP); }
 ";"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift ;\n", totalstr); count(); return(';'); }
-("{"|"<%")		{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift { <line terminate> \n", totalstr); strcpy(totalstr, ""); count(); return('{'); }
-("}"|"%>")		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift } <line terminate> \n", totalstr); strcpy(totalstr, ""); count(); return('}'); }
+("{"|"<%")		{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift { <line terminate> \n", totalstr); strcpy(totalstr, "");strcpy(mystr, ""); count(); return('{'); }
+("}"|"%>")		{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift } <line terminate> \n", totalstr); strcpy(totalstr, "");strcpy(mystr, ""); count(); return('}'); }
 ","			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift , \n", totalstr); count(); return(','); }
 ":"			{strcat(totalstr, " ");strcat(totalstr, yytext);  fprintf(output,"%s\t\tshift : \n", totalstr); count(); return(':'); }
 "="			{strcat(totalstr, " ");strcat(totalstr, yytext); fprintf(output,"%s\t\tshift = \n", totalstr); count(); return('='); }
