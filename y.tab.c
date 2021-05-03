@@ -2825,13 +2825,13 @@ yyreduce:
 
   case 174:
 #line 355 "miniC_B735137.y" /* yacc.c:1646  */
-    {fprintf(output, "%s\t\treduce statement -> labeled_statement\n", totalstr);}
+    {fprintf(output, "%s\t\treduce statement -> labeled_statement\n", mystr);}
 #line 2830 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 175:
 #line 356 "miniC_B735137.y" /* yacc.c:1646  */
-    {fprintf(output, "%s\t\treduce statement -> compound_statement \n", totalstr);}
+    {fprintf(output, "%s\t\treduce statement -> compound_statement \n", mystr);}
 #line 2836 "y.tab.c" /* yacc.c:1646  */
     break;
 
@@ -2843,19 +2843,19 @@ yyreduce:
 
   case 177:
 #line 358 "miniC_B735137.y" /* yacc.c:1646  */
-    {fprintf(output, "%s\t\treduce statement -> selection_statement\n", totalstr);}
+    {fprintf(output, "%s\t\treduce statement -> selection_statement\n", mystr);}
 #line 2848 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 178:
 #line 359 "miniC_B735137.y" /* yacc.c:1646  */
-    {fprintf(output, "%s\t\treduce statement -> iteration_statement\n", totalstr);}
+    {fprintf(output, "%s\t\treduce statement -> iteration_statement\n", mystr);}
 #line 2854 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 179:
 #line 360 "miniC_B735137.y" /* yacc.c:1646  */
-    {fprintf(output, "%s\t\treduce statement -> jump_statement \n", totalstr);}
+    {fprintf(output, "%s\t\treduce statement -> jump_statement \n", mystr);}
 #line 2860 "y.tab.c" /* yacc.c:1646  */
     break;
 
