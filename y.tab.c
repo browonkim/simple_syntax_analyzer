@@ -3023,13 +3023,13 @@ yyreduce:
 
   case 207:
 #line 418 "miniC_B735137.y" /* yacc.c:1646  */
-    {fprintf(output, "%s\t\treduce external_declaration -> function_definition\n", totalstr);}
+    {fprintf(output, "%s\t\treduce external_declaration -> function_definition\n", mystr);}
 #line 3028 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 208:
 #line 419 "miniC_B735137.y" /* yacc.c:1646  */
-    {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", totalstr);}
+    {fprintf(output, "%s\t\treduce external_declaration -> declaration\n", mystr);}
 #line 3034 "y.tab.c" /* yacc.c:1646  */
     break;
 
