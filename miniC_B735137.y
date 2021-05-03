@@ -352,12 +352,12 @@ initializer_list
 	;
 
 statement
-	: labeled_statement {fprintf(output, "%s\t\treduce statement -> labeled_statement\n", totalstr);}
-	| compound_statement {fprintf(output, "%s\t\treduce statement -> compound_statement \n", totalstr);}
+	: labeled_statement {fprintf(output, "%s\t\treduce statement -> labeled_statement\n", mystr);}
+	| compound_statement {fprintf(output, "%s\t\treduce statement -> compound_statement \n", mystr);}
 	| expression_statement {fprintf(output, "%s\t\treduce statement -> expression_statement \n", mystr);}
-	| selection_statement {fprintf(output, "%s\t\treduce statement -> selection_statement\n", totalstr);}
-	| iteration_statement {fprintf(output, "%s\t\treduce statement -> iteration_statement\n", totalstr);}
-	| jump_statement {fprintf(output, "%s\t\treduce statement -> jump_statement \n", totalstr);}
+	| selection_statement {fprintf(output, "%s\t\treduce statement -> selection_statement\n", mystr);}
+	| iteration_statement {fprintf(output, "%s\t\treduce statement -> iteration_statement\n", mystr);}
+	| jump_statement {fprintf(output, "%s\t\treduce statement -> jump_statement \n", mystr);}
 	;
 
 labeled_statement
