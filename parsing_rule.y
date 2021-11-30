@@ -446,7 +446,7 @@ int main(int argc, char** argv){
 	}
 	char filename[100] = "";
 	strcat(filename, strtok(argv[1], "."));
-	strcat(filename, "_B735137.output");
+	strcat(filename, ".output");
 	output = fopen(filename,"w");
 	if(output == NULL){
 		printf("!!Output File open Failed!!\n");
